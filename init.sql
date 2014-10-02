@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS salesforce.interaction__c (
     createddate             timestamp
   );
 
-DROP TABLE salesforce.campaign;
+DROP TABLE IF EXISTS salesforce.campaign;
 CREATE TABLE IF NOT EXISTS salesforce.campaign (
     id              BIGSERIAL PRIMARY KEY,
     sfId            TEXT,
@@ -69,8 +69,7 @@ CREATE TABLE IF NOT EXISTS salesforce.campaign (
     status          TEXT
   );
 
-
-DROP TABLE salesforce.product2;
+DROP TABLE IF EXISTS salesforce.product2;
 CREATE TABLE IF NOT EXISTS salesforce.product2 (
     id              BIGSERIAL PRIMARY KEY,
     name            TEXT,
@@ -78,6 +77,14 @@ CREATE TABLE IF NOT EXISTS salesforce.product2 (
     image__c        TEXT,
     productpage__c  TEXT,
     publishdate__c  DATE
+  );
+
+DROP TABLE IF EXISTS salesforce.store__c;
+CREATE TABLE IF NOT EXISTS salesforce.store__c (
+    id                      BIGSERIAL PRIMARY KEY,
+    name                    TEXT,
+    location__latitude__s   TEXT,
+    location__longitude__s  TEXT
   );
 
 
@@ -91,3 +98,8 @@ INSERT INTO salesforce.product2 (id, name, description) VALUES
     (2, 'Bread', 'awesome bread'),
     (3, 'Milk', 'awesome milk'),
     (4, 'CHOCOLATE', 'awesome CHOCOLATE');
+
+INSERT INTO salesforce.store__c (id, name, location__latitude__s, location__longitude__s) VALUES
+    (1, 'Marquis', 37.785143, -122.403405),
+    (2, 'Hilton', 37.786164, -122.410137),
+    (3, 'Hyatt', 37.794157, -122.396311)
