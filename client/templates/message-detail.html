@@ -1,0 +1,28 @@
+<ion-view title="Message" class="card-bg">
+
+    <ion-content has-header="true" padding="true">
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img ng-if="message.authorpic && message.authorpic.indexOf('http') === 0" ng-src="{{message.authorpic}}">
+                <h2>{{message.banner}}</h2>
+                <p>From: {{message.author}} on {{message.createddate | date : 'MMMM d, y h:mma'}}</p>
+            </div>
+
+            <div class="item item-body">
+                <img ng-if="message.url && message.url.indexOf('http') === 0" ng-src="{{message.url}}">
+                <p ng-bind-html="message.htmlMessage"></p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="deleteItem()">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

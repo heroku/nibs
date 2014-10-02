@@ -1,0 +1,31 @@
+<ion-view title="Gallery" class="gallery">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button button-clear" ><i class="icon ion-ios7-camera"></i></button>-->
+    <!--</ion-nav-buttons>-->
+
+    <ion-content has-header="true"  style="background: black;">
+
+        <div ng-repeat="picture in pictures">
+            <!--<a ui-sref="app.gallery-detail({pictureId: picture.id})">-->
+                <img ng-if="picture.url" ng-src="{{picture.url}}"/>
+            <!--</a>-->
+        </div>
+
+        <!--<ion-slide-box>-->
+            <!--<ion-slide ng-repeat="picture in pictures">-->
+                <!--<img ng-if="picture.url" ng-src="{{picture.url}}" style="width:322px;height: auto;"/>-->
+            <!--</ion-slide>-->
+        <!--</ion-slide-box>-->
+
+    </ion-content>
+
+
+    <p ng-if="!loading && pictures.length === 0" class="centered-message" style="color: white;">Your gallery is empty</p>
+
+    <button class="button button-large bar-status{{user.status || 1}}" style="position:absolute;bottom:4px;margin-left:-30px;width:70px;height:70px;border-radius:35px;left:50%;color:#ffffff !important;" ng-click="takePicture()"><i class="icon ion-ios7-camera"></i></button>
+
+</ion-view>

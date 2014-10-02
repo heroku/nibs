@@ -1,0 +1,40 @@
+<ion-view title="Settings" hide-back-button="true" class="settings card-bg">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true">
+
+        <div class="list">
+
+            <div class="item item-body">
+                <p>{{server.url}}</p>
+                <p>Regular logout for regular and Facebook users.</p>
+                <button class="button button-block button-light" ng-click="logout()">
+                    Logout
+                </button>
+            </div>
+            <div class="item item-body">
+                <p>Completely deauthorize Facebook user. You'll be asked for full Facebook credentials again.</p>
+                <button class="button button-block button-light" ng-click="logoutAndRevoke()">
+                    Logout and Revoke Permissions
+                </button>
+            </div>
+            <div class="item item-body">
+                <p>For demo purpose: resets user to lowest status.</p>
+                <button class="button button-block button-light" ng-click="deleteActivities()">
+                    Delete Activities
+                </button>
+            </div>
+            <div class="item item-body">
+                <button class="button button-block button-light" ng-click="deletePictures()">
+                    Delete Gallery Pictures
+                </button>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>

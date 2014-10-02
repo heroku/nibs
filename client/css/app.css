@@ -1,0 +1,517 @@
+@font-face {
+    font-family: "Source Sans";
+    src: url("font/SourceSansPro-Regular.otf");
+}
+
+@font-face {
+    font-family: "Source Sans Light";
+    src: url("font/SourceSansPro-Light.otf");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Source Sans";
+    src: url("font/SourceSansPro-Semibold.otf");
+    font-weight: 600;
+}
+
+.ionic-logo {
+    display: block;
+    margin: 15px auto;
+    width: 96px;
+    height: 96px;
+}
+
+.gallery img {
+    width: 160px;
+    height: 160px;
+    float: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+.centered-image {
+    margin: 0 auto;
+    max-width: 330px;
+    display: block;
+}
+
+.card-bg {
+    background-color: #fbfbfb;
+}
+
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border: solid 8px #eee;
+}
+
+.badge-pic {
+    width: 140px;
+    height: 140px;
+    margin-left: 10px;
+}
+
+.item-body img {
+    width: 268px;
+}
+
+.item-body {
+    text-align: center;
+}
+
+.item-body p {
+    text-align: left;
+}
+
+.card {
+    margin: 0 0 10px 0;
+}
+
+.welcome {
+    background: url('img/background2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+}
+
+.welcome h2 {
+    font-family: "Source Sans Light";
+    font-size: 2.4rem;
+    color: #ffffff;
+    line-height: 1.8rem;
+}
+
+.welcome .bottom {
+    margin-top: 84px;
+}
+
+.icon-arrow-right {
+    font-weight: 200;
+    background: url('img/icon-arrow-right.png');
+    background-size: 100% auto;;
+    /*background-repeat: no-repeat;*/
+    width: 20px;
+    height: 22px;
+    display: inline-block;
+    margin-bottom: -4px;
+}
+
+.icon-chocolate-square {
+    /*font-weight: 200;*/
+    background: url('img/chocolate-square.svg');
+    background-size: 100% auto;;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    float: left;
+    margin-top: 12px;
+}
+
+.icon-facebook {
+    background: url('img/icon-facebook.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 37px !important;
+    height: 37px !important;
+}
+
+.icon-google {
+    background: url('img/icon-google.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 37px !important;
+    height: 37px !important;
+}
+
+.icon-twitter {
+    background: url('img/icon-twitter.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 37px !important;
+    height: 37px !important;
+}
+
+.welcome .button-clear {
+    color: #eeeeee;
+}
+
+.menu-left h1 {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 24px 4px 8px 12px;
+}
+
+.menu-left .item {
+    background: inherit;
+    border: inherit;
+}
+
+.menu-left .top-list .item {
+    color: #ffffff;
+}
+
+.menu-left .bottom-list .item {
+    color: #ccc;
+}
+
+.notification {
+    position: absolute;
+    opacity: .5;
+    bottom: 8px;
+    background: greenyellow;
+    z-index: 10;
+    padding: 8px;
+    border-radius: 4px;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    text-align: center !important;
+    /*margin: 0 auto;*/
+}
+
+/*Temporary fixes before Ionic beta 2*/
+.tabs-secondary {
+    padding-top: 10px !important;
+}
+
+.tabs-secondary i {
+    font-size: 28px !important;
+}
+
+.profile .header {
+    text-align: center;
+    padding: 2px 0 16px 0;
+    margin-bottom: 8px;
+}
+
+.profile,
+.profile h1,
+.profile h2,
+.profile h3,
+.profile h4,
+{
+    font-family: "Source Sans Light" !important;
+}
+
+.profile .header h2 {
+    font-family: "Source Sans Light" !important;
+    padding: 0;
+    margin: 0;
+    font-size: 26px;
+    color:#ffffff;
+}
+
+.profile .header h3 {
+    font-family: "Source Sans Light" !important;
+    padding: 0;
+    margin: 0;
+    /*color: #9E8F8F;*/
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.profile .block {
+    width: 50%;
+    float: left;
+    clear: none;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.profile .block img {
+    height: 40px;
+    width: auto;
+}
+
+.profile .block h3 {
+    font-family: "Source Sans Light" !important;
+    color: #805959 !important;
+    margin: 8px;
+    font-size: 20px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 60px; /* Saf3+, Chrome */
+    border-radius: 60px; /* Opera 10.5, IE 9 */
+    /*-moz-border-radius: 30px;  Disabled for FF1+ */
+    /*border: 1px solid #ffffff;*/
+}
+
+.settings .item {
+    padding: 6px 15px;
+}
+
+.settings .item p {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.bar-status {
+    border-color: #73732E;
+    background-color: #73732E;
+    background-image: none;
+    color: #fff;
+}
+
+.bar-status1 {
+    border-color: #73732E;
+    background-color: #73732E;
+    background-image: none;
+    color: #fff;
+}
+
+.bar-status2 {
+    border-color: #A87E21;
+    background-color: #A87E21;
+    background-image: none;
+    color: #fff;
+}
+
+.bar-status3 {
+    border-color: #802E13;
+    background-color: #802E13;
+    background-image: none;
+    color: #fff;
+}
+
+
+.button-status,
+{
+    border-color: #73732E;
+    background-color: #73732E;
+    background-image: none;
+    color: #fff;
+}
+
+.button-status1,
+.button-status1:hover,
+.button-status1:active {
+    background-color: #73732E;
+    color: #fff;
+}
+
+.button-status2,
+.button-status2:hover,
+.button-status2:active {
+    border-color: #A87E21;
+    background-color: #A87E21;
+    background-image: none;
+    color: #fff;
+}
+
+.button-status3,
+.button-status3:hover,
+.button-status3:active {
+    border-color: #802E13;
+    background-color: #802E13;
+    background-image: none;
+    color: #fff;
+}
+
+.button-status1:hover,
+.button-status2:hover,
+.button-status3:hover
+{
+    opacity: .9;
+}
+
+.profile-level {
+    font-family: "Source Sans" !important;
+    font-size: 1.4rem !important;
+    padding: 4px 0 4px 0;
+    margin: 0;
+}
+
+.bar .title,
+.bar .button
+{
+    color: #ffffff;
+}
+
+.status-bar {
+    clear: both;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+}
+
+.tabs-secondary {
+    height: 54px;
+}
+
+.tabs-secondary a {
+    height: 37px;
+}
+
+.status-bar>div {
+    border-top: solid 2px #666666;
+    -webkit-flex-grow:1;
+    flex-grow: 1;
+    margin: 4px;
+}
+
+.status-bar>div:nth-of-type(1) {
+    border-top: solid 2px #73732E;
+    color: #73732E !important;
+}
+
+.status-bar>div:nth-of-type(2) {
+    border-top: solid 2px #A87E21;
+    color: #A87E21 !important;
+    text-align: center;
+}
+
+.status-bar>div:nth-of-type(3) {
+    border-top: solid 2px #802E13;
+    color: #802E13 !important;
+    text-align: right;
+}
+
+.status-bar p:nth-of-type(1) {
+    font-family: "Source Sans" !important;
+    font-size: 1.2rem !important;
+    padding: 4px 0 4px 0;
+    margin: 0;
+}
+
+.status-bar p:nth-of-type(2) {
+    font-family: "Source Sans Light" !important;
+    font-size: 1rem !important;
+
+    padding: 0;
+    margin: 0;
+}
+
+.status1-bg {
+    background: #73732E;
+}
+
+.status2-bg {
+    background: #A87E21;
+}
+
+.status3-bg {
+    background: #802E13;
+}
+
+.status1 {
+    color: #73732E;
+}
+
+.status2 {
+    color: #A87E21;
+}
+
+.status3 {
+    color: #802E13;
+}
+
+.icon-status1 {
+    background: url('img/icon-status1.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin:0 0 0 12px;
+}
+
+.icon-status2 {
+    background: url('img/icon-status2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin:0 0 0 12px;
+}
+
+.icon-status3 {
+    background: url('img/icon-status3.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin:0 0 0 12px;
+}
+
+.badge {
+    background-color: #805959;
+}
+
+.activity-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.profile-status {
+    display: -webkit-flex;
+    display: flex;
+    padding-bottom: 12px;
+}
+
+.profile-status>div:nth-of-type(1) {
+    -webkit-flex: 3;
+    flex: 3;
+}
+
+.profile-status>div:nth-of-type(2) {
+    -webkit-flex:1;
+    flex: 1;
+}
+
+.card .item {
+    padding: 12px;
+}
+
+.card .item-body p,
+.card .item-body a
+{
+    margin: 8px;
+}
+
+.card .item-body a
+{
+    margin: 4px 0px !important;
+}
+
+.popup h3,
+.popup h4
+{
+    margin: 4px;
+}
+
+.hourglass {
+    position: absolute;
+    font-size: 44px;
+    top: 50%;
+    left: 50%;
+    margin-top: -22px;
+    margin-left: -22px;
+    z-index: 100;
+    color: rgba(6,6,6,.2);
+}
+
+.centered-message {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    margin-top: -22px;
+    z-index: 100;
+    /*color: #999999;*/
+    font-size: 1rem;
+    color: rgba(6,6,6,.2);
+}
+
+.menu,
+.menu .item-content {
+    background-color: #69625A;
+}
+
+.menu .item-content {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+

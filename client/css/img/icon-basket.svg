@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="44px" height="53px" viewBox="0 0 44 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-basket</title>
+    <description>Created with Sketch.</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Menu" sketch:type="MSArtboardGroup" transform="translate(-59.000000, -451.000000)" fill="#FFFFFF">
+            <g id="icon-basket" sketch:type="MSLayerGroup" transform="translate(59.000000, 451.000000)">
+                <path d="M3.16888136,52.0541667 L40.2130169,52.0541667 L43.2995424,25.2878889 L0.0816271186,25.2878889 L3.16888136,52.0541667 L3.16888136,52.0541667 Z M30.811322,32.8083889 L36.4137119,32.8083889 L34.6084407,44.5972222 L29.0082373,44.5972222 L30.811322,32.8083889 L30.811322,32.8083889 Z M18.9243729,32.8083889 L24.3270678,32.8083889 L24.3270678,44.5972222 L18.9243729,44.5972222 L18.9243729,32.8083889 Z M12.567661,32.8083889 L14.3729322,44.5972222 L8.77127119,44.5972222 L6.96818644,32.8083889 L12.567661,32.8083889 L12.567661,32.8083889 Z M39.0775254,19.903 L28.6314407,0.1235 L23.1602373,2.96183333 L32.1086102,19.903 L11.3294068,19.903 L20.2777797,2.96111111 L14.8065763,0.124222222 L4.3590339,19.903 L0.0808983051,19.903 L0.0808983051,22.9623333 L43.3002712,22.9623333 L43.3002712,19.903 L39.0775254,19.903" id="Basket" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

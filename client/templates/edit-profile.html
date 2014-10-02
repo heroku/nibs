@@ -1,0 +1,76 @@
+<ion-view title="Edit Profile" class="card-bg">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="update()">Save</button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" has-padding="true">
+
+        <div class="padding" style="padding-bottom: 0">
+            <div class="button-bar">
+                <a class="button button-small" ng-click="panel=1">Info</a>
+                <a class="button button-small" ng-click="panel=2">Preferences</a>
+            </div>
+        </div>
+
+        <div ng-if="panel===1">
+            <div class="padding">
+                <img class="profile-pic light-border" ng-src="{{user.pictureurl}}" style="float: left;margin-right:8px;margin-bottom:8px;"/>
+                <div>
+                    <button class="button icon ion-ios7-camera button-light" ng-click="addPicture()" style="width: 68px;"></button><br/>
+                    <button class="button icon ion-ios7-photos button-light" ng-click="addPicture('LIBRARY')" style="width: 68px;margin-top: 4px;"></button>
+                </div>
+            </div>
+            <form class="list list-inset" style="clear: both;margin-top: 0">
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="text" ng-model="user.email" ng-readonly="true"/>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">First Name</span>
+                    <input type="text" ng-model="user.firstname" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" ng-model="user.lastname" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Mobile Phone</span>
+                    <input type="text" ng-model="user.mobilephone" />
+                </label>
+                <li class="item item-toggle">
+                    See Premium Offers
+                    <label class="toggle">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+            </form>
+        </div>
+
+        <div ng-if="panel===2">
+            <form class="list list-inset">
+                <div class="item item-divider">
+                    Chocolate
+                </div>
+                <ion-radio name = "pref" ng-repeat="preference in preferences"
+                           ng-value="preference.value"
+                           ng-model="user.preference">
+                    {{ preference.text }}
+                </ion-radio>
+                <div class="item item-divider">
+                    T-Shirt Size
+                </div>
+                <ion-radio name="size" ng-repeat="size in sizes"
+                           ng-value="size.value"
+                           ng-model="user.size">
+                    {{ size.text }}
+                </ion-radio>
+            </form>
+        </div>
+
+    </ion-content>
+
+</ion-view>

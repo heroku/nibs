@@ -1,0 +1,30 @@
+<ion-view title="Help" hide-back-button="true">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true">
+        <div class="list list-inset">
+
+            <p>How can we help you?</p>
+
+            <div class="item item-body">
+                <textarea placeholder="Description" ng-model="case.description" rows="10"></textarea>
+            </div>
+
+            <button class="button button-block button-light" ng-click="submit()">
+                Submit
+            </button>
+
+            <p><strong>{{status}}</strong></p>
+
+        </div>
+
+        <div class="text-align:center">
+          <button class="button icon ion-help-buoy" style="color:white;alpha:0.8;background-color:#790507;border-radius:10px;left:50%;margin-left:-75px;width:140px" ng-click="sos()">&nbsp;S.O.S</button>
+        </div>
+
+    </ion-content>
+
+</ion-view>
