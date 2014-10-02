@@ -15,15 +15,6 @@
 
 <i class="icon ion-loading-c hourglass" ng-show="loading"></i>
 
-<script>
-    function onNotification(str) {
-        var message = JSON.parse(str);
-        if (message._od) {
-            window.location.hash = message._od;
-        }
-    }
-</script>
-
 <script src="cordova.js"></script>
 <script src="lib/js/ionic.bundle.js"></script>
 <script src="lib/js/angular/angular-sanitize.min.js"></script>
