@@ -5,7 +5,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
         var user = JSON.parse($window.localStorage.getItem('user'));
 
         $rootScope.user = user;
-        $rootScope.server = {url: $window.localStorage.getItem('serverURL') || "http://nibs2.herokuapp.com"};
+        $rootScope.server = {url: $window.localStorage.getItem('serverURL')};
 
         // Intialize OpenFB Facebook library
         OpenFB.init(FB_APP_ID, $window.localStorage);
@@ -36,8 +36,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
             .state('app', {
                 url: "/app",
                 abstract: true,
-                templateUrl: "templates/menu.html",
-                controller: "AppCtrl"
+                templateUrl: "templates/menu.html"
             })
 
             .state('app.welcome', {
@@ -48,33 +47,6 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
                     }
                 }
             })
-
-
-        // if none of the above states are matched, use this as the fallback
-//        $urlRouterProvider.otherwise('/app/profile');
-
-    })
-
-
-    .controller('AppCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal) {
-
-        $ionicModal.fromTemplateUrl('templates/survey.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-        $scope.openSurveyDialog = function(survey) {
-            $scope.questions = [{question: survey.q1_text, choices:survey.q1_choices.split(',')},
-                                {question: survey.q2_text, choices:survey.q2_choices.split(',')}];
-            $scope.modal.show();
-        };
-
-        $rootScope.openSurveyDialog = $scope.openSurveyDialog;
-        $scope.$on('modal.hidden', function(event) {
-
-        });
-
 
     })
 

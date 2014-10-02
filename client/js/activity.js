@@ -45,22 +45,4 @@ angular.module('nibs.activity', [])
             });
         };
 
-        $scope.popupDialog = function() {
-
-            if (navigator.notification) {
-                navigator.notification.alert(
-                    'You have a new message!',  // message
-                    function() {                // callback
-                        $state.go('app.messages');
-                    },
-                    'Nibs',                     // title
-                    'Open Inbox'             // buttonName
-                );
-            } else {
-                alert('You have a new message!');
-                $state.go('app.messages');
-            }
-
-        };
-
     });
