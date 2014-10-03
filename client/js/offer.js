@@ -37,16 +37,8 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
     })
 
-    .constant('SPECIAL_OFFER', {name: 'Free Truffles', 
-                                enddate:'2015-01-01', 
-                                description:'Enjoy free truffles from Nibs',
-                                id:'99999',
-                                image_green: 'img/free-truffles-green.jpg',
-                                image_brown: 'img/free-truffles-brown.jpg',
-                                image_red: 'img/free-truffles-red.jpg'})
-
     // Services
-    .factory('Offer', function ($http, $rootScope, $q, SPECIAL_OFFER) {
+    .factory('Offer', function ($http, $rootScope) {
         return {
             all: function() {
                 return $http.get($rootScope.server.url + '/offers');

@@ -93,7 +93,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             logout: function () {
                 $rootScope.user = undefined;
                 var promise = $http.post($rootScope.server.url + '/logout');
-//                $window.localStorage.clear();
                 $window.localStorage.removeItem('user');
                 $window.localStorage.removeItem('token');
                 return promise;
@@ -171,7 +170,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     .controller('LogoutCtrl', function ($rootScope, $window) {
         console.log("Logout");
         $rootScope.user = null;
-//        $window.localStorage.clear();
         $window.localStorage.removeItem('user');
         $window.localStorage.removeItem('token');
 

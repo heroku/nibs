@@ -37,14 +37,4 @@ angular.module('nibs.case', [])
             });
         };
 
-        $scope.sos = function() {
-            var user = JSON.parse($window.localStorage.getItem('user'));
-            console.log("SOS for user");
-            console.log(JSON.stringify(user));
-
-            if (!user.email) {
-              user.email = 'scott@example.com';
-            }
-            $window.location = 'sos://' + user.email;
-        }
     });

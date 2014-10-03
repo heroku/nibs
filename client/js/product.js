@@ -1,6 +1,6 @@
 angular.module('nibs.product', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wishlist'])
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider) {
 
         $stateProvider
 

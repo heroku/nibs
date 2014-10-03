@@ -39,10 +39,6 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
             }
         };
 
-//        return $resource($rootScope.server.url + '/users/me', {serverURL: $rootScope.server.url}, {
-//                'get':      {method:'GET'},
-//                'update':   {method:'PUT'}}
-//        );
     })
 
     .factory('Preference', function() {

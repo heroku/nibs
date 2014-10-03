@@ -34,7 +34,6 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
 
         $scope.logout = function() {
             $rootScope.user = null;
-//            $window.localStorage.clear();
             $window.localStorage.removeItem('user');
             $window.localStorage.removeItem('token');
             $state.go('app.welcome');
@@ -44,7 +43,6 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
             if (OpenFB.isLoggedIn())  {
                 OpenFB.logout();
                 $rootScope.user = null;
-//                $window.localStorage.clear();
                 $window.localStorage.removeItem('user');
                 $window.localStorage.removeItem('token');
                 $state.go('app.welcome');

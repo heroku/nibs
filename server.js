@@ -16,7 +16,6 @@ var express = require('express'),
     wishlist = require('./server/wishlist'),
     stores = require('./server/stores'),
     pictures = require('./server/pictures'),
-    messages = require('./server/messages'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
@@ -68,10 +67,6 @@ app.delete('/pictures', auth.validateToken, pictures.deleteItems);
 app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
-
-app.get('/messages', auth.validateToken, messages.findAll);
-app.get('/messages/:id', auth.validateToken, messages.findById);
-app.delete('/messages/:id', auth.validateToken, messages.deleteItem);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
