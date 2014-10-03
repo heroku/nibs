@@ -23,11 +23,6 @@ module.exports = {
         bucket: process.env.S3_BUCKET_NAME,
         awsKey: process.env.AWS_KEY,
         secret: process.env.AWS_SECRET
-    },
-
-    et: {
-        client_id: process.env.ET_CLIENT_ID,
-        client_secret: process.env.ET_CLIENT_SECRET
     }
 
 };
