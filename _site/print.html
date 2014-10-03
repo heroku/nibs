@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/print.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-721308-2', 'ccoenraets.github.io');
+      ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+
+
+
+<div class="container">
+    <h2>Overview</h2>
+
+<p>In this tutorial, you use the Salesforce Platform to build a conference management application that allows conference 
+administrators to manage all the
+aspects of a conference: sessions, speakers, hotels, etc. You also create a simple consumer-facing application that allows conference attendees to view the conference schedule, and learn more about sessions and speakers.</p>
+
+<h2>What You Will Learn</h2>
+
+<ul>
+<li>Create Custom Objects</li>
+<li>Use declarative features of the platform to create an Application, create Tabs, and optimize Page Layouts</li>
+<li>Create Apex Classes</li>
+<li>Use SOQL and DML to query, create, update and delete data</li>
+<li>Create Triggers</li>
+<li>Create Visualforce Pages</li>
+<li>Create Controller Extensions and Custom Controllers</li>
+<li>Use JavaScript in Visualforce Pages</li>
+<li>Authenticate using OAuth</li>
+<li>Access Salesforce data from JavaScript using JavaScript Remoting</li>
+<li>Create a Custom Application using the REST APIs</li>
+<li>Create Unit Tests</li>
+<li>Create Batch Processes</li>
+</ul>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>To complete this workshop, all you need is a modern browser and a connection to the Internet</li>
+<li>No prior knowledge of Salesforce is required</li>
+<li>A working knowledge of Object-Oriented Programming is assumed</li>
+</ul>
+
+<h2>Browser Requirements</h2>
+
+<p>The following browsers are supported when working with the Developer Console:</p>
+
+<ul>
+<li>Most recent version of Google Chrome</li>
+<li>Most recent version of Mozilla Firefox</li>
+<li>Most recent version of Safari</li>
+<li>Internet Explorer 9 or higher</li>
+</ul>
+
+<h1>Module 1&#58; Creating a Developer Edition Account</h1>
+
+<p>In this module, you create a Developer Edition Account that provides you with a full-featured but isolated Salesforce environment to perform the exercises in this workshop.</p>
+
+<blockquote>
+<p>If you already signed up for a Developer Edition account, you can skip the instructions below and go directly to <a href="/Creating-the-Data-Model.html">Module 2</a>.</p>
+</blockquote>
+
+<h2>Steps</h2>
+
+<ol>
+<li><p>Open a browser and access the following URL: <a href="http://developer.salesforce.com/signup">http://developer.salesforce.com/signup</a></p></li>
+<li><p>Fill in the signup form:</p>
+
+<ul>
+<li>Enter your First Name and Last Name</li>
+<li>For <strong>Email</strong>, enter an email address you have access to at this time (you will need to open an activation email)</li>
+<li>For <strong>Username</strong>, specify a unique user name in the form of an email address. For example: <strong>firsname.lastname@workshop.com</strong> (It doesn&#39;t have to be an existing email address: the Username is not used to send you emails)</li>
+<li>Check the Master Subscription Agreement checkbox and click the <strong>Sign Me Up</strong> button</li>
+</ul></li>
+<li><p>Check your email. You will receive an activation email for your Developer Edition Account.</p></li>
+<li><p>Click the link in the activation email. Enter your new password information, and click <strong>Save</strong>.</p></li>
+</ol>
+
+<!-- ------------------------------------- Module 2 ------------------------------------- -->
+
+<h1>Module 2&#58; Creating the Data Model</h1>
+
+<p>In this module, you create the custom objects that make up the data model for the conference application.</p>
+
+<p><img src="images/schema.jpg" alt=""></p>
+
+<h2>Step 1: Create the Conference Session Object</h2>
+
+<ol>
+<li><p>Login into your Developer Edition account</p></li>
+<li><p>Click the <strong>Setup</strong> link (upper right corner)</p>
+
+<p><img src="images/setup.jpg" alt=""></p></li>
+<li><p>In the left navigation, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p>
+
+<p><img src="images/custom-object.jpg" alt=""></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Session object as follows (accept the default values for the properties that are not mentioned below):</p>
+
+<ul>
+<li>Label: <strong>Session</strong></li>
+<li>Plural Label: <strong>Sessions</strong></li>
+<li>Object Name: <strong>Session</strong></li>
+<li>Record Name: <strong>Session Name</strong></li>
+<li>Data Type: <strong>Text</strong></li>
+</ul>
+
+<p><img src="images/session-object.jpg" alt=""></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong></p>
+
+<p><img src="images/new-field.jpg" alt=""></p></li>
+<li><p>Create a <strong>Session Date</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Date/Time</strong></li>
+<li>Field Label: <strong>Session Date</strong></li>
+<li>Field Name: <strong>Session_Date</strong></li>
+</ul>
+
+<p><img src="images/session-field.jpg" alt=""></p>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Description</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text Area (Long)</strong></li>
+<li>Field Label: <strong>Description</strong></li>
+<li>Field Name: <strong>Description</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Level</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Picklist</strong></li>
+<li>Field Label: <strong>Level</strong></li>
+<li>Values: <strong>Beginner</strong>, <strong>Intermediate</strong>, <strong>Advanced</strong> (specify each value on its own row)</li>
+<li>Field Name: <strong>Level</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 2: Create the Speaker Object</h2>
+
+<ol>
+<li><p>In Setup mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Speaker object as follows (accept the default values for the properties that are not mentioned below):</p>
+
+<ul>
+<li>Label: <strong>Speaker</strong></li>
+<li>Plural Label: <strong>Speakers</strong></li>
+<li>Object Name: <strong>Speaker</strong></li>
+<li>Record Name: <strong>Speaker Number</strong></li>
+<li>Data Type: <strong>Auto Number</strong></li>
+<li>Display Format: <strong>SP-{00000}</strong></li>
+<li>Starting Number: <strong>1</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>First Name</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>First Name</strong></li>
+<li>Length: <strong>30</strong></li>
+<li>Field Name: <strong>First_Name</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Last Name</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>Last Name</strong></li>
+<li>Length: <strong>30</strong></li>
+<li>Field Name: <strong>Last_Name</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create an <strong>Email</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Email</strong></li>
+<li>Field Label: <strong>Email</strong></li>
+<li>Field Name: <strong>Email</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Bio</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text Area (Long)</strong></li>
+<li>Field Label: <strong>Bio</strong></li>
+<li>Field Name: <strong>Bio</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 3: Create the Session_Speaker Junction Object</h2>
+
+<p>The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions. This is similar to an associative table in a traditional relational database.</p>
+
+<ol>
+<li><p>In Setup mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the <strong>Session_Speaker</strong> object as follows:</p>
+
+<ul>
+<li>Label: <strong>Session Speaker</strong></li>
+<li>Plural Label: <strong>Session Speakers</strong></li>
+<li>Object Name: <strong>Session_Speaker</strong></li>
+<li>Record Name: <strong>Session Speaker Number</strong></li>
+<li>Data Type: <strong>Auto Number</strong></li>
+<li>Display Format: <strong>SESP-{00000}</strong></li>
+<li>Starting Number: <strong>1</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Session</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Master-Detail Relationship</strong></li>
+<li>Related To: <strong>Session</strong></li>
+<li>Field Label: <strong>Session</strong></li>
+<li>Field Name: <strong>Session</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Next</strong>, set the Related List Label to &quot;<strong>Speakers</strong>&quot; and click <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Speaker</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Master-Detail Relationship</strong></li>
+<li>Related To: <strong>Speaker</strong></li>
+<li>Field Label: <strong>Speaker</strong></li>
+<li>Field Name: <strong>Speaker</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Next</strong>, set the Related List Label to &quot;<strong>Sessions</strong>&quot; and click <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 4: Examine the Data Model in Schema Builder</h2>
+
+<ol>
+<li><p>In Setup mode, search for &quot;<strong>schema</strong>&quot; in the left navigation, and click <strong>Schema Builder</strong></p>
+
+<p><img src="images/search-schema.jpg" alt=""></p></li>
+<li><p>Click <strong>Clear All</strong></p></li>
+<li><p>Check <strong>Session</strong>, <strong>Speaker</strong>, and <strong>Session Speaker</strong></p></li>
+<li><p>Examine the Conference application data model. Rearrange the objects as needed.</p></li>
+</ol>
+
+<!-- ------------------------------------- Module 3 ------------------------------------- -->
+
+<h1>Module 3&#58; Creating the Application</h1>
+
+<p>In this module, you create Tabs to provide access to the Session and Speaker objects. You group these tabs together in an Application to make them easier to access. Finally, you optimize Page Layouts to show relevant information in the Speaker and Session lists.</p>
+
+<p><img src="images/app.jpg" alt=""></p>
+
+<h2>Step 1: Creating Tabs</h2>
+
+<p>To create the Sessions tab:</p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Tabs</strong></p></li>
+<li><p>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></p></li>
+<li><p>Select <strong>Session</strong> as the Object, click the magnifier icon next to Tab Style and select the <strong>Books</strong> icon</p></li>
+<li><p>Click <strong>Next</strong>, <strong>Next</strong></p></li>
+<li><p>Uncheck the <strong>Include Tab</strong> checkbox to ensure the Sessions tab doesn&#39;t appear in any of the existing applications, and click <strong>Save</strong> (In step 2, we will add the Sessions tab to a new application).</p></li>
+</ol>
+
+<p>To create the Speakers tab:</p>
+
+<ol>
+<li><p>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></p></li>
+<li><p>Select <strong>Speaker</strong> as the Object, click the magnifier icon next to Tab Style and select the <strong>Presenter</strong> icon</p></li>
+<li><p>Click <strong>Next</strong>, <strong>Next</strong></p></li>
+<li><p>Uncheck the <strong>Include Tab</strong> checkbox to ensure the Speakers tab doesn&#39;t appear in any of the existing applications, and click <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 2: Creating the App</h2>
+
+<p>A Salesforce App is a group of Tabs that makes it easy for users to access a set of related features.</p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong></p></li>
+<li><p>In the <strong>Apps</strong> section, click <strong>New</strong></p></li>
+<li><p>Check <strong>Custom app</strong> and click <strong>Next</strong></p></li>
+<li><p>Enter <strong>Conference</strong> for both the App Label and App Name, and click <strong>Next</strong></p></li>
+<li><p>Accept the default App Logo and click <strong>Next</strong></p></li>
+<li><p>Add the <strong>Sessions</strong> and <strong>Speakers</strong> tabs to the <strong>Selected Tabs</strong> and click <strong>Next</strong></p></li>
+<li><p>Check the <strong>Visible</strong> checkbox for <strong>System Administrator</strong> and click <strong>Save</strong></p>
+
+<p><img src="images/sysadmin.jpg" alt=""></p></li>
+<li><p>Select <strong>Conference</strong> in the App selector (upper right corner of the screen)</p>
+
+<p><img src="images/conference-app.jpg" alt=""></p>
+
+<blockquote>
+<p>If the Conference App doesn&#39;t appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build &gt; Create &gt; App, click Edit next to Conference, check the System Administrator profile, and click Save.</p>
+</blockquote></li>
+</ol>
+
+<h2>Step 3: Enter Sample Data</h2>
+
+<ol>
+<li><p>Click the <strong>Speakers Tab</strong>, click <strong>New</strong>, and add a few sample speakers</p></li>
+<li><p>Click the <strong>Sessions Tab</strong>, click <strong>New</strong>, and  add a few sample sessions</p></li>
+<li><p>To assign speakers to a session:</p>
+
+<ul>
+<li>In the details view for a session, click <strong>New Session Speaker</strong></li>
+<li>Click the magnifier icon next to the Speaker field, select a speaker in the Speaker lookup dialog and click <strong>Save</strong></li>
+</ul>
+
+<p><img src="images/speaker-lookup.jpg" alt=""></p>
+
+<p><img src="images/session-detail.jpg" alt=""></p>
+
+<blockquote>
+<p>Notice that the speaker lists in both the speaker lookup dialog and the session details page don&#39;t provide very informative data at this time. We will fix this in the next steps.</p>
+</blockquote></li>
+</ol>
+
+<h2>Step 4: Optimize the Session Page Layout</h2>
+
+<p>In this step, you optimize the Session details screen: to allow the user to easily identify the speakers for a session, you add the appropriate fields to the Speaker list.  </p>
+
+<p><img src="images/session-layout.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Session</strong> link</p></li>
+<li><p>In the <strong>Page Layouts</strong> section, click <strong>Edit</strong> next to Session Layout</p></li>
+<li><p>In the <strong>Related Lists</strong> section, click the wrench icon (Related list properties)</p></li>
+<li><p>Add the following fields to the <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Speaker: Speaker Number</li>
+<li>Speaker: First Name</li>
+<li>Speaker: Last Name</li>
+</ul></li>
+<li><p>Remove the following field from the <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session Speaker: Session Speaker Name</li>
+</ul></li>
+<li><p>Click <strong>OK</strong></p></li>
+<li><p>Click <strong>Save</strong> (upper left corner)</p></li>
+</ol>
+
+<h2>Step 5: Optimize the Speaker Page Layout</h2>
+
+<p>In this step, you optimize the Speaker details screen: to allow the user to easily identify the sessions for a speaker, you add the appropriate fields to the Session list.  </p>
+
+<p><img src="images/speaker-layout.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Speaker</strong> link</p></li>
+<li><p>In the <strong>Page Layouts</strong> section, click <strong>Edit</strong> next to Speaker Layout</p></li>
+<li><p>In the <strong>Related Lists</strong> section, click the wrench icon (Related list properties)</p></li>
+<li><p>Add the following fields to the <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session: Session Name</li>
+<li>Session: Session Date</li>
+</ul></li>
+<li><p>Remove the following field from the <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session Speaker: Session Speaker Name</li>
+</ul></li>
+<li><p>Click <strong>OK</strong></p></li>
+<li><p>Click <strong>Save</strong> (upper left corner)</p></li>
+</ol>
+
+<h2>Step 6: Optimize the Speaker Lookup</h2>
+
+<p>In this step, you optimize the Speaker lookup dialog to allow the user to easily identify speakers.  </p>
+
+<p><img src="images/lookup.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Speaker</strong> link</p></li>
+<li><p>Scroll down to the <strong>Search Layouts</strong> section, and click <strong>Edit</strong> next to <strong>Lookup Dialogs</strong></p></li>
+<li><p>Add <strong>First Name</strong> and <strong>Last Name</strong> to the <strong>Selected Fields</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 7: Test the Application</h2>
+
+<ol>
+<li><p>Click the Sessions tab, select a session and make sure the speaker list shows the speaker number, first name, and last name</p></li>
+<li><p>Assign a new speaker to a session and make sure the speaker lookup dialog shows the speaker first name and last name</p></li>
+<li><p>Click the Speakers tab, select a speaker and make sure the session list shows the session name and date</p></li>
+</ol>
+
+<blockquote>
+<p>If the lists don&#39;t show the expected fields, you probably forgot to click the Save button in the Page Layout screen. Go back to steps 4 and 5, and make sure you click Save at the end.</p>
+</blockquote>
+
+<!-- ------------------------------------- Module 4 ------------------------------------- -->
+
+<h1>Module 4&#58; Creating an Apex Class</h1>
+
+<p>Apex is a strongly typed, object-oriented programming language that you use to execute code in your Saleforce instance. The Apex syntax is similar to Java and also includes built-in support for database operations. In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.</p>
+
+<h2>Step 1: Create the EmailManager class</h2>
+
+<ol>
+<li><p>In Salesforce, click your name in the upper right corner of the screen. In the dropdown menu, click <strong>Developer Console</strong>.</p>
+
+<p><img src="images/devconsole.jpg" alt=""></p></li>
+<li><p>In the Developer Console, click <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>. Specify <strong>EmailManager</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Implement the class as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public class EmailManager {
+
+    public void sendMail(String address, String subject, String body) {
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        String[] toAddresses = new String[] {address};
+        mail.setToAddresses(toAddresses);
+        mail.setSubject(subject);
+        mail.setPlainTextBody(body);
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+    }
+
+}
+</code></pre></div></li>
+<li><p>Click <strong>File</strong> &gt; <strong>Save</strong> to save the file</p></li>
+</ol>
+
+<h2>Step 2: Send an Email</h2>
+
+<p>In this module, you test the EmailManager class by sending an email from the developer console. Later in this workshop, you&#39;ll integrate the EmailManager class with other parts of the application to automate the process of sending confirmation emails.</p>
+
+<ol>
+<li><p>In the Developer Console, click <strong>Debug</strong> &gt; <strong>Open Execute Anonymous Window</strong></p></li>
+<li><p>Type the following Apex code (provide your own email address):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">String address = &#39;YOUR_EMAIL_ADDRESS&#39;;
+String subject = &#39;Speaker Confirmation&#39;;
+String body = &#39;Thank you for speaking at the conference.&#39;;
+EmailManager em = new EmailManager();
+em.sendMail(address, subject, body);
+</code></pre></div></li>
+<li><p>Click the <strong>Execute</strong> button</p></li>
+<li><p>Check your email: you should have received the confirmation email</p></li>
+</ol>
+
+<h2>Step 3: Using a Static Method</h2>
+
+<p>Since EmailManager is a utility class that doesn&#39;t use instance-specific variables, you can make the sendMail() method 
+static:</p>
+
+<ol>
+<li><p>In the Developer Console, open the EmailManager class</p></li>
+<li><p>To turn sendMail() into a static method, change its signature as follows (add the <strong>static</strong> keyword):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public static void sendMail(String address, String subject, String body) {
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Go back to the <strong>Execute Anonymous Window</strong> (<strong>Debug</strong> &gt; <strong>Open Execute Anonymous Window</strong>)</p></li>
+<li><p>Modify the Apex code to invoke sendMail() using a static method call:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">String address = &#39;YOUR_EMAIL_ADDRESS&#39;;
+String subject = &#39;Speaker Confirmation&#39;;
+String body = &#39;Thank you for speaking at the conference.&#39;;
+EmailManager.sendMail(address, subject, body);
+</code></pre></div></li>
+<li><p>Click <strong>Execute</strong> and check your email</p></li>
+</ol>
+
+<!-- ------------------------------------- Module 5 ------------------------------------- -->
+
+<h1>Module 5&#58; Accessing Data using SOQL and DML</h1>
+
+<p>SOQL is the Salesforce Object Query Language. It is similar to SQL. You use SOQL to retrieve data in Salesforce.
+You use the Salesforce Data Manipulation Language (DML) to insert, update and delete data. In this module, you use the Developer Console to familiarize yourself with SOQL
+and DML. In the next modules, you&#39;ll use SOQL and DML statements in Apex classes and triggers.</p>
+
+<h2>Step 1: Execute SOQL statements</h2>
+
+<ol>
+<li><p>In the Developer Console, click the <strong>Query Editor</strong> tab at the bottom of the window</p>
+
+<p><img src="images/queryeditor.jpg" alt=""></p></li>
+<li><p>Enter the following SOQL statement and click the <strong>Execute</strong> button to retrieve conference sessions:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
+</code></pre></div></li>
+<li><p>Execute the following statement to retrieve the beginner sessions (assuming you created any):  </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
+    WHERE Level__c = &#39;Beginner&#39;
+</code></pre></div></li>
+<li><p>Execute the following statement to retrieve a list of speakers ordered by first name and last name:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SELECT Id, First_Name__c, Last_Name__c, Email__c FROM Speaker__c
+    ORDER BY First_Name__c, Last_Name__c
+</code></pre></div></li>
+<li><p>Execute the following statement to retrieve a list of sessions assigned to speakers with related session and speaker information:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">SELECT Session__r.Name,
+       Session__r.Session_Date__c,
+       Speaker__r.First_Name__c,
+       Speaker__r.Last_Name__c
+    FROM Session_Speaker__c
+    ORDER BY Session__r.Session_Date__c, Session__r.Name
+</code></pre></div></li>
+</ol>
+
+<h2>Step 2: Execute DML Statements</h2>
+
+<ol>
+<li><p>In the Developer Console, click <strong>Debug</strong> &gt; <strong>Open Execute Anonymous Window</strong> and execute the following statements to create a session:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Session__c session=new Session__c(Name=&#39;Advanced Apex&#39;, Level__c=&#39;Advanced&#39;);
+insert session;
+</code></pre></div>
+<p>You can execute a SOQL statement in the Query Editor as described in step 1 to make sure the session was created.</p></li>
+<li><p>Execute the following statements to update a session:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Session__c session = [SELECT Id FROM Session__c WHERE NAME=&#39;Advanced Apex&#39;];
+session.Level__c = &#39;Intermediate&#39;;
+update session;
+</code></pre></div>
+<p>Again, you can execute a SOQL statement in the Query Editor to make sure the session was updated as expected.</p></li>
+</ol>
+
+<h2>Additional Resources</h2>
+
+<ul>
+<li><a href="http://www.salesforce.com/us/developer/docs/soql_sosl/index_Left.htm">SOQL and SOSL Reference</a></li>
+</ul>
+
+<!-- ------------------------------------- Module 6 ------------------------------------- -->
+
+<h1>Module 6&#58; Creating Triggers</h1>
+
+<p>In this module, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.
+You create another trigger that rejects double bookings of speakers.</p>
+
+<h2>Step 1: Create a Trigger that Sends Confirmation Emails</h2>
+
+<p>In this step, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.</p>
+
+<ol>
+<li><p>In the Developer Console, click <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Trigger</strong></p></li>
+<li><p>Specify <strong>SendConfirmationEmail</strong> as the trigger name, <strong>Session&#95;Speaker__c</strong> as the sObject, and click <strong>Submit</strong></p></li>
+<li><p>Implement the trigger as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">trigger SendConfirmationEmail on Session_Speaker__c (after insert) {
+
+    for(Session_Speaker__c newItem : trigger.new) {
+
+        // Retrieve session name and time + speaker name and email address
+        Session_Speaker__c sessionSpeaker =
+            [SELECT Session__r.Name,
+                    Session__r.Session_Date__c,
+                    Speaker__r.First_Name__c,
+                    Speaker__r.Last_Name__c,
+                 Speaker__r.Email__c
+             FROM Session_Speaker__c WHERE Id=:newItem.Id];
+
+        // Send confirmation email if we know the speaker&#39;s email address
+        if (sessionSpeaker.Speaker__r.Email__c != null) {
+            String address = sessionSpeaker.Speaker__r.Email__c;
+            String subject = &#39;Speaker Confirmation&#39;;
+            String message = &#39;Dear &#39; + sessionSpeaker.Speaker__r.First_Name__c +
+                &#39;,\nYour session &quot;&#39; + sessionSpeaker.Session__r.Name + &#39;&quot; on &#39; +
+                sessionSpeaker.Session__r.Session_Date__c + &#39; is confirmed.\n\n&#39; +
+                &#39;Thanks for speaking at the conference!&#39;;
+            EmailManager.sendMail(address, subject, message);
+        }
+    }
+
+}
+</code></pre></div>
+<blockquote>
+<p>In a real-life application, hardcoding the email message is not a recommended approach. Consider using <a href="https://help.salesforce.com/HTViewHelpDoc?id=admin_emailtemplates.htm&amp;language=en_US">email templates</a> instead.</p>
+</blockquote></li>
+<li><p>Save the file. The trigger takes effect as soon as you save it.</p></li>
+<li><p>Test the trigger</p>
+
+<ul>
+<li>Create a speaker that has your own email address</li>
+<li>Assign that speaker to a session, and check your email: you should receive a speaker confirmation email</li>
+</ul>
+
+<blockquote>
+<p>Sending a confirmation email when a speaker is assigned to a session (in other words, when a Session&#95;Speaker__c record is created) can be accomplished without writing code by defining a <a href="https://developer.salesforce.com/page/Workflow_Rules">workflow rule</a>. The programmatic approach used in this workshop allows you to satisfy additional requirements. For example, sending a confirmation email &quot;on demand&quot;, independently of a record being created or updated.</p>
+</blockquote></li>
+</ol>
+
+<h2>Step 2: Create a Trigger that Rejects Double Bookings</h2>
+
+<ol>
+<li><p>In the Developer Console, click <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Trigger</strong></p></li>
+<li><p>Specify <strong>RejectDoubleBooking</strong> as the trigger name, <strong>Session&#95;Speaker__c</strong> as the sObject, and click <strong>Submit</strong></p></li>
+<li><p>Implement the trigger as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">trigger RejectDoubleBooking on Session_Speaker__c (before insert, before update) {
+
+    for(Session_Speaker__c sessionSpeaker : trigger.new) {
+
+        // Retrieve session information including session date and time
+        Session__c session = [SELECT Id, Session_Date__c FROM Session__c
+                                WHERE Id=:sessionSpeaker.Session__c];
+
+        // Retrieve conflicts: other assignments for that speaker at the same time
+        List&lt;Session_Speaker__c&gt; conflicts =
+            [SELECT Id FROM Session_Speaker__c
+                WHERE Speaker__c = :sessionSpeaker.Speaker__c
+                AND Session__r.Session_Date__c = :session.Session_Date__c];
+
+        // If conflicts exist, add an error (reject the database operation)
+        if(!conflicts.isEmpty()){
+            sessionSpeaker.addError(&#39;The speaker is already booked at that time&#39;);
+        }
+
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the trigger:</p>
+
+<ul>
+<li>Assign a speaker to a session scheduled at a time the speaker is available and make sure it still works</li>
+<li>Assign a speaker to a session scheduled at the same time as another session the speaker is already assigned to: you should see the error message</li>
+</ul>
+
+<p><img src="images/doublebooking.jpg" alt=""></p>
+
+<blockquote>
+<p>RejectDoubleBooking is not sufficient to entirely prevent the double booking of speakers. For example, the user could change the date and time of a session after the facts in a way that creates a double booking for a speaker assigned to that session. You could create an additional trigger to take care of that situation.</p>
+</blockquote></li>
+</ol>
+
+<!-- ------------------------------------- Module 7 ------------------------------------- -->
+
+<h1>Module 7&#58; Creating a Visualforce Page</h1>
+
+<p>In this module, you create a Visualforce page to provide a custom user interface for creating and editing speakers.</p>
+
+<h2>Step 1: Create the SpeakerForm Visualforce Page</h2>
+
+<ol>
+<li><p>In the <strong>Developer Console</strong>, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Visualforce Page</strong>, specify <strong>SpeakerForm</strong> as the page name and click <strong>OK</strong></p></li>
+<li><p>Implement SpeakerForm as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page standardController=&quot;Speaker__c&quot;&gt;
+&lt;apex:form &gt;
+    &lt;apex:pageBlock title=&quot;Edit Speaker&quot;&gt;
+        &lt;apex:pageBlockSection columns=&quot;1&quot;&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.First_Name__c}&quot;/&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.Last_Name__c}&quot;/&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.Email__c}&quot;/&gt;
+        &lt;/apex:pageBlockSection&gt;
+        &lt;apex:pageBlockButtons &gt;
+            &lt;apex:commandButton action=&quot;{!save}&quot; value=&quot;Save&quot;/&gt;
+        &lt;/apex:pageBlockButtons&gt;
+    &lt;/apex:pageBlock&gt;
+&lt;/apex:form&gt;
+&lt;/apex:page&gt;
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the Visualforce page. There are several ways you can test your Visualforce page. For example, you can:</p>
+
+<ul>
+<li>Click the <strong>Preview</strong> button in the file editor for SpeakerForm in the developer console (upper left corner)</li>
+<li>Directly access the Visualforce page by appending <strong>/apex/SpeakerForm</strong> to your instance&#39;s domain name in the browser. For example, access: <a href="https://na17.salesforce.com/apex/SpeakerForm">https://na17.salesforce.com/apex/SpeakerForm</a> (make sure you use your own Salesforce domain name)</li>
+</ul></li>
+</ol>
+
+<h2>Step 2: Set SpeakerForm as the Default Form</h2>
+
+<p>In this step, you set the <strong>SpeakerForm</strong> page as the default form for creating and editing speakers:</p>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong> and click the <strong>Speaker</strong> link</p></li>
+<li><p>Scroll down to the <strong>Buttons, Links, and Actions</strong> section, and click <strong>Edit</strong> next to <strong>New</strong></p></li>
+<li><p>Check Override With Visualforce Page, and select <strong>SpeakerForm</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Buttons, Links, and Actions</strong> section, click <strong>Edit</strong> next to <strong>Edit</strong></p></li>
+<li><p>In <strong>Override With</strong> select <strong>Visualforce Page</strong> and select <strong>SpeakerForm</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 3: Test the Application</h2>
+
+<ol>
+<li><p>Click the <strong>Speakers</strong> Tab</p></li>
+<li><p>Click <strong>New</strong> which should display your Visualforce page</p></li>
+<li><p>Create a new Speaker and select <strong>Save</strong></p></li>
+</ol>
+
+<blockquote>
+<p>At this stage, the Visualforce page doesn&#39;t provide any additional capability compared to the default speaker form. In
+the next module, you will enhance SpeakerForm to support the upload of the speaker&#39;s pictures.</p>
+</blockquote>
+
+<!-- ------------------------------------- Module 8 ------------------------------------- -->
+
+<h1>Module 8&#58; Creating a Controller Extension</h1>
+
+<p>In this module, you enhance the Visualforce page you built in module 7: you create a controller extension that allows users to upload speaker pictures.</p>
+
+<p><img src="images/upload.jpg" alt=""></p>
+
+<h2>Step 1: Create a Controller Extension</h2>
+
+<p>In this step, you experiment with the mechanics of a controller extension. You create a simple controller extension that exposes an <strong>increment()</strong> method and a <strong>counter</strong> property. When you click the Increment button in the SpeakerForm page, the extension&#39;s increment() method increments the counter property whose new value is automatically displayed in the page. In the next step, you make SpeakerControllerExtension a lot more useful by adding code to support the upload of speaker pictures.</p>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>SpeakerControllerExtension</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Implement the class as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public class SpeakerControllerExtension {
+
+    public Integer counter {get; set;}
+
+    private final Speaker__c speaker;
+    private ApexPages.StandardController stdController;
+
+    public SpeakerControllerExtension(ApexPages.StandardController stdController) {
+        this.speaker = (Speaker__c)stdController.getRecord();
+        this.stdController = stdController;
+        counter = 0;
+    }
+
+    public void increment() {
+        counter++;
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>In the Developer Console, open the SpeakerForm page, and add the controller extension to the page definition:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page standardController=&quot;Speaker__c&quot; extensions=&quot;SpeakerControllerExtension&quot;&gt;
+</code></pre></div></li>
+<li><p>Add an Increment button (right after the Save button):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:commandButton action=&quot;{!increment}&quot; value=&quot;Increment&quot;/&gt;
+</code></pre></div></li>
+<li><p>Display the counter (right after &lt;/apex:pageBlock&gt;):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{!counter}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Click the Speakers tab, select a speaker, and click <strong>Edit</strong></li>
+<li>Click the Increment button several times and watch the counter value displayed at the bottom of the page</li>
+</ul></li>
+</ol>
+
+<h2>Step 2: Extend the Data Model</h2>
+
+<p>In this step, you add two fields to the Speaker object: <strong>Picture_Path</strong> to store the location of the picture on the server, and <strong>Picture</strong>, a Formula field used to display the image in the Visualforce page.</p>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong>, and click the <strong>Speaker</strong> link</p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Picture_Path</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>Picture Path</strong></li>
+<li>Length: <strong>255</strong></li>
+<li>Field Name: <strong>Picture_Path</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Picture</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Formula</strong></li>
+<li>Field Label: <strong>Picture</strong></li>
+<li>Field Name: <strong>Picture</strong></li>
+<li>Formula Return Type: <strong>Text</strong></li>
+<li>Formula: <strong>IMAGE(Picture&#95;Path__c, &#39;&#39;)</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h2>Step 3: Add Image Upload Support</h2>
+
+<ol>
+<li><p>In the Developer Console, open <strong>SpeakerControllerExtension</strong></p></li>
+<li><p>Remove the counter variable declaration, the counter variable initialization in the class constructor, and the increment() method definition</p></li>
+<li><p>Declare the following variables (right before the <strong>speaker</strong> variable declaration):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public blob picture { get; set; }
+public String errorMessage { get; set; }
+</code></pre></div></li>
+<li><p>Declare a <strong>save()</strong> method implemented as follows to override the standard controller&#39;s default behavior (right after the constructor method):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public PageReference save() {
+    errorMessage = &#39;&#39;;
+    try {
+        upsert speaker;
+        if (picture != null) {
+            Attachment attachment = new Attachment();
+            attachment.body = picture;
+            attachment.name = &#39;speaker_&#39; + speaker.id + &#39;.jpg&#39;;
+            attachment.parentid = speaker.id;
+            attachment.ContentType = &#39;application/jpg&#39;;
+            insert attachment;
+            speaker.Picture_Path__c = &#39;/servlet/servlet.FileDownload?file=&#39;
+                                      + attachment.id;
+            update speaker;
+        }
+        return new ApexPages.StandardController(speaker).view();
+    } catch(System.Exception ex) {
+        errorMessage = ex.getMessage();
+        return null;
+    }
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>In the Developer Console, open the SpeakerForm page</p></li>
+<li><p>Remove the Increment button</p></li>
+<li><p>Add an inputFile (right after the Email inputField):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:inputFile value=&quot;{!picture}&quot; accept=&quot;image/*&quot; /&gt;
+</code></pre></div></li>
+<li><p>Instead of the counter, display the potential errorMessage right after &lt;/apex:pageBlock&gt;</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{!errorMessage}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+</ol>
+
+<h2>Step 4: Test the Application</h2>
+
+<ol>
+<li><p>Click the Speakers tab</p></li>
+<li><p>Click <strong>New</strong> to add a speaker</p></li>
+<li><p>Enter the speaker first name, last name and email</p></li>
+<li><p>Click the <strong>Choose File</strong> button and select a jpg file on your file system</p></li>
+<li><p>Click the <strong>Save</strong> button: you should see the image on the speaker&#39;s details page</p></li>
+</ol>
+
+<!-- ------------------------------------- Module 9 ------------------------------------- -->
+
+<h1>Module 9&#58; Using JavaScript in Visualforce Pages</h1>
+
+<p>In this module, you create a custom controller with a method that returns a list of conference hotels. You create a Visualforce page that invokes that method using JavaScript Remoting, and uses the Google Maps SDK to display the hotels on a map.</p>
+
+<p><img src="images/hotelmap.jpg" alt=""></p>
+
+<h2>Step 1: Create the Hotel Object</h2>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Hotel Object as follows:</p>
+
+<ul>
+<li>Label: <strong>Hotel</strong></li>
+<li>Plural Label: <strong>Hotels</strong></li>
+<li>Object Name: <strong>Hotel</strong></li>
+<li>Record Name: <strong>Hotel Name</strong></li>
+<li>Data Type: <strong>Text</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Location</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Geolocation</strong></li>
+<li>Field Label: <strong>Location</strong></li>
+<li>Latitude and Longitude Display Notation: <strong>Decimal</strong></li>
+<li>Decimal Places: <strong>7</strong></li>
+<li>Field Name: <strong>Location</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+<li><p>Create a Tab for the Hotel object</p>
+
+<ul>
+<li>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Tabs</strong></li>
+<li>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></li>
+<li>Select the <strong>Hotel</strong> object and <strong>Building</strong> as the Tab Style Icon</li>
+<li>Click <strong>Next</strong>, <strong>Next</strong></li>
+<li>Uncheck the <strong>Include Tab</strong> checkbox, check the <strong>Conference</strong> checkbox, and click <strong>Save</strong></li>
+</ul>
+
+<p><img src="images/hotel-tab.jpg" alt=""></p></li>
+<li><p>Enter a couple of hotels with location information. For example:</p>
+
+<ul>
+<li>Marriott Marquis (37.785143 -122.403405)</li>
+<li>Hilton Union Square (37.786164 -122.410137)</li>
+<li>Hyatt (37.794157 -122.396311)</li>
+</ul>
+
+<p><img src="images/marriott.jpg" alt=""></p></li>
+</ol>
+
+<h2>Step 2: Create the HotelRemoter Controller</h2>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>HotelRemoter</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Implement the class as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global with sharing class HotelRemoter {
+
+    @RemoteAction
+    global static List&lt;Hotel__c&gt; findAll() {
+        return [SELECT Id, Name, Location__Latitude__s, Location__Longitude__s
+                    FROM Hotel__c];
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file  </p></li>
+</ol>
+
+<h2>Step 3: Create a Visualforce Page with Google Maps</h2>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Visualforce Page</strong>, specify <strong>HotelMap</strong> as the page name and click <strong>OK</strong></p></li>
+<li><p>Implement HotelMap as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page sidebar=&quot;false&quot; showheader=&quot;false&quot;&gt;
+
+&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+&lt;/style&gt;
+&lt;script src=&quot;https://maps.googleapis.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+var map;
+
+function initialize() {
+    var mapOptions = {
+        center: new google.maps.LatLng(37.784173, -122.401557),
+        zoom: 15
+    };
+    map = new google.maps.Map(document.getElementById(&quot;map-canvas&quot;), mapOptions);
+}
+
+google.maps.event.addDomListener(window, &#39;load&#39;, initialize);
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;map-canvas&quot;/&gt;
+&lt;/body&gt;
+
+&lt;/apex:page&gt;
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Click the <strong>Preview</strong> button (upper left corner) to test the HotelMap page in the browser</p></li>
+</ol>
+
+<h2>Step 4: Display the Hotels on the Map</h2>
+
+<ol>
+<li><p>Assign <strong>HotelRemoter</strong> as the controller for the <strong>HotelMap</strong> Visualforce page:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page sidebar=&quot;false&quot; showheader=&quot;false&quot; controller=&quot;HotelRemoter&quot;&gt;
+</code></pre></div></li>
+<li><p>Define a function named loadHotels() implemented as follows (right after the initilize() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function loadHotels() {
+    Visualforce.remoting.Manager.invokeAction(&#39;{!$RemoteAction.HotelRemoter.findAll}&#39;,
+        function(result, event){
+            if (event.status) {
+                for (var i=0; i&lt;result.length; i++) {
+                    var id = result[i].Id;
+                    var name = result[i].Name;
+                    var lat = result[i].Location__Latitude__s;
+                    var lng = result[i].Location__Longitude__s;
+                    addMarker(id, name, lat, lng);
+                }
+            } else {
+                alert(event.message);
+            }
+        },
+        {escape: true}
+    );
+}
+</code></pre></div></li>
+<li><p>Define the addMarker() function implemented as follows (right after the loadHotels() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function addMarker(id, name, lat, lng) {
+    var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            map: map,
+            title: name
+    });
+    google.maps.event.addListener(marker, &#39;click&#39;, function(event) {
+        window.top.location = &#39;/&#39; + id;
+    });
+}
+</code></pre></div></li>
+<li><p>Invoke loadHotels() as the last line of the <strong>initialize()</strong> function:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">loadHotels();
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Click the <strong>Preview</strong> button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1.</p></li>
+</ol>
+
+<!-- ------------------------------------- Module 10 ------------------------------------- -->
+
+<h1>Module 10&#58; Using the Salesforce1 Platform APIs</h1>
+
+<p>In this module, you create an application that runs outside your Salesforce instance: it uses OAuth to authenticate with Salesforce, and the REST APIs to access Salesforce data.</p>
+
+<p><img src="images/api.jpg" alt=""></p>
+
+<h2>Requirement</h2>
+
+<p>You need Node.js to perform the exercises in this module. If you don&#39;t already have Node.js installed on your system, you can install it <a href="http://nodejs.org/">here</a>.</p>
+
+<blockquote>
+<p>This module is recommended but optional. If you are not interested in building custom applications (applications hosted outside your Salesforce instance), you can move to Module 11.</p>
+</blockquote>
+
+<h2>Step 1: Create a Connected App</h2>
+
+<ol>
+<li><p>In Setup, click <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong></p></li>
+<li><p>In the <strong>Connected Apps</strong> section, click <strong>New</strong>, and define the Connected App as follows:</p>
+
+<ul>
+<li>Connected App Name: MyConference</li>
+<li>API Name: MyConference</li>
+<li>Contact Email: enter your email address</li>
+<li>Enabled OAuth Settings: Checked</li>
+<li>Callback URL: http://localhost:3000/oauthcallback.html</li>
+<li>Selected OAuth Scopes: Full Access (full)</li>
+</ul>
+
+<p><img src="images/connected-app.jpg" alt=""></p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol>
+
+<h2>Step 2: Install the Supporting Files</h2>
+
+<ol>
+<li><p>Download and unzip <a href="https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip">this file</a>, or clone <a href="https://github.com/ccoenraets/salesforce-developer-workshop">this repository</a></p></li>
+<li><p>Using your favorite code editor, examine the code in <strong>client/index.html</strong>:</p>
+
+<ul>
+<li>It provides the basic markup to render a list of sessions as shown in the screenshot above.</li>
+<li>It uses ratchet.css. <a href="http://goratchet.com/">Ratchet</a> is a simple CSS toolkit that provides styles for mobile applications.</li>
+<li>It uses <a href="https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit">ForceTK</a>, the Force.com JavaScript REST Toolkit, to integrate with Salesforce.</li>
+<li>You will code the logic of the application (OAuth login) and data access logic in js/app.js which is empty at this time.<br></li>
+</ul></li>
+<li><p>Using your favorite code editor, examine the code in <strong>client/oauthcallback.html</strong>:</p>
+
+<p>At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. Your redirect URI page simply needs to parse the query string, extract the access token and the other OAuth values, and pass that information back to your application by invoking the oauthCallback() function you will code in Step 4.</p></li>
+<li><p>Using your favorite code editor, examine the code in <strong>server.js</strong>. server.js implements a small HTTP server that provides two features:</p>
+
+<ul>
+<li>Web server for static content. The document root for the web server is the client directory.</li>
+<li>Proxy for Salesforce REST requests. Because of the browser’s cross-origin restrictions, your JavaScript application hosted on your own server (or localhost) will not be able to make API calls directly to the *.salesforce.com domain. The solution is to proxy your API calls through your own server.</li>
+</ul></li>
+</ol>
+
+<h2>Step 3: Start the Node.js server</h2>
+
+<ol>
+<li><p>Open Terminal (Mac) or a Command prompt (Windows)</p></li>
+<li><p>Navigate (cd) to the <strong>salesforce-developer-workshop</strong> (or salesforce-developer-workshop-master) directory</p></li>
+<li><p>Install the Node.js server dependencies:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">npm install
+</code></pre></div></li>
+<li><p>Start the server:  </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">node server
+</code></pre></div></li>
+<li><p>Test the application. Open a browser and access the following URL:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">http://localhost:3000
+</code></pre></div>
+<p>Since we didn&#39;t authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.</p></li>
+</ol>
+
+<h2>Step 4: Authenticate with Salesforce using OAuth</h2>
+
+<ol>
+<li><p>Using your favorite code editor, open <strong>app.js</strong> in <strong>salesforce-developer-workshop/client/js</strong></p></li>
+<li><p>Declare the following variables:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var apiVersion = &#39;v30.0&#39;,
+clientId = &#39;YOUR_CONSUMER_KEY&#39;,
+loginUrl = &#39;https://login.salesforce.com/&#39;,
+redirectURI = &#39;http://localhost:3000/oauthcallback.html&#39;,
+proxyURL = &#39;http://localhost:3000/proxy/&#39;,
+client = new forcetk.Client(clientId, loginUrl, proxyURL);
+</code></pre></div></li>
+<li><p>In <strong>Setup</strong> (back in Salesforce), click <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong>. In the <strong>Connected Apps</strong> section, click <strong>MyConference</strong>, and copy the <strong>Consumer Key</strong> to your clipboard.</p>
+
+<p><img src="images/consumer-key.jpg" alt=""></p></li>
+<li><p>In app.js, replace YOUR&#95;CONSUMER_KEY with the consumer key you copied to your clipboard</p></li>
+<li><p>In app.js, declare a function named <strong>login()</strong> implemented as follows (right after the variable declarations):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function login() {
+    var url = loginUrl + &#39;services/oauth2/authorize?display=popup&amp;response_type=token&#39;
+                + &#39;&amp;client_id=&#39; + encodeURIComponent(clientId)
+                + &#39;&amp;redirect_uri=&#39; + encodeURIComponent(redirectURI);
+    window.open(url);
+}
+</code></pre></div></li>
+<li><p>Declare a function named <strong>oauthCallback()</strong> implemented as follows (right after the login() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function oauthCallback(response) {
+    if (response &amp;&amp; response.access_token) {
+        client.setSessionToken(response.access_token,
+                               apiVersion,
+                               response.instance_url);
+        console.log(&#39;OAuth authentication succeeded&#39;);
+    } else {
+        alert(&quot;AuthenticationError: No Token&quot;);
+    }
+}
+</code></pre></div>
+<blockquote>
+<p>oauthCallback() is called by the oauthcallback.html page at the end of the OAuth workflow (see oauthcallback.html in step 2 for details).</p>
+</blockquote></li>
+<li><p>Invoke the login() function as the last line of the app.js file:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">login();
+</code></pre></div></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Open a browser and access <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>Login with your Developer Edition credentials</li>
+<li>Open the browser console: you should see the <strong>OAuth authentication succeeded</strong> message</li>
+</ul>
+
+<blockquote>
+<p>It may take a few minutes for a Connected App to be available after you create it. If you get this message: <strong>error=invalid<em>client</em>id&amp;error_description=client%20identifier%20invalid</strong>, wait a few minutes and try again.</p>
+</blockquote></li>
+</ol>
+
+<h2>Step 5: Using the REST APIs</h2>
+
+<ol>
+<li><p>In app.js, declare a function named <strong>getSessions()</strong> implemented as follows (right after the oauthCallback() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function getSessions() {
+    var soql = &quot;SELECT Id, Name, Session_Date__c FROM Session__c&quot;,
+        html = &#39;&#39;;
+    client.query(soql,
+        function (data) {
+            var sessions = data.records;
+            for (var i=0; i&lt;sessions.length; i++) {
+                html += &#39;&lt;li class=&quot;table-view-cell&quot;&gt;&#39; + sessions[i].Name + &#39;&lt;/li&gt;&#39;;
+            }
+            $(&#39;.session-list&#39;).html(html);
+        },
+        function (error) {
+            alert(&quot;Error: &quot; + JSON.stringify(error));
+        });
+    return false;
+}
+</code></pre></div></li>
+<li><p>Modify the oauthCallback() function to invoke getSessions() when the user has been successfully authenticated.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">console.log(&#39;OAuth authentication succeeded&#39;);
+getSessions();
+</code></pre></div></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Open a browser and access <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>Login with your Developer Edition credentials</li>
+<li>You should now see the list of sessions</li>
+</ul></li>
+</ol>
+
+<blockquote>
+<p>This is just the starting point for building a custom application written in JavaScript, authenticating with Salesforce using OAuth, and accessing Salesforce data using the REST APIs. If you are planning on building a real-life application based on this architecture, consider using a JavaScript framework such as <a href="http://backbonejs.org/">Backbone.js</a> or <a href="https://angularjs.org/">AngularJS</a> with <a href="http://ionicframework.com/">Ionic</a>.</p>
+</blockquote>
+
+<!-- ------------------------------------- Module 11 ------------------------------------- -->
+
+<h1>Module 11&#58; Unit Testing</h1>
+
+<p>In this module, you write tests for the RejectDoubleBooking trigger you created in module 6.</p>
+
+<h2>Step 1: Create a Test Class</h2>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>TestRejectDoubleBooking</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Make the class <strong>private</strong>, and add the <strong>@isTest</strong> class annotation:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">@isTest
+private class TestRejectDoubleBooking{
+
+}
+</code></pre></div></li>
+</ol>
+
+<h2>Step 2: Add a Test Method to Test Single Bookings</h2>
+
+<ol>
+<li><p>Add a <strong>TestSingleBooking()</strong> method to the TestRejectDoubleBooking class to make sure the trigger does not prevent a valid speaker booking:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">static testmethod void TestSingleBooking() {
+    Datetime now = System.now();
+
+    Speaker__c speaker = new Speaker__c(First_Name__c=&#39;John&#39;, Last_Name__c=&#39;Smith&#39;);
+    insert speaker;
+
+    Session__c session = new Session__c(Name=&#39;Some Session&#39;, Session_Date__c=now);
+    insert session;
+
+    Session_Speaker__c assignment =
+        new Session_Speaker__c(Session__c=session.Id, Speaker__c=speaker.Id);
+    Test.startTest();
+    Database.SaveResult result = Database.insert(assignment, false);
+    Test.stopTest();
+
+    System.assert(result.isSuccess());
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Click <strong>Run Test</strong> in the upper right corner of the code editor</p></li>
+<li><p>Click the <strong>Tests</strong> tab at the bottom of the code editor, and examine the test results.</p>
+
+<p><img src="images/test1.jpg" alt=""></p></li>
+</ol>
+
+<h2>Step 3: Add a Test Method to Test Double Bookings</h2>
+
+<ol>
+<li><p>Add a <strong>TestDoubleBooking()</strong> method to the TestRejectDoubleBooking class to make sure trigger actually rejects double bookings:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">static testmethod void TestDoubleBooking() {
+    Datetime now = System.now();
+
+    Speaker__c speaker = new Speaker__c(First_Name__c=&#39;John&#39;, Last_Name__c=&#39;Smith&#39;);
+    insert speaker;
+
+    Session__c session1 = new Session__c(Name=&#39;Session 1&#39;, Session_Date__c=now);
+    insert session1;
+    Session__c session2 = new Session__c(Name=&#39;Session 2&#39;, Session_Date__c=now);
+    insert session2;
+
+    Session_Speaker__c assignment1 =
+        new Session_Speaker__c(Session__c=session1.Id, Speaker__c=speaker.Id);
+    insert assignment1;
+
+    Session_Speaker__c assignment2 =
+        new Session_Speaker__c(Session__c=session2.Id, Speaker__c=speaker.Id);
+    Test.startTest();
+    Database.SaveResult result = Database.insert(assignment2, false);
+    Test.stopTest();
+
+    System.assert(!result.isSuccess());
+}
+</code></pre></div></li>
+<li><p>Save the file  </p></li>
+<li><p>Click <strong>Run Test</strong> in the upper right corner of the code editor</p></li>
+<li><p>Click the <strong>Tests</strong> tab at the bottom of the code editor, and examine the test results.</p>
+
+<p><img src="images/test2.jpg" alt=""></p></li>
+</ol>
+
+<!-- ------------------------------------- Module 12 ------------------------------------- -->
+
+<h1>Module 12&#58; Batch and Schedule</h1>
+
+<p>In this module, you create and execute a batch process to send reminder emails to the conference speakers.</p>
+
+<h2>Step 1: Create the Batch Class</h2>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>SendReminderEmail</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Make the class <strong>global</strong>, implement the <strong>Batchable</strong> interface, and define the three methods of the interface:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global class SendReminderEmail implements Database.Batchable&lt;sObject&gt; {
+
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+
+    }
+
+    global void execute(Database.BatchableContext bc, List&lt;Speaker__c&gt; scope) {
+
+    }
+
+    global void finish(Database.BatchableContext bc) {
+
+    }
+
+}
+</code></pre></div></li>
+<li><p>Declare three instance variables to store the query, the email subject, and the email body:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global String query;
+global String subject;
+global String body;
+</code></pre></div></li>
+<li><p>Define a <strong>constructor</strong> implemented as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global SendReminderEmail(String query, String subject, String body) {
+    this.query = query;
+    this.subject = subject;
+    this.body = body;
+}
+</code></pre></div></li>
+<li><p>Implement the <strong>start()</strong> method as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global Database.QueryLocator start(Database.BatchableContext bc) {
+    return Database.getQueryLocator(query);
+}
+</code></pre></div></li>
+<li><p>Implement the <strong>execute()</strong> method as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global void execute(Database.BatchableContext bc, List&lt;Speaker__c&gt; scope) {
+    for (Speaker__c speaker : scope) {
+        EmailManager.sendMail(speaker.Email__c, this.subject, this.body);
+    }
+}
+</code></pre></div></li>
+<li><p>Save the file.</p></li>
+</ol>
+
+<h2>Step 2: Run the Batch</h2>
+
+<ol>
+<li><p>Make sure you have assigned your own email address to one of the speakers</p></li>
+<li><p>In the Developer Console, click <strong>Debug</strong> &gt; <strong>Open Execute Anonymous Window</strong></p></li>
+<li><p>Type the following Apex code:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">String q = &#39;SELECT First_Name__c, Last_Name__c, Email__c FROM Speaker__c WHERE Email__c != null&#39;;
+SendReminderEmail batch = new SendReminderEmail(q, &#39;Final Reminder&#39;, &#39;The conference starts next Monday&#39;);
+Database.executeBatch(batch);
+</code></pre></div></li>
+<li><p>Click <strong>Execute</strong></p></li>
+<li><p>Check your email</p></li>
+</ol>
+
+</div>
+
+</body>
+</html>

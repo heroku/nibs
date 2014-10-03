@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Nibs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Nibs</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="setup.html">Setup</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a
+                        href="https://github.com/heroku/nibs-next"><img
+                        src="images/icon-github.png" style="border: none;margin: -4px 0;height: 28px;width: 28px;"/>
+                    GitHub
+                    Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12">
+        <h1>Architecture</h1>
+        <!--<hr/>-->
+        <p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/nibs-architecture.jpg" alt="alt tag"></p>
+
+<h2>Client-Side</h2>
+
+<p>The client-side is a single page application built with:</p>
+
+<ul>
+<li><a href="https://angularjs.org/">AngularJS</a></li>
+<li><a href="http://ionicframework.com/">Ionic</a></li>
+</ul>
+
+<h2>Server-Side</h2>
+
+<p>The server-side runs in Heroku and is built with:</p>
+
+<ul>
+<li>Node.js</li>
+<li><a href="http://expressjs.com/">Express</a></li>
+<li>Postgres</li>
+<li>Heroku Connect</li>
+<li><a href="https://github.com/kevinohara80/nforce">nForce</a></li>
+</ul>
+
+<h2>Multi-Platform</h2>
+
+<ul>
+<li>Nibs is a hybrid application packaged with <a href="https://cordova.apache.org/">Apache Cordova</a>, enabling easy distribution on the different app stores.</li>
+<li>The application runs on iOS, Android, Windows Phone, Blackberry, etc.</li>
+</ul>
+
+<h2>User Management</h2>
+
+<ul>
+<li>User can sign up and create an account in the application or login with Facebook.</li>
+<li>Nibs users are stored as Contacts in Salesforce.</li>
+<li>User passwords are hashed with bcrypt using a per-user salt.</li>
+<li>The application generates its own authorization tokens that the client passes in the header of every request.</li>
+</ul>
+
+<h2>Facebook Integration</h2>
+
+<ul>
+<li>Facebook integration is performed using <a href="https://github.com/ccoenraets/OpenFB">OpenFB</a>.</li>
+<li>In addition to login, Nibs gets the user&#39;s profile picture and email address from Facebook.</li>
+<li>If that email address is already assigned to a Contact in Salesforce, the two accounts are reconciled. If not, a new contact is created.</li>
+<li>The Facebook integration also allows users to share application content (offers and products) on their feed.</li>
+</ul>
+
+<h2>Heroku Connect</h2>
+
+<p>Heroku Connect is used to synchronize data between Salesforce and a Postgres database running in Heroku.</p>
+
+<p>Heroku Connect synchronizes the following Salesforce objects:</p>
+
+<ul>
+<li>Contact (Bidirectional sync)</li>
+<li>Campaign (SF to Heroku)</li>
+<li>Product2 (SF to Heroku)</li>
+<li>Interaction__c (Bidirectional sync)</li>
+<li>Store__c (SF to Heroku)</li>
+</ul>
+
+<p>Using Heroku Connect, developers access Salesforce data directly in the Postgres database using SQL. Developers can access Salesforce data in any way they want (any query, any join, any grouping and aggregation).</p>
+
+<h2>Push Notification with ExactTarget Fuel</h2>
+
+<p>Push Notification is implemented using the ExactTarget Push APIs and Cordova Plugin.
+Push notification is documented on <a href="https://github.com/ccoenraets/nibsapp/wiki/Push-Notification">this page</a></p>
+
+<h2>REST</h2>
+
+<ul>
+<li>The server-side application exposes its own REST endpoints.</li>
+<li>The client application gets its data by invoking these REST services.</li>
+</ul>
+
+<p>These are API calls to your own application (the Nibs server), and they don&#39;t count towards API limits.</p>
+
+<h2>Camera Integration</h2>
+
+<ul>
+<li>Profile picture: The user can change his/her profile picture by either taking a selfie on the device, or choosing an existing picture from the device camera roll.</li>
+<li>Instagram-like feature: The user can take pictures and share them with the community.</li>
+</ul>
+
+<p>In both cases, images are uploaded to an S3 bucket.</p>
+
+<h2>S3 integration</h2>
+
+<p>Profile, Product, Campaign, and social pictures are stored in S3.</p>
+
+
+    </div>
+
+    <!--<div class="col-xs-12 col-sm-4 right-nav">-->
+
+        <!--<div class="panel panel-default">-->
+            <!--&lt;!&ndash; Default panel contents &ndash;&gt;-->
+            <!--<div class="panel-heading" style="font-variant:small-caps;font-size: 18px;">modules</div>-->
+            <!--<ol class="list-group">-->
+                <!--<li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>-->
+                <!--<li><a href="Importing-Workshop-Assets.html">Importing Workshop Assets</a></li>-->
+                <!--<li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>-->
+                <!--<li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>-->
+                <!--<li><a href="Using-Static-Resources.html">Using Static Resources</a></li>-->
+                <!--<li><a href="Using-Canvas.html">Using Canvas Applications</a></li>-->
+                <!--<li><a href="Testing.html">Testing</a></li>-->
+                <!--<li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>-->
+            <!--</ol>-->
+            <!--<hr/>-->
+            <!--<div style="margin: -8px 0 12px 14px">-->
+                <!--<a href="next.html">Next Steps</a>-->
+            <!--</div>-->
+        <!--</div>-->
+<!--<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://ccoenraets.github.io/salesforce-developer-workshop" data-text="Salesforce Developer Workshop: New fast-track tutorial to #Salesforce development">Tweet</a>-->
+<!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
+
+
+    <!--</div>-->
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Heroku, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

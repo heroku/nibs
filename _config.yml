@@ -1,0 +1,4 @@
+name: Nibs
+markdown: redcarpet
+highlighter: true
+paginate: 5

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Nibs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Nibs</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="setup.html">Setup</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a
+                        href="https://github.com/heroku/nibs-next"><img
+                        src="images/icon-github.png" style="border: none;margin: -4px 0;height: 28px;width: 28px;"/>
+                    GitHub
+                    Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12">
+        <h1>Overview</h1>
+        <!--<hr/>-->
+        <p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/home.png" width="320"/></p>
+
+<h3>Sign Up and Login</h3>
+
+<ul>
+<li>Users can sign up and create an account in the application or login with Facebook.</li>
+<li>User passwords are hashed with bcrypt using a per-user salt.</li>
+<li>The application generates its own authorization tokens that the client passes in the header of every request.</li>
+</ul>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/signup.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/login.png" width="320"/></p>
+
+<h3>Profile and Preferences</h3>
+
+<ul>
+<li>Nibs users are managed as Contacts in Salesforce.</li>
+<li>If the user logged in with Facebook, Nibs gets the user&#39;s profile picture and email address from Facebook. If that email address is already assigned to a Contact in Salesforce, the two accounts are reconciled. If not, a new Contact is created in Salesforce.</li>
+<li>Users can edit their profile and preferences. This information is saved in the user&#39;s corresponding Contact object.</li>
+</ul>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level1.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/edit-profile.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/preferences.png" width="320"/></p>
+
+<h3>Products</h3>
+
+<ul>
+<li>Products come from the Product2 object in Salesforce and are synchronized using Heroku Connect</li>
+<li>Users can add a product to their wish list or share products on social networks</li>
+</ul>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/products.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/product.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/wishlist.png" width="320"/></p>
+
+<h3>Offers</h3>
+
+<ul>
+<li>Offers come from the Campaign object in Salesforce and are synchronized using Heroku Connect</li>
+<li>Users can redeem an offer, add an offer to their wallet, or share offers on social networks</li>
+</ul>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/offers.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/offer.png" width="320"/></p>
+
+<p>When redeeming an offer, the user is presented with a QR code he/she can present in a store.</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/redeem.png" width="320"/></p>
+
+<p>Alternatively, the user can save the offer to his/her wallet to redeem it later.</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/wallet.png" width="320"/></p>
+
+<h3>Activity and Point System</h3>
+
+<p>In Nibs, you earn points for performing specific activities in the application: sharing products and campaigns on social networks, redeeming an offer, saving an offer to your wallet, saving a product to your wish list, etc.</p>
+
+<p>The Recent Activity screen shows the activities you performed and the points you earned:</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/activity.png" width="320"/></p>
+
+<p>When you earn enough points, your status gets upgraded to a higher level. The three status levels in Nibs are:</p>
+
+<p>|Points              | Status      |
+|--------------------|-------------|
+| 0 to 4999          | Forastero   |
+| 5000 to 9999       | Trinitario  |
+| &gt;9999           | Criollo     |</p>
+
+<p>Nibs notifies you in real time when your status gets upgraded. Also, the application color theme automatically changes to reflect your new status.</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/upgrade-level2.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level2.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/upgrade-level3.png" width="320"/></p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level3.png" width="320"/></p>
+
+<p>For demo purpose, you can delete your activities in the application: go to the the side menu, select Recent Activity, select the Gear icon (upper right corner), and click &#39;Delete Activities&#39;. That will set you back to the lowest level (Forastero). Then perform 5 activities in the app (share, redeem, or save) and you will see your status change including the color theme change.</p>
+
+<h3>Store Locator</h3>
+
+<p>The store locator uses the Geolocation API to center the map on your current location. It also shows you the stores nearby. You can click a store in the store list to center the map on that store&#39;s location.</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/store-locator.png" width="320"/></p>
+
+<h3>Photo Sharing</h3>
+
+<p>Nibs has an instagram-like feature that lets users to share pictures featuring Nibs products.</p>
+
+<p><img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/gallery.png" width="320"/></p>
+
+<h3>Push Notification</h3>
+
+<p>Push notification is documented on <a href="https://github.com/ccoenraets/nibsapp/wiki/Push-Notification">this page</a></p>
+
+
+    </div>
+
+    <!--<div class="col-xs-12 col-sm-4 right-nav">-->
+
+        <!--<div class="panel panel-default">-->
+            <!--&lt;!&ndash; Default panel contents &ndash;&gt;-->
+            <!--<div class="panel-heading" style="font-variant:small-caps;font-size: 18px;">modules</div>-->
+            <!--<ol class="list-group">-->
+                <!--<li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>-->
+                <!--<li><a href="Importing-Workshop-Assets.html">Importing Workshop Assets</a></li>-->
+                <!--<li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>-->
+                <!--<li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>-->
+                <!--<li><a href="Using-Static-Resources.html">Using Static Resources</a></li>-->
+                <!--<li><a href="Using-Canvas.html">Using Canvas Applications</a></li>-->
+                <!--<li><a href="Testing.html">Testing</a></li>-->
+                <!--<li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>-->
+            <!--</ol>-->
+            <!--<hr/>-->
+            <!--<div style="margin: -8px 0 12px 14px">-->
+                <!--<a href="next.html">Next Steps</a>-->
+            <!--</div>-->
+        <!--</div>-->
+<!--<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://ccoenraets.github.io/salesforce-developer-workshop" data-text="Salesforce Developer Workshop: New fast-track tutorial to #Salesforce development">Tweet</a>-->
+<!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
+
+
+    <!--</div>-->
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Heroku, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

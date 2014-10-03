@@ -1,1 +1,4 @@
-Nibs!
+---
+layout: home
+title: Nibs
+---
