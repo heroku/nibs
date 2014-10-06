@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="css/styles.css" rel="stylesheet">
 
+    <script src="//use.edgefonts.net/source-sans-pro.js"></script>
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -60,12 +62,7 @@
     <div class="container">
         <div class="row" style="text-align: center">
             <img src="images/logo.svg" style="border:none;height: 200px;"/>
-            <div>
-                <img src="images/ionic-logo.png" style="border:none;height: 100px;margin:0 10px;"/>
-                <img src="images/ionic-logo.png" style="border:none;height: 100px;margin:0 10px;"/>
-                <img src="images/ionic-logo.png" style="border:none;height: 100px;margin:0 10px;"/>
-                <img src="images/ionic-logo.png" style="border:none;height: 100px;margin:0 10px;"/>
-            </div>
+            <h1>Reference Architecture for Customer Engagement Applications</h1>
         </div>
     </div>
 </div>
@@ -95,43 +92,64 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <p>Nibs is a sample mobile application that demonstrates how to build customer engagement apps with modern frameworks like <a href="">AngularJS</a>, <a href="">Ionic</a>, and <a href="">Node.js</a>.</p>
+            <p>Nibs is a sample mobile application that demonstrates how to build customer engagement applications with modern frameworks like <a href="">AngularJS</a>, <a href="">Ionic</a>, and <a href="">Node.js</a>.</p>
             <p>You can deploy your own version of Nibs on Heroku in seconds using the Heroku button below:<br/><a href="https://heroku.com/deploy?template=https://github.com/heroku/nibs-next"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy"></a></p>
-            <p>Although you can start experiencing Nibs as a self-contained Ionic and Node.js application, the full power of Nibs comes through its seamless integration with your business data in Salesforce and digital marketing campaigns in ExactTarget.
+            <p>Although you can start experiencing Nibs as a self-contained Ionic and Node.js application, the full power of Nibs comes through its seamless integration with your business data in Salesforce and your digital marketing campaigns in ExactTarget.
             To get the full integrated experience, connect Nibs to Salesforce using Heroku Connect and to ExactTarget using the Fuel SDK. Nibs is a reference architecture for building customer engagement apps that deliver personalized user interactions and integrate seamlessly with existing business data.</p>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
+
+    <div class="row" style="padding-top: 4px;">
         <div class="col-lg-4">
-            <h1>Force.com</h1>
-            <p>Force.com is a set of tools and services that make it faster and easier to create employee-facing applications that are instantly social and mobile. Nibs uses Force.com for the employee-facing side of the application, including product, offer and user management.</p>
+            <div class="text-center">
+                <img src="images/platform-force-cloud.png"/>
+                <h3>Force.com</h3>
+            </div>
+            <p>Force.com is a set of tools and services that make it faster and easier to create employee-facing applications. Nibs uses Force.com for the employee-facing side of the application, including product, offer and user management. Employees can manage Nibs data in the browser or using the Salesforce1 mobile app.</p>
         </div>
         <div class="col-lg-4">
-            <h1>Heroku</h1>
+            <div class="text-center">
+                <img src="images/platform-heroku-logo.png"/>
+                <h3>Heroku</h3>
+            </div>
             <p>Heroku provides the tools and services you need to build and deploy customer-facing applications without having to worry about infrastructure. Heroku Connect makes it easy to synchronize data with your Salesforce instance. Nibs uses Heroku to host the Node.js application, and Heroku Connect to synchronize Salesforce data.</p>
         </div>
         <div class="col-lg-4">
-            <h1>ExactTarget</h1>
-            <p>The ExactTarget Marketing Cloud helps you make the most of every customer interaction—creating personalized, cross-channel customer journeys that deliver exceptional brand experiences. Nibs uses ExactTarget's Push Notification and JourneyBuilder to fully integrate the consumer app into customer journeys.</p>
+            <div class="text-center">
+                <img src="images/platform-exact-target.png"/>
+                <h3>ExactTarget Fuel</h3>
+            </div>
+            <p>The ExactTarget Marketing Cloud helps you make the most of every customer interaction—creating personalized, cross-channel customer journeys that deliver exceptional brand experiences. Nibs uses ExactTarget's Push Notification and JourneyBuilder to fully integrate the consumer app in customer journeys.</p>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row" style="padding-top: 12px;">
         <div class="col-lg-4">
-            <h1>AngularJS</h1>
-            <p>AngularJS is one of the leading MVC frameworks for building single page web applications. Nibs uses AngularJS to structure and modularize the code of the client application.</p>
+            <div class="text-center">
+                <img src="images/angularjs.png"/>
+                <h3>AngularJS</h3>
+            </div>
+            <p>AngularJS is a leading Model-View-Controller framework for building single page web applications. Nibs uses AngularJS to structure and modularize the code of the client application.</p>
         </div>
         <div class="col-lg-4">
-            <h1>Ionic</h1>
+            <div class="text-center">
+                <img src="images/ionic.png"/>
+                <h3>Ionic</h3>
+            </div>
             <p>Ionic is a UI framework that facilitates the development of Hybrid apps built with AngularJS by providing mobile components and gestures. Nibs uses Ionic as the foundation for the user interface of the client application.</p>
         </div>
         <div class="col-lg-4">
-            <h1>Node.js</h1>
+            <div class="text-center">
+                <img src="images/nodejs.png"/>
+                <h3>Node.js</h3>
+            </div>
             <p>Node.js allows you to easily build fast and scalable server applications in JavaScript. The server-side of Nibs is built on Node.js and exposes the application data and logic to the mobile app through a set of REST services.</p>
         </div>
     </div>
+
 </div>
 
 

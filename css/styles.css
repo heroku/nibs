@@ -1,6 +1,45 @@
+@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-reg-webfont.eot');
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-reg-webfont.eot?#iefix')
+    format('embedded-opentype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-reg-webfont.woff') format('woff'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-reg-webfont.ttf') format('truetype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanovareg-webfont.svg#ProximaNovaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    }
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-light-webfont.eot');
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-light-webfont.eot?#iefix')
+    format('embedded-opentype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-light-webfont.woff') format('woff'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-light-webfont.ttf') format('truetype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-light-webfont.svg#ProximaNovaLight')
+    format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ProximaNovaSemiBold';
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-sbold-webfont.eot');
+    src: url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-sbold-webfont.eot?#iefix')
+    format('embedded-opentype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-sbold-webfont.woff') format('woff'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-sbold-webfont.ttf') format('truetype'),
+    url('http://www.sfdcstatic.com/cdn/fonts/ProximaNova/proximanova-sboldwebfont.svg#ProximaNovaSemiBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: ProximaNovaRegular, Arial, sans-serif;
+    font-size:16px;
+}
 img {
     max-width: 100%;
-    border: solid 1px #eee;
+    /*border: solid 1px #eee;*/
     margin: 8px 0;
 }
 
@@ -25,7 +64,7 @@ blockquote {
     padding: 0;
     /*padding-top: 30px;*/
     /*background-color: #01344e;*/
-    color: #009CDF;
+    color: #ffffff;
     background: #ffffff url("../images/background.jpg") no-repeat right top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -37,8 +76,10 @@ blockquote {
 
 .jumbotron h1 {
     font-size: 34px;
-    font-weight: 400;
-    font-style: normal;
+    margin-top:12px;
+    /*font-weight: 400;*/
+    /*font-style: normal;*/
+    font-family: ProximaNovaLight, Arial, sans-serif;
 }
 
 /*.navbar {*/
@@ -107,4 +148,9 @@ h2 {
     padding-bottom: 12px;
     margin-bottom: 20px;
     margin-top: 40px;
+}
+
+h3 {
+    margin-top:6px;
+    font-size: 28px;
 }
