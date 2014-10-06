@@ -65,7 +65,33 @@
     <div class="col-xs-12">
         <h1>Setup</h1>
         <!--<hr/>-->
-        
+        <h2>Using Heroku Button</h2>
+
+<p>You can deploy your own version of Nibs in seconds using the Heroku button below:</p>
+
+<h2>Using the Command Line</h2>
+
+<p>As an alternative you can also use the command line:</p>
+
+<ol>
+<li><p>Clone the repository</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/heroku/nibs
+cd nibs
+</code></pre></div></li>
+<li><p>Create a Heroku application</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku create
+</code></pre></div></li>
+<li><p>Install the Postgres plugin    </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku addons:add heroku-postgresql:dev
+</code></pre></div></li>
+<li><p>Deploy to Heroku</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git push heroku master
+</code></pre></div></li>
+<li><p>Open the application</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku open
+</code></pre></div></li>
+</ol>
+
 
     </div>
 

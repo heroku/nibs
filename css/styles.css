@@ -69,13 +69,13 @@ blockquote {
     background-repeat: no-repeat;
     background-size: 100%;
     background-origin: content-box;
-    height: 350px;
+    height: 330px;
 }
 
 
 
 .jumbotron h1 {
-    font-size: 34px;
+    font-size: 28px;
     margin-top:12px;
     /*font-weight: 400;*/
     /*font-style: normal;*/
