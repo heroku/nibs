@@ -19,7 +19,6 @@ The server-side runs in Heroku and is built with:
 - [Express](http://expressjs.com/)
 - Postgres
 - Heroku Connect
-- [nForce](https://github.com/kevinohara80/nforce)
 
 ## Multi-Platform
 
