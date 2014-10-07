@@ -65,21 +65,23 @@
     <div class="col-xs-12">
         <h1>Setup</h1>
         <!--<hr/>-->
-        <h2>Using Heroku Button</h2>
+        <h2>Deploying to Heroku using the Heroku Button</h2>
 
 <p>You can deploy your own version of Nibs in seconds using the Heroku button below:</p>
 
-<h2>Using the Command Line</h2>
+<p><a href="https://heroku.com/deploy"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy"></a></p>
 
-<p>As an alternative you can also use the command line:</p>
+<h2>Deploying to Heroku using the Command Line</h2>
+
+<p>You can also deploy Nibs to Heroku using the command line:</p>
 
 <ol>
 <li><p>Clone the repository</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/heroku/nibs
-cd nibs
 </code></pre></div></li>
 <li><p>Create a Heroku application</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku create
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs
+heroku create
 </code></pre></div></li>
 <li><p>Install the Postgres plugin    </p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">heroku addons:add heroku-postgresql:dev
@@ -90,6 +92,28 @@ cd nibs
 <li><p>Open the application</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">heroku open
 </code></pre></div></li>
+</ol>
+
+<h2>Installing a Local Version</h2>
+
+<p>You can also deploy Nibs to Heroku using the command line:</p>
+
+<ol>
+<li><p>Clone the repository</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/heroku/nibs
+</code></pre></div></li>
+<li><p>Install the server dependencies</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs
+npm install
+</code></pre></div></li>
+<li><p>Start the server    </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">node server
+</code></pre></div></li>
+<li><p>Run the application</p>
+
+<p>Open a browser and access the following URL:</p>
+
+<p><a href="http://localhost:5000">http://localhost:5000</a></p></li>
 </ol>
 
 

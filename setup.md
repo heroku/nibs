@@ -3,25 +3,26 @@ layout: module
 title: Setup
 ---
 
-## Using Heroku Button
+## Deploying to Heroku using the Heroku Button
 
 You can deploy your own version of Nibs in seconds using the Heroku button below:
- 
- 
-## Using the Command Line
 
-As an alternative you can also use the command line:
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+  
+## Deploying to Heroku using the Command Line
+
+You can also deploy Nibs to Heroku using the command line:
 
 1. Clone the repository
 
     ```
     git clone https://github.com/heroku/nibs
-    cd nibs
     ```
 
 1. Create a Heroku application
 
     ```
+    cd nibs
     heroku create
     ```
     
@@ -42,3 +43,32 @@ As an alternative you can also use the command line:
     ```
     heroku open
     ```
+
+## Installing a Local Version 
+
+You can also deploy Nibs to Heroku using the command line:
+
+1. Clone the repository
+
+    ```
+    git clone https://github.com/heroku/nibs
+    ```
+
+1. Install the server dependencies
+
+    ```
+    cd nibs
+    npm install
+    ```
+    
+1. Start the server    
+
+    ```
+    node server
+    ```
+
+1. Run the application
+
+    Open a browser and access the following URL:
+
+    [http://localhost:5000](http://localhost:5000)
