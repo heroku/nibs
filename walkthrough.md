@@ -1,6 +1,6 @@
 ---
 layout: module
-title: Nibs Application Walthrough
+title: Application Walthrough
 ---
 
 
