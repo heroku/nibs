@@ -38,11 +38,16 @@ You can also deploy Nibs to Heroku using the command line:
     git push heroku master
     ```
 
-1. Open the application
+1. Run the the application:
+    - Open the application in a browser:
 
-    ```
-    heroku open
-    ```
+        ```
+        heroku open
+        ```
+    - Click the Signup button to create an account
+     
+    > Facebook login won't work until you complete the Facebook integration steps described below.
+
 
 ## Installing a Local Version 
 
@@ -73,12 +78,33 @@ You can also install Nibs on your local machine:
     node server
     ```
 
-1. Run the application. Open a browser and access the following URL:
-
-    [http://localhost:5000](http://localhost:5000)
-
+1. Run the application
+    - Open a browser and access the following URL:
+        [http://localhost:5000](http://localhost:5000)
+    - Click the Signup button to create an account
+     
+    > Facebook login won't work until you complete the Facebook integration steps described below.
+    
 
 ## Facebook Integration
+
+1. Create a Facebook application 
+    - Login to Facebook
+    - Access https://developers.facebook.com/apps, and click Create New App
+    - Specify a unique Display Name and a Category, and click Create App
+    - Click Settings in the left navigation
+    - Click the Advanced Tab
+    - In the Security section, add the following URLs in the Valid OAuth Redirect URIs field:
+        http://[YOUR-HEROKU-APP-NAME].herokuapp.com/oauthcallback.html
+        http://localhost:5000/oauthcallback.html (for local installation)
+        https://www.facebook.com/connect/login_success.html (for access from Cordova)
+    - Click Save Changes
+
+2. Change the Nibs configuration to use your Facebook app
+    - Open nibs/client/config.js
+    - Replace YOUR\_FB\_APP\_ID with the id of the Facebook app you just created
+          
+3. Push the change to Heroku          
 
 
 ## Building the Cordova Shell

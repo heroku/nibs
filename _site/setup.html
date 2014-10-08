@@ -84,9 +84,18 @@ heroku create
 <li><p>Deploy to Heroku</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">git push heroku master
 </code></pre></div></li>
-<li><p>Open the application</p>
+<li><p>Run the the application:</p>
+
+<ul>
+<li><p>Open the application in a browser:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">heroku open
 </code></pre></div></li>
+<li><p>Click the Signup button to create an account</p></li>
+</ul>
+
+<blockquote>
+<p>Facebook login won&#39;t work until you complete the Facebook integration steps described below.</p>
+</blockquote></li>
 </ol>
 
 <h2>Installing a Local Version</h2>
@@ -112,12 +121,44 @@ npm install
 <li><p>Start the server    </p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">node server
 </code></pre></div></li>
-<li><p>Run the application. Open a browser and access the following URL:</p>
+<li><p>Run the application</p>
 
-<p><a href="http://localhost:5000">http://localhost:5000</a></p></li>
+<ul>
+<li>Open a browser and access the following URL:
+<a href="http://localhost:5000">http://localhost:5000</a></li>
+<li>Click the Signup button to create an account</li>
+</ul>
+
+<blockquote>
+<p>Facebook login won&#39;t work until you complete the Facebook integration steps described below.</p>
+</blockquote></li>
 </ol>
 
 <h2>Facebook Integration</h2>
+
+<ol>
+<li><p>Create a Facebook application </p>
+
+<ul>
+<li>Login to Facebook</li>
+<li>Access https://developers.facebook.com/apps, and click Create New App</li>
+<li>Specify a unique Display Name and a Category, and click Create App</li>
+<li>Click Settings in the left navigation</li>
+<li>Click the Advanced Tab</li>
+<li>In the Security section, add the following URLs in the Valid OAuth Redirect URIs field:
+http://[YOUR-HEROKU-APP-NAME].herokuapp.com/oauthcallback.html
+http://localhost:5000/oauthcallback.html (for local installation)
+https://www.facebook.com/connect/login_success.html (for access from Cordova)</li>
+<li>Click Save Changes</li>
+</ul></li>
+<li><p>Change the Nibs configuration to use your Facebook app</p>
+
+<ul>
+<li>Open nibs/client/config.js</li>
+<li>Replace YOUR_FB_APP_ID with the id of the Facebook app you just created</li>
+</ul></li>
+<li><p>Push the change to Heroku          </p></li>
+</ol>
 
 <h2>Building the Cordova Shell</h2>
 
