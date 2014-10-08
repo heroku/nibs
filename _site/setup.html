@@ -117,6 +117,54 @@ npm install
 <p><a href="http://localhost:5000">http://localhost:5000</a></p></li>
 </ol>
 
+<h2>Facebook Integration</h2>
+
+<h2>Building the Cordova Shell</h2>
+
+<p>Follow the instructions below to run the application as an app on your device:</p>
+
+<ol>
+<li><p>Install Cordova:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">npm install -g cordova
+</code></pre></div>
+<p>On a Mac, you may have to use sudo:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sudo npm install -g cordova
+</code></pre></div></li>
+<li><p>Create the cordova application</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cordova create nibs-shell com.nibs.loyalty Nibs
+</code></pre></div></li>
+<li><p>Adjust the contents of the www folder</p>
+
+<p>Either copy the contents of nibs/client into nibs-shell/www or delete www folder in nibs-shell and create a symbolic link to nibs-shell/www. </p>
+
+<p>For example, on a Mac:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs-shell
+rm -rf www
+ln -s [path-to-nibs]/client www
+</code></pre></div></li>
+<li><p>Install the Cordova plugins</p>
+
+<p>Make sure you are in the <strong>nibs-shell</strong> directory and type:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cordova plugins add org.apache.cordova.device
+cordova plugins add org.apache.cordova.console
+cordova plugins add org.apache.cordova.statusbar
+cordova plugins add org.apache.cordova.geolocation
+cordova plugins add org.apache.cordova.dialogs
+cordova plugins add org.apache.cordova.inappbrowser
+</code></pre></div></li>
+<li><p>Add a platform</p>
+
+<p>For example, to add the iOS platform, type:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cordova platforms add ios
+</code></pre></div></li>
+<li><p>Build the project    </p>
+
+<p>For example, to build for the iOS platform, type:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cordova build ios
+</code></pre></div></li>
+<li><p>Run the app in the emulator or on your device. For example, for iOS, open the project (platforms/ios/Nibs.xcodeproj) in Xcode and run it in the emulator or on your iOS device.</p></li>
+</ol>
+
 
     </div>
 
