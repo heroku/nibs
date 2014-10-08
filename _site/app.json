@@ -1,5 +1,0 @@
-{
-    "name": "Nibs",
-    "description": "Customer loyalty application",
-    "addons": ["heroku-postgresql:hobby-dev", "herokuconnect:test"]
-}
