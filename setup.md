@@ -61,14 +61,18 @@ You can also install Nibs on your local machine:
     npm install
     ```
     
+1. Create a local database
+    - Install and start [Postgres](http://www.postgresql.org/) on your local machine
+    - Create a database called **nibs**
+    - If your database is available using **postgres://@127.0.0.1:5432/nibs**, you have nothing else to do
+    - If you use another database URL, either define a shell environment variable called **DATABASE_URL**, or modify **server/config.js** to provide your own default URL
+
 1. Start the server    
 
     ```
     node server
     ```
 
-1. Run the application
-
-    Open a browser and access the following URL:
+1. Run the application. Open a browser and access the following URL:
 
     [http://localhost:5000](http://localhost:5000)

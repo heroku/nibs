@@ -101,12 +101,18 @@ heroku create
 <div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs
 npm install
 </code></pre></div></li>
+<li><p>Create a local database</p>
+
+<ul>
+<li>Install and start <a href="http://www.postgresql.org/">Postgres</a> on your local machine</li>
+<li>Create a database called <strong>nibs</strong></li>
+<li>If your database is available using <strong>postgres://@127.0.0.1:5432/nibs</strong>, you have nothing else to do</li>
+<li>If you use another database URL, either define a shell environment variable called <strong>DATABASE_URL</strong>, or modify <strong>server/config.js</strong> to provide your own default URL</li>
+</ul></li>
 <li><p>Start the server    </p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">node server
 </code></pre></div></li>
-<li><p>Run the application</p>
-
-<p>Open a browser and access the following URL:</p>
+<li><p>Run the application. Open a browser and access the following URL:</p>
 
 <p><a href="http://localhost:5000">http://localhost:5000</a></p></li>
 </ol>
