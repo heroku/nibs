@@ -6,7 +6,7 @@ title: Architecture
 
 ## Client-Side (Consumer App)
 
-The consumer app is a single page application built with [AngularJS](https://angularjs.org/) and [Ionic](http://ionicframework.com/). It is a multi-platform hybrid application packaged with [Apache Cordova](https://cordova.apache.org/), enabling easy distribution on the different app stores. The application runs on iOS, Android, Windows Phone, Blackberry, etc.
+The consumer app is a multi-platform hybrid application packaged with [Apache Cordova](https://cordova.apache.org/), enabling easy distribution on the different app stores. It is built as a single page application with [AngularJS](https://angularjs.org/) and [Ionic](http://ionicframework.com/). It runs on iOS, Android, Windows Phone, etc.  
 
 ## Client-Side (Employee-Facing)
 
@@ -21,7 +21,7 @@ The server-side application exposes its own REST endpoints. The client applicati
 
 ## Salesforce Integration
 
-The application data is maintained in Salesforce. Heroku Connect synchronizes the Salesforce data with a Postgres database running in Heroku.
+The application data is maintained in Salesforce. **Heroku Connect** synchronizes the Salesforce data with a Postgres database running in Heroku.
 
 Heroku Connect synchronizes the following Salesforce objects:
 
@@ -34,8 +34,8 @@ Heroku Connect synchronizes the following Salesforce objects:
 Using Heroku Connect:
  
  - Consumers access the application data in Postgres through the application's own REST services 
- - Developers write data access logic using SQL against the Postgres database
- - The data is kept in sync using Heroku Connect's bi-directional data synchronization
+ - Developers write the data data access layer using SQL against the Postgres database
+ - The data is kept in sync using Connect's bi-directional data synchronization
  
 ## Salesforce Communities
 
