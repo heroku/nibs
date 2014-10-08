@@ -1,11 +1,11 @@
 var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.offer', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case'])
 
-    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID) {
+    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 
         var user = JSON.parse($window.localStorage.getItem('user'));
 
         $rootScope.user = user;
-        $rootScope.server = {url: $window.localStorage.getItem('serverURL')};
+        $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
 
         // Intialize OpenFB Facebook library
         OpenFB.init(FB_APP_ID, $window.localStorage);
