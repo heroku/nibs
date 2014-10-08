@@ -1,11 +1,5 @@
 {
     "name": "Nibs",
-    "description": "Loyalty application",
-    "addons": ["heroku-postgresql:hobby-dev", "herokuconnect:test"],
-    "env": {
-        "HOST": "http://[APPNAME].herokuapp.com",
-        "CONTACTS_ACCOUNT_ID": "",
-        "INTEGRATION_USER_NAME": "",
-        "INTEGRATION_USER_PASSWORD": ""
-    }
+    "description": "Customer loyalty application",
+    "addons": ["heroku-postgresql:hobby-dev", "herokuconnect:test"]
 }
