@@ -62,32 +62,51 @@
         <!--<hr/>-->
         <p><img src="images/architecture.png" alt="alt tag"></p>
 
-<h2>Client-Side</h2>
+<h2>Client-Side (Consumer App)</h2>
 
-<p>The client-side is a single page application built with:</p>
+<p>The consumer app is a single page application built with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://ionicframework.com/">Ionic</a>. It is a multi-platform hybrid application packaged with <a href="https://cordova.apache.org/">Apache Cordova</a>, enabling easy distribution on the different app stores. The application runs on iOS, Android, Windows Phone, Blackberry, etc.</p>
 
-<ul>
-<li><a href="https://angularjs.org/">AngularJS</a></li>
-<li><a href="http://ionicframework.com/">Ionic</a></li>
-</ul>
+<h2>Client-Side (Employee-Facing)</h2>
+
+<p>Nibs Employees manage the application data (create offers, products, etc) in Salesforce in the browser or in the Salesforce1 mobile app. The employee-facing application is built using Salesforce declarative features with clicks not code. </p>
 
 <h2>Server-Side</h2>
 
-<p>The server-side runs in Heroku and is built with:</p>
+<p>The server-side of the consumer app runs on Heroku and is built with <a href="http://nodejs.org/">Node.js</a>, <a href="http://expressjs.com/">Express</a>, and <a href="https://www.heroku.com/postgres">Postgres</a>.</p>
+
+<p>The server-side application exposes its own REST endpoints. The client application gets its data by invoking these REST services. These are API calls to your own application (the Nibs server), and they don&#39;t count towards Salesforce API limits.</p>
+
+<h2>Salesforce Integration</h2>
+
+<p>The application data is maintained in Salesforce. Heroku Connect synchronizes the Salesforce data with a Postgres database running in Heroku.</p>
+
+<p>Heroku Connect synchronizes the following Salesforce objects:</p>
 
 <ul>
-<li>Node.js</li>
-<li><a href="http://expressjs.com/">Express</a></li>
-<li>Postgres</li>
-<li>Heroku Connect</li>
+<li>Contact (Bidirectional sync)</li>
+<li>Campaign (Read only)</li>
+<li>Product2 (Read only)</li>
+<li>Interaction__c (Bidirectional sync)</li>
+<li>Store__c (Read only)</li>
 </ul>
 
-<h2>Multi-Platform</h2>
+<p>Using Heroku Connect:</p>
 
 <ul>
-<li>Nibs is a hybrid application packaged with <a href="https://cordova.apache.org/">Apache Cordova</a>, enabling easy distribution on the different app stores.</li>
-<li>The application runs on iOS, Android, Windows Phone, Blackberry, etc.</li>
+<li>Consumers access the application data in Postgres through the application&#39;s own REST services </li>
+<li>Developers write data access logic using SQL against the Postgres database</li>
+<li>The data is kept in sync using Heroku Connect&#39;s bi-directional data synchronization</li>
 </ul>
+
+<h2>Salesforce Communities</h2>
+
+<h2>ExactTarget Push Notification</h2>
+
+<p>Push Notification is implemented using the ExactTarget Mobile Push APIs and is documented on <a href="push.html">this page</a></p>
+
+<h2>ExactTarget Journey Builder</h2>
+
+<h2>SOS</h2>
 
 <h2>User Management</h2>
 
@@ -95,7 +114,7 @@
 <li>User can sign up and create an account in the application or login with Facebook.</li>
 <li>Nibs users are stored as Contacts in Salesforce.</li>
 <li>User passwords are hashed with bcrypt using a per-user salt.</li>
-<li>The application generates its own authorization tokens that the client passes in the header of every request.</li>
+<li>The application generates its own authorization tokens that the client passes in the header of each request.</li>
 </ul>
 
 <h2>Facebook Integration</h2>
@@ -107,48 +126,12 @@
 <li>The Facebook integration also allows users to share application content (offers and products) on their feed.</li>
 </ul>
 
-<h2>Heroku Connect</h2>
-
-<p>Heroku Connect is used to synchronize data between Salesforce and a Postgres database running in Heroku.</p>
-
-<p>Heroku Connect synchronizes the following Salesforce objects:</p>
-
-<ul>
-<li>Contact (Bidirectional sync)</li>
-<li>Campaign (SF to Heroku)</li>
-<li>Product2 (SF to Heroku)</li>
-<li>Interaction__c (Bidirectional sync)</li>
-<li>Store__c (SF to Heroku)</li>
-</ul>
-
-<p>Using Heroku Connect, developers access Salesforce data directly in the Postgres database using SQL. Developers can access Salesforce data in any way they want (any query, any join, any grouping and aggregation).</p>
-
-<h2>Push Notification with ExactTarget Fuel</h2>
-
-<p>Push Notification is implemented using the ExactTarget Push APIs and Cordova Plugin.
-Push notification is documented on <a href="https://github.com/ccoenraets/nibsapp/wiki/Push-Notification">this page</a></p>
-
-<h2>REST</h2>
-
-<ul>
-<li>The server-side application exposes its own REST endpoints.</li>
-<li>The client application gets its data by invoking these REST services.</li>
-</ul>
-
-<p>These are API calls to your own application (the Nibs server), and they don&#39;t count towards API limits.</p>
-
 <h2>Camera Integration</h2>
 
 <ul>
 <li>Profile picture: The user can change his/her profile picture by either taking a selfie on the device, or choosing an existing picture from the device camera roll.</li>
 <li>Instagram-like feature: The user can take pictures and share them with the community.</li>
 </ul>
-
-<p>In both cases, images are uploaded to an S3 bucket.</p>
-
-<h2>S3 integration</h2>
-
-<p>Profile, Product, Campaign, and social pictures are stored in S3.</p>
 
 
     </div>

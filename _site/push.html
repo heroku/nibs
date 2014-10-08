@@ -58,58 +58,59 @@
 <div class="row">
 
     <div class="col-xs-12">
-        <h1>Setup</h1>
+        <h1>Push Notification</h1>
         <!--<hr/>-->
-        <h2>Deploying to Heroku using the Heroku Button</h2>
+        <p>Push Notification is implemented using the ExactTarget Push APIs and Cordova Plugin.</p>
 
-<p>You can deploy your own version of Nibs in seconds using the Heroku button below:</p>
+<h2>Use Case 1: Social Sharing (consumer-to-consumer)</h2>
 
-<p><a href="https://heroku.com/deploy"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy"></a></p>
+<p>In the Nibs mobile app, when a consumer shares an Offer or a Product on Facebook, Nibs pushes a message (currently to all Nibs users, but it could be to friends only in a real life app):</p>
 
-<h2>Deploying to Heroku using the Command Line</h2>
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_facebook.png" alt="alt tag"></p>
 
-<p>You can also deploy Nibs to Heroku using the command line:</p>
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_facebook_notification.png" alt="alt tag"></p>
 
-<ol>
-<li><p>Clone the repository</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/heroku/nibs
-</code></pre></div></li>
-<li><p>Create a Heroku application</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs
-heroku create
-</code></pre></div></li>
-<li><p>Install the Postgres plugin    </p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku addons:add heroku-postgresql:dev
-</code></pre></div></li>
-<li><p>Deploy to Heroku</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">git push heroku master
-</code></pre></div></li>
-<li><p>Open the application</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">heroku open
-</code></pre></div></li>
-</ol>
+<blockquote>
+<p>Tapping the notification opens the Nibs app on the related Product or Offer.</p>
+</blockquote>
 
-<h2>Installing a Local Version</h2>
+<h2>Use Case 2: Pushing Exclusive Offers (business-to-consumers)</h2>
 
-<p>You can also install Nibs on your local machine:</p>
+<p>A &quot;Push Offer&quot; Publisher Action has been added to the Offer object (available in the Salesforce browser app or Salesforce1 app). When you select that action, a &quot;Push Offer&quot; page appears with a default message &quot;Exclusive Offer: [offer name]&quot;, that you can customize before sending.</p>
 
-<ol>
-<li><p>Clone the repository</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/heroku/nibs
-</code></pre></div></li>
-<li><p>Install the server dependencies</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cd nibs
-npm install
-</code></pre></div></li>
-<li><p>Start the server    </p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">node server
-</code></pre></div></li>
-<li><p>Run the application</p>
+<p><strong>Publisher Action in the browser:</strong></p>
 
-<p>Open a browser and access the following URL:</p>
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer.png" alt="alt tag"></p>
 
-<p><a href="http://localhost:5000">http://localhost:5000</a></p></li>
-</ol>
+<p><strong>Publisher Action in S1 App:</strong></p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer_s1.png" alt="alt tag"></p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer_notification.png" alt="alt tag"></p>
+
+<blockquote>
+<p>Tapping the notification opens the app on the related offer.</p>
+</blockquote>
+
+<h2>Use Case 3: Ad Hoc Messages</h2>
+
+<p>The Loyalty app in Salesforce has a <strong>Push Notification</strong> tab that loads the PushAdmin Visualforce page (available in the Salesforce browser app or Salesforce1 app). You can use this page to push adhoc messages to all users, or to a group of users identified by their subscriber key (email address). </p>
+
+<p><strong>PushAdmin in the Browser:</strong></p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc.png" alt="alt tag"></p>
+
+<p><strong>Push Admin in S1 App:</strong></p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc_s1.PNG" alt="alt tag"></p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc_notification.png" alt="alt tag"></p>
+
+<h2>Push Notification Analytics</h2>
+
+<p>Push Messages analytics can be tracked in the ET dashboard:</p>
+
+<p><img src="https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_etdash.png" alt="alt tag"></p>
 
 
     </div>

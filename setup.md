@@ -46,7 +46,7 @@ You can also deploy Nibs to Heroku using the command line:
 
 ## Installing a Local Version 
 
-You can also deploy Nibs to Heroku using the command line:
+You can also install Nibs on your local machine:
 
 1. Clone the repository
 

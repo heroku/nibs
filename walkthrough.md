@@ -137,4 +137,4 @@ Nibs has an instagram-like feature that lets users to share pictures featuring N
 
 ## Push Notification
 
-Push notification is documented on this page
+The Push notification use cases are documented on [this page](push.html)
