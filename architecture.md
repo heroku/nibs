@@ -2,7 +2,7 @@
 layout: module
 title: Architecture
 ---
-![alt tag](https://github.com/ccoenraets/nibsapp/raw/master/resources/nibs-architecture.jpg)
+![alt tag](images/architecture.png)
 
 ## Client-Side
 
