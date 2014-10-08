@@ -5,6 +5,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
         var user = JSON.parse($window.localStorage.getItem('user'));
 
         $rootScope.user = user;
+
         $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
 
         // Intialize OpenFB Facebook library
