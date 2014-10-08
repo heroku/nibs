@@ -1,0 +1,50 @@
+<ion-view title="" hide-back-button="true" class="profile">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a class="button button-clear" href="#/app/edit-profile">Edit</a>
+    </ion-nav-buttons>
+
+    <ion-content padding="false" scroll="false">
+
+        <div ng-if="user.id">
+            <div class="header status{{user.status}}-bg">
+                <img class="avatar" ng-src="{{user.pictureurl || 'img/avatar.jpg'}}" ng-click="popupDialog()"/>
+                <h2>{{user.firstname}} {{user.lastname}}</h2>
+                <h3>Member since {{user.createddate | date:'longDate'}}</h3>
+            </div>
+
+            <div style="padding: 8px 16px;" class="status{{user.status}}">
+
+                <div class="profile-status">
+                    <div>
+                        <div class="profile-level">{{statusLabel}} Member</div>
+                        <div class="profile-points"><img ng-src="css/img/icon-points{{user.status}}.svg" style="height: 1.2rem;width: 1.2rem;"/> {{user.points || 0}} Nibs</div>
+                        <p>{{statusDescription}}</p>
+                    </div>
+                    <div class="icon-status icon-status{{user.status}}"></div>
+                </div>
+
+                <div class="status-bar">
+                    <div class="forastero">
+                        <p>Forastero</p>
+                        <p>0-5000 Nibs</p>
+                    </div>
+                    <div class="trinitario">
+                        <p>Trinitario</p>
+                        <p>&gt;5000 Nibs</p>
+                    </div>
+                    <div class="Criollo">
+                        <p>Criollo</p>
+                        <p>&gt;10000 Nibs</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>

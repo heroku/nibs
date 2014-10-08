@@ -1,0 +1,27 @@
+<ion-view title="Recent Activity" hide-back-button="true" class="card-bg recent-activity">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-repeat="activity in activities" class="list" style="margin: 0; margin-bottom: -1px">
+            <a class="item item-thumbnail-left" href="#">
+                <img ng-src="{{activity.picture}}" class="activity-pic">
+                <h3>{{activity.name}}</h3>
+                <p style="margin-bottom: 0px;padding-bottom:0px;">{{activity.type}}</p>
+                <p style="color:#805959;margin: 0;padding:0;font-size: 16px;"><img src="css/img/points.png" height="28" style="float:left;margin-right:6px;" /><span style="padding-top: 4px;display: block;">{{activity.points | number:0 }} points</span></p>
+            </a>
+        </div>
+
+    </ion-content>
+
+    <p ng-if="!loading && activities.length === 0" class="centered-message">You have no recent activity</p>
+
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view title="Store Locator" hide-back-button="true">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="getLocation()">
+            <i class="icon ion-location"></i>
+        </button>
+    </ion-nav-buttons>
+
+
+    <div id="map" style="width: 100%;height:66%;"></div>
+
+    <ul class="list">
+        <div class="item item-divider">
+            Office Locations
+        </div>
+        <li class="item" ng-repeat="store in stores" ng-click="showLocation([store.latitude, store.longitude])">
+            {{store.name}}
+        </li>
+    </ul>
+
+</ion-view>

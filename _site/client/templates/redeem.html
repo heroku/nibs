@@ -1,0 +1,22 @@
+<ion-view title="Redeem Offer" class="card-bg">
+
+  <ion-content has-header="true" padding="true">
+
+      <div class="list card">
+          <div class="item">
+              <h2>{{offer.name}}</h2>
+              <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
+          </div>
+          <div class="item item-body">
+              <img class="full-image" src="img/qrcode.svg">
+              <p>Present this code in one of our stores to redeem this offer. Looking for a store? Click the button below to find one.</p>
+              <button class="button button-block button-light" ui-sref="app.store-locator">
+                  Find a store nearby
+              </button>
+
+          </div>
+      </div>
+
+  </ion-content>
+
+</ion-view>

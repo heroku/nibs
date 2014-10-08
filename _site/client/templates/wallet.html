@@ -1,0 +1,27 @@
+<ion-view title="My Wallet" hide-back-button="true" class="card-bg">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true">
+        <div ng-repeat="offer in walletItems" class="list card">
+            <div class="item">
+                <h2>{{offer.name}}</h2>
+                <p>Expires on: {{offer.enddate}}</p>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="img/qrcode.svg">
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="deleteItem(offer)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+            </div>
+
+        </div>
+    </ion-content>
+
+    <p ng-if="!loading && walletItems.length === 0" class="centered-message">Your wallet list is empty</p>
+
+</ion-view>

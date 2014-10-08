@@ -1,0 +1,35 @@
+<ion-view title="Product Details" class="card-bg">
+
+    <ion-content has-header="true" padding="true">
+
+        <div class="list card">
+            <div class="item">
+                <h2>{{product.name }}</h2>
+                <p>Available today!</p>
+            </div>
+            <div class="item item-body">
+                <img ng-if="product.image"  ng-src="{{product.image}}">
+                <p>{{product.description}}</p>
+                <button class="button button-block button-light" ng-click="saveToWishList()">
+                    Add to WishList
+                </button>
+            </div>
+            <div class="item tabs tabs-secondary">
+                <a class="tab-item" ng-click="shareOnFacebook()">
+                    <i class="icon icon-facebook"></i>
+                </a>
+                <a class="tab-item" ng-click="shareOnGoogle()">
+                    <i class="icon icon-google"></i>
+                </a>
+                <a class="tab-item" ng-click="shareOnTwitter()">
+                    <i class="icon icon-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+
+        </div>
+
+    </ion-content>
+
+</ion-view>
