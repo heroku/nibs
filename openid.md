@@ -1,3 +1,8 @@
+---
+layout: default
+title: openid.js
+---
+
 ```javascript
     db = require('./pghelper');
 

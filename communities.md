@@ -3,11 +3,9 @@ layout: module
 title: Communities Setup
 ---
 
-# Communities Setup
+First, add [openid.js](openid.html) to your server folder in Nibs.
 
-First, add [openid.js](openid.md) to your server folder in Nibs.
-
-And now add this code to integrate the OpenID provider endpoints into the Node server:
+And now add this code to `server.js` to integrate the OpenID provider endpoints into the Node server:
 
 ```javascript
 
@@ -25,17 +23,20 @@ app.use('/openid', app_openid);
 
 Create a custom Open ID Connect-style Auth provider in Salesforce:
 
-Field     | Value | 
-----------|-------------
-Name      | Nibs |
-URL Suffix | RealNibs |
-Consumer Key | NibsOauthKey |
-Consumer Secret | NibsOauthSecret |
-Authorize Endpoint | http://<heroku app domain>/openid/authorize |
-Token Endpoint | http://<heroku app domain>/openid/token |
-User Endpoint | http://<heroku app domain>/openid/user |
-Send access token in header | **off** |
-Registration handler | Generate one |
+```
+Field                 | Value                                         | 
+----------------------|------------------------------------------------
+Name                  | Nibs                                          |
+URL Suffix            | RealNibs                                      |
+Consumer Key          | NibsOauthKey                                  |
+Consumer Secret       | NibsOauthSecret                               |
+Authorize Endpoint    | http://<heroku app domain>/openid/authorize   |
+Token Endpoint        | http://<heroku app domain>/openid/token       |
+User Endpoint         | http://<heroku app domain>/openid/user        |
+Send access token     | **off**                                       |
+in header             |                                               |
+Registration handler  | Generate one                                  |
+```
 
 and **Save**
 
