@@ -69,7 +69,7 @@ app's users to open a video chat directly with a service agent. SOS integrates w
 plugin to the Javascript in the Nids Angular App. Simply connect a new button to invoke the 
 `SOS Application:startSession` method.
 
-![alt tag](images/sos_screenshot.jpg)
+![alt tag](images/sos_screenshot.png)
 
 ## User Management
 
