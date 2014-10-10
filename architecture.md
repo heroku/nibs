@@ -66,7 +66,7 @@ client app.
 **SOS** is a feature of Service Cloud where you put a _Video Help_ button into your app which enables your
 app's users to open a video chat directly with a service agent. SOS integrates with your app via an 
 [iOS SDK](https://github.com/goinstant/sos-guides). The SOS functions can be exposed via an Apache Cordova
-plugin to the Javascript in the Nids Angular App. Simply connect a new button to invoke the 
+plugin to the Javascript in the Nibs Angular App. Simply connect a new button to invoke the 
 `SOS Application:startSession` method.
 
 ![alt tag](images/sos_screenshot.png)

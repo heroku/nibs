@@ -4,7 +4,8 @@ title: openid.js
 ---
 
 ```javascript
-    db = require('./pghelper');
+    
+db = require('./pghelper');
 
 // OpenID Connect
 
