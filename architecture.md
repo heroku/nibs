@@ -39,13 +39,36 @@ Using Heroku Connect:
  
 ## Salesforce Communities
 
+The _Stories_ page in the Nibs application is powered by the Salesforce Communities product. The key
+to this is the integrated authentication that allows the user logged into the Nibs 
+app to authenticate into the Communities system. This integration uses the Salesforce 
+[External Authentication Provider](https://help.salesforce.com/apex/HTViewHelpDoc?id=sso_provider_openid_connect.htm&language=en_US)
+mechansim which allows the Nibs server to act as an [Open ID Connect](http://openid.net/connect/) provider
+in order to authenicate Nibs users as Communuities users.
+
+Follow [these instructions](communities.html) to configure Communities support in your instance
+of Nibs.
+
+
 ## ExactTarget Push Notification
 
 Push Notification is implemented using the ExactTarget Mobile Push APIs and is documented on [this page](push.html)
 
 ## ExactTarget Journey Builder
 
+Checkout the [Journey Builder Hello World](https://github.com/ExactTarget/journey-builder-custom-hello-world) application
+for an example of how to create custom triggers and activities in Journey Builder which can be integrated into
+your app. For Nibs we created Journey Builder endpoints in the Node application which communicated with the 
+client app.
+
 ## SOS
+
+**SOS** is a feature of Service Cloud where you put a _Video Help_ button into your app which enables your
+app's users to open a video chat directly with a service agent. SOS integrates with your app via an 
+[iOS SDK](https://github.com/goinstant/sos-guides). The SOS functions can be exposed via an Apache Cordova
+plugin to the Javascript in the Nids Angular App. Simply connect a new button to invoke the 
+`SOS Application:startSession` method.
+
 
 ## User Management
 
