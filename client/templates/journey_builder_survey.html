@@ -1,0 +1,25 @@
+<ion-modal-view style="top:10%; bottom:10%">
+    <ion-header-bar class="bar bar-header bar-stable">
+        <h1 class="title">Nibs Survey</h1>
+        <button class="button button-clear button-primary ion-close" ng-click="modal.hide()"></button>
+    </ion-header-bar>
+
+    <ion-content>
+        <div class="list" ng-repeat="question in questions">
+            <li class="item" style="font-weight: bold">{{question.question}}</li>
+            <label class="item item-radio" ng-repeat="choice in question.choices track by $index">
+                <input type="radio" name="{{$parent.question}}" ng-model="$parent.index">
+                <div class="item-content">
+                    {{choice}}
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+            <li class="item" ng-if="$last">
+                <button class="button button-block button-positive" ng-click="modal.hide()">
+                    Submit
+                </button>
+            </li>
+        </div>
+    </ion-content>
+
+</ion-modal-view>

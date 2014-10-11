@@ -11,6 +11,18 @@
                 on-refresh="doRefresh()">
         </ion-refresher>
 
+        <!-- Journey Builder survey opt-in button
+        <div class="card" ng-show="showSignup">
+            <div class="item item-text-wrap">
+                Would you like to see premium member offers? Just sign up to get offers in your inbox.
+                <button class="button button-block button-status{{user.status || 1}}" ng-click="signUp()">
+                    Yes, sign up for special offers!
+                </button>
+
+            </div>
+        </div> 
+        -->
+
         <div ng-repeat="offer in offers" class="list card">
             <a ui-sref="app.offer-detail({offerId: offer.id})">
                 <div class="item">

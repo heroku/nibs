@@ -515,3 +515,12 @@ a {
     padding-bottom: 12px;
 }
 
+.sos-button {
+    color:white;
+    alpha:0.8;
+    background-color:#790507;
+    border-radius:10px;
+    left:50%;
+    margin-left:-75px;
+    width:140px
+}
