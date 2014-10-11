@@ -19,7 +19,7 @@ The server-side of the consumer app runs on Heroku and is built with [Node.js](h
 The server-side application exposes its own REST endpoints. The client application gets its data by invoking these REST services. These are API calls to your own application (the Nibs server), and they don't count towards Salesforce API limits.
 
 
-## Salesforce Integration
+## Salesforce Integration with Heroku Connect
 
 The application data is maintained in Salesforce. **Heroku Connect** synchronizes the Salesforce data with a Postgres database running in Heroku.
 
@@ -37,17 +37,7 @@ Using Heroku Connect:
  - Developers write the data data access layer using SQL against the Postgres database
  - The data is kept in sync using Connect's bi-directional data synchronization
  
-## Salesforce Communities
-
-The _Stories_ page in the Nibs application is powered by the Salesforce Communities product. The key
-to this is the integrated authentication that allows the user logged into the Nibs 
-app to authenticate into the Communities system. This integration uses the Salesforce 
-[External Authentication Provider](https://help.salesforce.com/apex/HTViewHelpDoc?id=sso_provider_openid_connect.htm&language=en_US)
-mechansim which allows the Nibs server to act as an [Open ID Connect](http://openid.net/connect/) provider
-in order to authenicate Nibs users as Communuities users.
-
-Follow [these instructions](communities.html) to configure Communities support in your instance
-of Nibs.
+[Learn more](https://www.heroku.com/connect) about Heroku Connect.
 
 
 ## ExactTarget Push Notification
@@ -56,10 +46,8 @@ Push Notification is implemented using the ExactTarget Mobile Push APIs and is d
 
 ## ExactTarget Journey Builder
 
-Checkout the [Journey Builder Hello World](https://github.com/ExactTarget/journey-builder-custom-hello-world) application
-for an example of how to create custom triggers and activities in Journey Builder which can be integrated into
-your app. For Nibs we created Journey Builder endpoints in the Node application which communicated with the 
-client app.
+See [instructions for Journey Builder](journey_builder.html) integration to learn how Journey Builder integrates with Nibs.
+
 
 ## SOS
 
@@ -67,7 +55,8 @@ client app.
 app's users to open a video chat directly with a service agent. SOS integrates with your app via an 
 [iOS SDK](https://github.com/goinstant/sos-guides). The SOS functions can be exposed via an Apache Cordova
 plugin to the Javascript in the Nibs Angular App. Simply connect a new button to invoke the 
-`SOS Application:startSession` method.
+`SOS Application:startSession` method. The Apache Cordova project used for Nibs, with SOS integration
+is available here: [https://github.com/heroku/nibs-cordova](https://github.com/heroku/nibs-cordova).
 
 ![alt tag](images/sos_screenshot.png)
 
