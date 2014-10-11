@@ -2,6 +2,14 @@
 layout: module
 title: Journey Builder Setup
 ---
+## Add the Journey Builder endpoints to Nibs
+
+Merge the [Journey Builder Hello World](https://github.com/ExactTarget/journey-builder-custom-hello-world) 
+template into your Express app in Node. Make sure the Journey Builder endpoints match
+the ones you defined when you created your app in Exact Target.
+
+## Setup in ETMC
+
 First you will need an ETMC account with Journey Builder enabled. 
 You will also need an account at [code.exacttarget.com](http://code.exacttarget.com/).
 
@@ -21,9 +29,9 @@ Choose a **Marketing Cloud** app.
 
 Click **Edit**, and set these endpoints:
 
-    Login URL: https://jbhelloworld.herokuapp.com/login
-    Logout URL: https://jbhelloworld.herokuapp.com/logout
-    Home URL: https://jbhelloworld.herokuapp.com/
+    Login URL: https://<nibs app>.herokuapp.com/login
+    Logout URL: https://<nibs app>.herokuapp.com/logout
+    Home URL: https://<nibs app>.herokuapp.com/
 
 ## Create custom trigger
 
@@ -38,8 +46,8 @@ Fill out the form as follows:
 | Name | In-app action |
 | Key | jb-inapp-trigger-scottpersinger |
 | Description | Journey trigger based on an in-app action |
-| Endpoint URL | https://jbhelloworld.herokuapp.com/ixn/triggers/hello-world |
-| Help URL | https://jbhelloworld.herokuapp.com/ixn/triggers/hello-world/help |
+| Endpoint URL | https://<nibs app>.herokuapp.com/ixn/triggers/hello-world |
+| Help URL | https://<nibs app>.herokuapp.com/ixn/triggers/hello-world/help |
 | Help Description | In-app action |
 | Select a Category | Trigger |
 | Public Extension | This application and other installed applications |
@@ -107,10 +115,4 @@ Now enter the question text and answer choices for the two survey questions.
 * Is the email of the user in the All Subscribers list? If status page says "Failed" this indicates the email is missing.
 
 * Is the user still 'in' the interaction? The 1 minute wait can sometimes take multiple minutes. Check the Activity Log on support page and make sure the last state isn't 'Waiting'.
-
-## Now add the Journey Builder endpoints to Nibs
-
-Merge the [Journey Builder Hello World](https://github.com/ExactTarget/journey-builder-custom-hello-world) 
-template into your Express app in Node. Make sure the Journey Builder endpoints match
-the ones you defined when you created your app in Exact Target.
 
