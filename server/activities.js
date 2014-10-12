@@ -17,7 +17,7 @@ function addItem(req, res, next) {
 
     getPointBalance(userId)
         .then(function(result) {
-            var balance = result.points;
+            var balance = result.points || 0;
 
             db.query('INSERT INTO salesforce.interaction__c (contact__loyaltyid__c, campaign__c, product__c, type__c, points__c, name__c, picture__c) VALUES ($1, $2, $3, $4, $5, $6, $7)',
                     [userId, activity.offerId, activity.productId, activity.type, activity.points, activity.name, activity.image], true)
