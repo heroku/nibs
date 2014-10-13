@@ -34,7 +34,7 @@ A "Push Offer" Publisher Action has been added to the Offer object (available in
 
 ## Use Case 3: Ad Hoc Messages
 
-The Loyalty app in Salesforce has a <strong>Push Notification</strong> tab that loads the PushAdmin Visualforce page (available in the Salesforce browser app or Salesforce1 app). You can use this page to push adhoc messages to all users, or to a group of users identified by their subscriber key (email address). 
+The Loyalty app in Salesforce has a <strong>Push Notification</strong> tab that loads the PushAdmin Visualforce page (available in the Salesforce browser app or Salesforce1 app). You can use this page to push adhoc messages to all users, or to a group of users identified by their subscriber key (email address).
 
 <strong>PushAdmin in the Browser:</strong>
 
@@ -58,37 +58,36 @@ Push Messages analytics can be tracked in the ET dashboard:
 
 #### Registering for notifications
 
-    The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
+The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
 
-    ```
-    git clone https://github.com/heroku/nibs
-    ```
+```
+git clone https://github.com/heroku/nibs
+```
 
+```
+ETPush.registerForNotifications(
+    function() {
+        console.log('registerForNotifications: success');
+    },
+    function(error) {
+        console.log('registerForNotifications: error - ' + JSON.stringify(error));
+    },
+    "onNotification" // Function name as a string. The function to invoke when a message comes in.
+);
 
-    ```
-    ETPush.registerForNotifications(
+ETPush.resetBadgeCount();
+
+// Associate a subscriber alias with the token
+if (user && user.email) {
+    console.log('Subscribing for Push as ' + user.email);
+    ETPush.setSubscriberKey(
         function() {
-            console.log('registerForNotifications: success');
+            console.log('setSubscriberKey: success');
         },
         function(error) {
-            console.log('registerForNotifications: error - ' + JSON.stringify(error));
+            console.log('Error setting Push Notification subscriber');
         },
-        "onNotification" // Function name as a string. The function to invoke when a message comes in.
+        user.email
     );
-    
-    ETPush.resetBadgeCount();
-    
-    // Associate a subscriber alias with the token
-    if (user && user.email) {
-        console.log('Subscribing for Push as ' + user.email);
-        ETPush.setSubscriberKey(
-            function() {
-                console.log('setSubscriberKey: success');
-            },
-            function(error) {
-                console.log('Error setting Push Notification subscriber');
-            },
-            user.email
-        );
-    }
-    ```
+}
+```
