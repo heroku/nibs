@@ -58,11 +58,11 @@ Push Messages analytics can be tracked in the ET dashboard:
 
 #### Registering for notifications
 
-The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
+    The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
 
-  ```
-  git clone https://github.com/heroku/nibs
-  ```
+    ```
+    git clone https://github.com/heroku/nibs
+    ```
 
 
     ```
