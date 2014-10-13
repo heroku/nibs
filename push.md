@@ -60,31 +60,28 @@ Push Messages analytics can be tracked in the ET dashboard:
 
 The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
 
-    ```
-    ETPush.registerForNotifications(
-        function() {
-            console.log('registerForNotifications: success');
-        },
-        function(error) {
-            console.log('registerForNotifications: error - ' + JSON.stringify(error));
-        },
-        "onNotification" // Function name as a string. The function to invoke when a message comes in.
-    );
-    
-    ETPush.resetBadgeCount();
-    
-    // Associate a subscriber alias with the token
-    if (user && user.email) {
-        console.log('Subscribing for Push as ' + user.email);
-        ETPush.setSubscriberKey(
+        ETPush.registerForNotifications(
             function() {
-                console.log('setSubscriberKey: success');
+                console.log('registerForNotifications: success');
             },
             function(error) {
-                console.log('Error setting Push Notification subscriber');
+                console.log('registerForNotifications: error - ' + JSON.stringify(error));
             },
-            user.email
+            "onNotification" // Function name as a string. The function to invoke when a message comes in.
         );
-    }
-    ```
-
+        
+        ETPush.resetBadgeCount();
+        
+        // Associate a subscriber alias with the token
+        if (user && user.email) {
+            console.log('Subscribing for Push as ' + user.email);
+            ETPush.setSubscriberKey(
+                function() {
+                    console.log('setSubscriberKey: success');
+                },
+                function(error) {
+                    console.log('Error setting Push Notification subscriber');
+                },
+                user.email
+            );
+        }
