@@ -9,9 +9,9 @@ Push Notification is implemented using the ExactTarget Push APIs and Cordova Plu
 
 In the Nibs mobile app, when a consumer shares an Offer or a Product on Facebook, Nibs pushes a message (currently to all Nibs users, but it could be to friends only in a real life app):
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_facebook.png)
+![alt tag](images/push_facebook.png)
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_facebook_notification.png)
+![alt tag](images/push_facebook_notification.png)
 
 > Tapping the notification opens the Nibs app on the related Product or Offer.
 
@@ -21,14 +21,14 @@ A "Push Offer" Publisher Action has been added to the Offer object (available in
 
 <strong>Publisher Action in the browser:</strong>
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer.png)
+![alt tag](images/push_offer.png)
 
 <strong>Publisher Action in S1 App:</strong>
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer_s1.png)
+![alt tag](images/push_offer_s1.png)
 
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_offer_notification.png)
+![alt tag](images/push_offer_notification.png)
 
 > Tapping the notification opens the app on the related offer.
 
@@ -38,21 +38,21 @@ The Loyalty app in Salesforce has a <strong>Push Notification</strong> tab that 
 
 <strong>PushAdmin in the Browser:</strong>
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc.png)
+![alt tag](images/push_adhoc.png)
 
 <strong>Push Admin in S1 App:</strong>
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc_s1.PNG)
+![alt tag](images/push_adhoc_s1.PNG)
 
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_adhoc_notification.png)
+![alt tag](images/push_adhoc_notification.png)
 
 
 ## Push Notification Analytics
 
 Push Messages analytics can be tracked in the ET dashboard:
 
-![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_etdash.png)
+![alt tag](images/push_etdash.png)
 
 ## Integration Code
 
