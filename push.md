@@ -56,7 +56,7 @@ Push Messages analytics can be tracked in the ET dashboard:
 
 ## Getting Started
 
-The [ExactTarget Mobile Push SDK](https://code.exacttarget.com/apis-sdks/mobilepush-sdks/) works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
+The [ExactTarget Mobile Push SDK](https://code.exacttarget.com/apis-sdks/mobilepush-sdks/) works for both native and Hybrid apps. Here is a code example to register for notifications in a hybrid app:
 
 ```
 ETPush.registerForNotifications(
