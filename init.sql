@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS salesforce.interaction__c (
     type__c                 TEXT,
     name__c                 TEXT,
     picture__c              TEXT,
-    points__c               INT,
+    points__c               double precision,
     createddate             timestamp
   );
 
