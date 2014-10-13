@@ -44,7 +44,7 @@ Fill out the form as follows:
 | field | value |
 --------| -----------
 | Name | In-app action |
-| Key | jb-inapp-trigger-scottpersinger |
+| Key | jb-inapp-trigger-nibs |
 | Description | Journey trigger based on an in-app action |
 | Endpoint URL | https://<nibs app>.herokuapp.com/ixn/triggers/hello-world |
 | Help URL | https://<nibs app>.herokuapp.com/ixn/triggers/hello-world/help |
@@ -63,7 +63,7 @@ and complete the form as follows:
 | field | value |
 --------| -----------
 | Name | In-app action |
-| Key | jb-survey-scottpersinger |
+| Key | jb-survey-nibs |
 | Description | Create simple survey for people to take inside their mobile app |
 | Endpoint URL | https://<your nibs app>.herokuapp.com/ixn/activities/hello-world |
 | Help URL | https://<your nibs app>.com/ixn/activities/hello-world/help |
@@ -84,7 +84,7 @@ Click **Create an Attribute Group**. Enter the name *In-app Trigger*.
 
 Now click **Link Data Extension**
 
-Click *Data Extensions* from the right-side list and find and select the one named `jb inapp trigger scottpersinger`.
+Click *Data Extensions* from the right-side list and find and select the one named `jb inapp trigger nibs`.
 
 Now click `Contact Key` in the left list, and `alternativeEmail` in the right list. And now click **Save**. Go back to **Data Designer** and you should see your *In-app Trigger* attribute group linked off of **Contact** with its 3 attributes.
 
