@@ -14,13 +14,13 @@ title: Application Walthrough
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/home.png" width="320"/>
+<img src="images/home.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/signup.png" width="320"/>
+<img src="images/signup.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/login.png" width="320"/>
+<img src="images/login.png" width="320"/>
 </div>
 </div>
 
@@ -30,13 +30,13 @@ title: Application Walthrough
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level1.png" width="320"/>
+<img src="images/profile-level1.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/edit-profile.png" width="320"/>
+<img src="images/edit-profile.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/preferences.png" width="320"/>
+<img src="images/preferences.png" width="320"/>
 </div>
 </div>
 
@@ -48,13 +48,13 @@ title: Application Walthrough
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/products.png" width="320"/>
+<img src="images/products.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/product.png" width="320"/>
+<img src="images/product.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/wishlist.png" width="320"/>
+<img src="images/wishlist.png" width="320"/>
 </div>
 </div>
 
@@ -65,10 +65,10 @@ title: Application Walthrough
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/offers.png" width="320"/>
+<img src="images/offers.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/offer.png" width="320"/>
+<img src="images/offer.png" width="320"/>
 </div>
 </div>
 
@@ -76,10 +76,10 @@ When redeeming an offer, you are presented with a QR code that you can present i
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/redeem.png" width="320"/>
+<img src="images/redeem.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/wallet.png" width="320"/>
+<img src="images/wallet.png" width="320"/>
 </div>
 </div>
 
@@ -90,7 +90,7 @@ Activities are stored in the Interaction\_\_c table in Postgres. If you configur
 
 The Recent Activity screen shows the activities you performed and the points you earned:
 
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/activity.png" width="320"/>
+<img src="images/activity.png" width="320"/>
 
 When you earn enough points, your status gets upgraded to a higher level. The three status levels in Nibs are:
 
@@ -103,19 +103,19 @@ Nibs notifies you in real time when your status gets upgraded. The application c
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/upgrade-level2.png" width="320"/>
+<img src="images/upgrade-level2.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level2.png" width="320"/>
+<img src="images/profile-level2.png" width="320"/>
 </div>
 </div>
 
 <div class="row" style="padding-top: 4px;">
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/upgrade-level3.png" width="320"/>
+<img src="images/upgrade-level3.png" width="320"/>
 </div>
 <div class="col-lg-4">
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/profile-level3.png" width="320"/>
+<img src="images/profile-level3.png" width="320"/>
 </div>
 </div>
 
@@ -125,13 +125,13 @@ For demo purpose, you can delete your activities in the application: go to the t
 
 The store locator uses the Geolocation API to center the map on your current location. It also shows you the stores nearby. You can click a store in the store list to center the map on that store's location.
 
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/store-locator.png" width="320"/>
+<img src="images/store-locator.png" width="320"/>
 
 ## Photo Sharing
 
 Nibs has an instagram-like feature that lets users to share pictures featuring Nibs products.
 
-<img src="https://github.com/ccoenraets/nibsapp/raw/master/resources/screenshots/gallery.png" width="320"/>
+<img src="images/gallery.png" width="320"/>
 
 
 ## Push Notification
