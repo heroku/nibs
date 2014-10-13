@@ -53,3 +53,152 @@ The Loyalty app in Salesforce has a <strong>Push Notification</strong> tab that 
 Push Messages analytics can be tracked in the ET dashboard:
 
 ![alt tag](https://github.com/ccoenraets/nibs/raw/master/resources/screenshots/push_etdash.png)
+
+## Code examples
+
+The ExactTarget Mobile Push SDK works for both native and Hybrid apps. Here is a code example to register for notification in a hybrid app:
+
+#### Registering for notifications
+
+    ```
+    ETPush.registerForNotifications(
+        function() {
+            console.log('registerForNotifications: success');
+        },
+        function(error) {
+            console.log('registerForNotifications: error - ' + JSON.stringify(error));
+        },
+        "onNotification" // Function name as a string. The function to invoke when a message comes in.
+    );
+    
+    ETPush.resetBadgeCount();
+    
+    // Associate a subscriber alias with the token
+    if (user && user.email) {
+        console.log('Subscribing for Push as ' + user.email);
+        ETPush.setSubscriberKey(
+            function() {
+                console.log('setSubscriberKey: success');
+            },
+            function(error) {
+                console.log('Error setting Push Notification subscriber');
+            },
+            user.email
+        );
+    }
+    ```
+
+#### Pushing Messages
+
+To push a message, simply invoke the ExactTarget REST API. For example:
+
+    ``` 
+    var request = require('request'),
+    
+        config = require('./config'),
+    
+        accessTokens = {},
+    
+        authURL = 'https://auth.exacttargetapis.com/v1/requestToken',
+    
+        apiURL = 'https://www.exacttargetapis.com/push/v1';
+    
+    function requestToken(successHandler, errorHandler, clientId, clientSecret) {
+    
+        console.log('Requesting token for clientId ', clientId);
+    
+        request({ url: authURL,
+                method: "POST",
+                json: {'clientId': clientId, 'clientSecret': clientSecret}},
+            function(error, response, body) {
+                console.log(body);
+                if (error) {
+                    console.log(error);
+                    if (errorHandler) errorHandler();
+                } else {
+                    accessTokens[clientId] = body.accessToken;
+                    console.log('Got token: ' + accessTokens[clientId]);
+                    if (successHandler) successHandler();
+                }
+    
+            });
+    }
+    
+    function push(url, data, retry, successHandler, errorHandler, clientId, clientSecret) {
+        if (!clientId) {
+            clientId = config.et.client_id;
+        }
+        if (!clientSecret) {
+            clientSecret = config.et.client_secret;
+        }
+    
+        function refreshTokenAndRetry() {
+            console.log('refreshTokenAndRetry retry: ' + retry);
+            if (retry) {
+                requestToken(
+                    function () {
+                        push(url, data, false, successHandler, errorHandler, clientId, clientSecret);
+                    },
+                    function () {
+                        return errorHandler();
+                    },
+                    clientId,
+                    clientSecret
+                );
+            } else {
+                return errorHandler();
+            }
+        }
+    
+        if (accessTokens[clientId]) {
+            console.log('Using Access Token: ' + accessTokens[clientId]);
+            request({ url: url,
+                    method: "POST",
+                    headers: {'Authorization': 'Bearer ' + accessTokens[clientId]},
+                    json: data},
+                function (error, response, body) {
+                    if (error) {
+                        console.log(error);
+                        return errorHandler();
+                    }
+                    console.log(body);
+                    if (body.message === 'Not Authorized') {
+                        refreshTokenAndRetry();
+                    } else {
+                        return successHandler();
+                    }
+                });
+        } else {
+            refreshTokenAndRetry();
+        }
+    }
+    
+    exports.pushNotification = function(req, res, next) {
+    
+        var url,
+    
+            data = {
+                "override": true,
+                "messageText": req.body.messageText,
+                "openDirect": req.body.openDirect
+            };
+    
+        if (req.body.subscriberKeys) {
+            data.subscriberKeys = req.body.subscriberKeys
+            url = apiURL + '/messageContact/' + req.body.messageId + '/send';
+        } else {
+            url = apiURL + '/messageApp/' + req.body.messageId + '/send';
+        }
+    
+        push(url, data, true,
+            function() {
+                res.send('ok');
+            },
+            function() {
+                next();
+            });
+    
+    };
+    
+    exports.push = push;
+    ``` 
