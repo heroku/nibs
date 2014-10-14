@@ -94,7 +94,6 @@ a {
     font-weight: 200;
     background: url('img/icon-arrow-right.png');
     background-size: 100% auto;;
-    /*background-repeat: no-repeat;*/
     width: 20px;
     height: 22px;
     display: inline-block;
@@ -102,7 +101,6 @@ a {
 }
 
 .icon-chocolate-square {
-    /*font-weight: 200;*/
     background: url('img/chocolate-square.svg');
     background-size: 100% auto;;
     background-repeat: no-repeat;
@@ -241,8 +239,6 @@ a {
     height: 120px;
     -webkit-border-radius: 60px; /* Saf3+, Chrome */
     border-radius: 60px; /* Opera 10.5, IE 9 */
-    /*-moz-border-radius: 30px;  Disabled for FF1+ */
-    /*border: 1px solid #ffffff;*/
 }
 
 .settings .item {
@@ -500,7 +496,6 @@ a {
     text-align: center;
     margin-top: -22px;
     z-index: 100;
-    /*color: #999999;*/
     font-size: 1rem;
     color: rgba(6,6,6,.2);
 }
