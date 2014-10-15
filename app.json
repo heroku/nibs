@@ -1,5 +1,28 @@
 {
-    "name": "Nibs",
-    "description": "Customer loyalty application",
-    "addons": ["heroku-postgresql:hobby-dev"]
+    "name": "Nibs Next",
+    "description": "Heroku Sample Mobile Application of the Salesforce1 Platform and modern web frameworks",
+    "website": "http://heroku.github.io/nibs/index.html",
+    "repository": "https://github.com/heroku/nibs",
+    "logo": "http://heroku.github.io/nibs/images/logo.svg",
+    "success_url": "",
+    "keywords": [
+        "mobile",
+        "force.com",
+        "heroku",
+        "exacttarget",
+        "angular",
+        "ionic",
+        "nodejs"
+    ],
+    "scripts": {
+        "postdeploy": ""
+    },
+    "addons": [
+        "heroku-postgresql:hobby-dev",
+        "expeditedssl"
+    ],
+    "env": {
+        "BUILDPACK_URL": ""
+    },
+    "generated_by": "https://www.expeditedssl.com/heroku-button-maker"
 }
