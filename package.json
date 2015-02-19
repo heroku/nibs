@@ -16,6 +16,9 @@
     "url": "https://github.com/ccoenraets/loyalty/issues"
   },
   "homepage": "https://github.com/ccoenraets/loyalty",
+  "engines": {
+    "node": "0.10.35"
+  },
   "dependencies": {
     "logfmt": "~0.21.0",
     "bcrypt": "~0.7.7",
