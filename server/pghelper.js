@@ -40,3 +40,7 @@ exports.query = function (sql, values, singleItem, dontLog) {
     return deferred.promise;
  
 };
+
+exports.close = function() {
+    pg.end();
+}
