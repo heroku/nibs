@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS salesforce.contact (
     size__c         TEXT,
     loyaltyid__c    TEXT,
     password__c     TEXT,
+    fbuserid__c     TEXT,
+    gender__c       TEXT,
     createddate     timestamp
   );
 
