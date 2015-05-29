@@ -11,7 +11,7 @@ fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
         db.query(data)
             .then(function() {
                 console.log('Postgres tables successfully initialized') ;
-                console.log("Run 'npm run init_salesforce' to create the saleforce schema if not using Heroku Connect");
+                console.log("Run 'npm run init_salesforce_schema' to create the saleforce schema if not using Heroku Connect");
             })
             .catch(function(error) {
                 console.log('Error initializing Postgres tables initialized');

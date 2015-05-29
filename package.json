@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "init_salesforce": "node server/init_salesforce.js"
+    "init_salesforce_schema": "node server/init_salesforce_schema.js"
   },
   "repository": {
     "type": "git",
