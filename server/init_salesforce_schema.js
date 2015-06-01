@@ -5,7 +5,7 @@ var fs = require('fs'),
     path = require('path'),
     db = require('./pghelper');
 
-var filePath = path.join(__dirname, '../init_salesforce.sql');
+var filePath = path.join(__dirname, '../init_salesforce_schema.sql');
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
     if (err) {

@@ -8,6 +8,6 @@ Check out the [documentation](http://heroku.github.io/nibs) to learn more about 
 
 Updated: 4/21/2015
 
-    Split 'salesforce' schema sql init commands into a separate command. Run 'npm run init_salesforce' now
+    Split 'salesforce' schema sql init commands into a separate command. Run 'npm run init_salesforce_schema' now
     to intialize the database **without** Heroku Connect.
     
