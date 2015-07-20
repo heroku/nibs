@@ -5,6 +5,8 @@ module.exports = {
     // Nibs users are created as Contacts under a generic Account in SFDC. This is the id of the generic account.
     contactsAccountId: process.env.CONTACTS_ACCOUNT_ID,
 
+    productFamily: process.env.PRODUCT_FAMILY,
+
     // Used by nforce to create Cases in real time
     api: {
         // Connected app
