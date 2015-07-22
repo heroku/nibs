@@ -14,7 +14,7 @@ var pg = require('pg').native,
 exports.query = function (sql, values, singleItem, dontLog) {
 
     if (!dontLog) {
-        console.log(sql, values);
+        typeof values !== 'undefined' ? console.log(sql, values) : console.log(sql);
     }
 
     var deferred = Q.defer();
