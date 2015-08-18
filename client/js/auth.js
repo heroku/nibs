@@ -140,7 +140,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $scope.facebookLogin = function () {
 
-            OpenFB.login('email,read_stream,publish_actions').then(
+            OpenFB.login('email, publish_actions').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
                         .success(function (fbUser) {
@@ -192,7 +192,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $scope.facebookLogin = function () {
 
-            OpenFB.login('email,read_stream,publish_actions').then(
+            OpenFB.login('email, publish_actions').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
                         .success(function (fbUser) {
