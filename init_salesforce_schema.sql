@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS salesforce.contact (
     password__c     TEXT,
     fbuserid__c     TEXT,
     gender__c       TEXT,
+	TypeCompte__c	TEXT,
     createddate     timestamp
   );
 
