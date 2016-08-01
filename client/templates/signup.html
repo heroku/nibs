@@ -19,6 +19,14 @@
             <label class="item item-input">
                 <input type="password" placeholder="Re-enter password" ng-model="user.password2">
             </label>
+			<label class="item item-input">
+				Type de compte
+                <select ng-model="user.typeCompte" required="true">
+					<option value="Client">Client</option>
+					<option value="Débit de boissons">Débit de boissons</option>
+					<option value="Grande surface">Grande surface</option>
+				</select>
+            </label>
 
             <button class="button button-block button-stable" ng-click="signup()">
                 Sign Up
