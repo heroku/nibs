@@ -139,7 +139,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         };
 
         $scope.facebookLogin = function () {
-
+            /* updted this with the latest facebook api for auth */
             OpenFB.login('email, publish_actions').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})

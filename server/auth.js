@@ -195,6 +195,7 @@ function createUser(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
+    // get the token
     var token = req.headers['authorization'];
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
