@@ -71,7 +71,7 @@ a {
 }
 
 .welcome {
-    background: url('img/background2.jpg') no-repeat center center fixed;
+    background: url('img/ad-of-beer.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -80,9 +80,9 @@ a {
 }
 
 .welcome h2 {
-    font-family: "Source Sans Light";
+    font-family: "Source Sans Light bold";
     font-size: 2.4rem;
-    color: #ffffff;
+    color: red;
     line-height: 1.8rem;
 }
 
