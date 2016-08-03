@@ -176,8 +176,8 @@ function createUser(user, password) {
     var deferred = Q.defer(),
         externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
 
-    db.query('INSERT INTO salesforce.contact (email, password__c, firstname, lastname, leadsource, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, firstName, lastName, email, loyaltyid__c as externalUserId',
-        [user.email, password, user.firstName, user.lastName, 'Loyalty App', externalUserId, config.contactsAccountId], true)
+    db.query('INSERT INTO salesforce.contact (email, password__c, firstname, lastname, TypeCompte__c, leadsource, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, firstName, lastName, email, loyaltyid__c as externalUserId',
+        [user.email, password, user.firstName, user.lastName, user.typeCompte, 'Loyalty App', externalUserId, config.contactsAccountId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
@@ -195,6 +195,7 @@ function createUser(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
+    // get the token
     var token = req.headers['authorization'];
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie
