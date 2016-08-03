@@ -38,7 +38,7 @@ function login(req, res, next) {
                         winston.info('Known Facebook user');
                         return createAndSendToken(user);
                     } else {
-                        db.query('SELECT id, firstName, lastName, email FROM salesforce.contact WHERE email=$1', [fbUser.email], true)
+                        db.query('SELECT id, firstName, lastName, email, TypeCompte__c as typecompte FROM salesforce.contact WHERE email=$1', [fbUser.email], true)
                             .then(function (user) {
                                 if (user) {
                                     // We already have a user with that email address
@@ -75,8 +75,8 @@ function createUser(fbUser) {
     var externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
     var pictureURL = 'https://graph.facebook.com/' + fbUser.id + '/picture?width=140&height=140';
     return db.query(
-        'INSERT INTO salesforce.contact (email, firstname, lastname, leadsource, fbUserId__c, gender__c, pictureURL__c, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id, firstName, lastName, email, gender__c as gender, pictureURL__c as pictureURL, loyaltyid__c as externalUserId',
-        [fbUser.email, fbUser.first_name, fbUser.last_name, 'Loyalty App', fbUser.id, fbUser.gender, pictureURL, externalUserId, config.contactsAccountId], true);
+        'INSERT INTO salesforce.contact (email, firstname, lastname, TypeCompte__c, leadsource, fbUserId__c, gender__c, pictureURL__c, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id, firstName, lastName, email, gender__c as gender, pictureURL__c as pictureURL, loyaltyid__c as externalUserId',
+        [fbUser.email, fbUser.first_name, fbUser.last_name, 'Client', 'Loyalty App', fbUser.id, fbUser.gender, pictureURL, externalUserId, config.contactsAccountId], true);
 }
 
 // For security, ping the Facebook server to check that the Facebook token (1) is valid and (2) matches the Facebook User Id.
