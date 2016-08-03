@@ -80,9 +80,9 @@ a {
 }
 
 .welcome h2 {
-    font-family: "Source Sans Light";
+    font-family: "Source Sans Light bold";
     font-size: 2.4rem;
-    color: #ffffff;
+    color: red;
     line-height: 1.8rem;
 }
 
