@@ -22,6 +22,10 @@
     height: 96px;
 }
 
+.ion-nav-view {
+    background-color: darkgreen;
+}
+
 .gallery img {
     width: 160px;
     height: 160px;
