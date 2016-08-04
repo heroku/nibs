@@ -19,15 +19,15 @@ CREATE TABLE IF NOT EXISTS salesforce.contact (
     createddate     timestamp
   );
 
-CREATE TABLE IF NOT EXISTS salesforce.interaction__c (
+CREATE TABLE IF NOT EXISTS salesforce.eitech__interaction__c (
     id                      BIGSERIAL,
-    contact__r__loyaltyid__c   TEXT,
-    campaign__c             TEXT,
-    product__c              TEXT,
-    type__c                 TEXT,
-    name__c                 TEXT,
-    picture__c              TEXT,
-    points__c               double precision,
+    eitech__contact__r__loyaltyid__c   TEXT,
+    eitech__campaign__c             TEXT,
+    eitech__product__c              TEXT,
+    eitech__type__c                 TEXT,
+    eitech__name__c                 TEXT,
+    eitech__picture__c              TEXT,
+    eitech__points__c               double precision,
     createddate             timestamp
   );
 
@@ -57,12 +57,12 @@ CREATE TABLE IF NOT EXISTS salesforce.product2 (
     family          TEXT
   );
 
-DROP TABLE IF EXISTS salesforce.store__c;
-CREATE TABLE IF NOT EXISTS salesforce.store__c (
+DROP TABLE IF EXISTS salesforce.eitech__store__c;
+CREATE TABLE IF NOT EXISTS salesforce.eitech__store__c (
     id                      BIGSERIAL PRIMARY KEY,
     name                    TEXT,
-    location__latitude__s   TEXT,
-    location__longitude__s  TEXT
+    eitech__location___latitude__s   TEXT,
+    eitech__location___longitude__s  TEXT
   );
 
 INSERT INTO salesforce.campaign (id, name, description, image__c, type, status) VALUES
@@ -83,7 +83,7 @@ INSERT INTO salesforce.product2 (id, name, description, image__c, family) VALUES
     (6, 'Patric Limited Edition', 'Salt and chocolate meet in a single bar. For sophisticated palettes.', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/nibs/patric3.jpg', 'Nibs'),
     (7, 'Patric Mizzou Crunch', 'Some love smooth, some love crunch. This is a crunch! Lively on the palette.', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/nibs/patric1.jpg', 'Nibs');
 
-INSERT INTO salesforce.store__c (id, name, location__latitude__s, location__longitude__s) VALUES
+INSERT INTO salesforce.eitech__store__c (id, name, eitech__location___latitude__s, eitech__location___longitude__s) VALUES
     (1, 'Marquis', 37.785143, -122.403405),
     (2, 'Hilton', 37.786164, -122.410137),
     (3, 'Hyatt', 37.794157, -122.396311)
