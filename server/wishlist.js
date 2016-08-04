@@ -63,7 +63,7 @@ function deleteItems(userId) {
  */
 function getItems(req, res, next) {
     var userId = req.userId;
-    db.query("SELECT id, name, description, eitech__image__c AS image, productPage__c AS productPage, publishDate__c AS publishDate FROM wishlist, salesforce.product2 WHERE productId = id AND userId=$1 ORDER BY publishDate DESC LIMIT $2",
+    db.query("SELECT id, name, description, eitech__image__c AS image, eitech__productPage__c AS productPage, eitech__publishDate__c AS publishDate FROM wishlist, salesforce.product2 WHERE productId = id AND userId=$1 ORDER BY publishDate DESC LIMIT $2",
             [userId, 20])
         .then(function (products) {
             return res.send(JSON.stringify(products));
