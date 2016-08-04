@@ -2,12 +2,12 @@ var db = require('./pghelper'),
     winston = require('winston');
 
 function findAll(limit) {
-    return db.query("SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
+    return db.query("SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, eitech__campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
 };
 
 function findById(id) {
     // Retrieve offer either by Salesforce id or Postgress id
-    return db.query('SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    return db.query('SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, eitech__campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
 };
 
 function getAll(req, res, next) {
