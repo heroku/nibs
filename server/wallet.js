@@ -63,7 +63,7 @@ function deleteItems(userId) {
  */
 function getItems(req, res, next) {
     var userId = req.userId;
-    db.query("SELECT id, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM wallet, salesforce.campaign WHERE offerId = id AND userId=$1 AND type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $2",
+    db.query("SELECT id, name, startDate, endDate, description, eitech__image__c AS image, eitech__campaignPage__c AS campaignPage, eitech__publishDate__c AS publishDate FROM wallet, salesforce.campaign WHERE offerId = id AND userId=$1 AND type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $2",
             [userId, 20])
         .then(function (offers) {
             return res.send(JSON.stringify(offers));

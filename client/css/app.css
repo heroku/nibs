@@ -22,6 +22,10 @@
     height: 96px;
 }
 
+ion-nav-view {
+    background-color: darkgreen;
+}
+
 .gallery img {
     width: 160px;
     height: 160px;
@@ -71,7 +75,7 @@ a {
 }
 
 .welcome {
-    background: url('img/ad-of-beer.jpg') no-repeat center center fixed;
+    background: url('img/background-beer.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -136,7 +140,8 @@ a {
 }
 
 .welcome .button-clear {
-    color: #eeeeee;
+    color: red;
+    font-weight: bold;
 }
 
 .menu-left h1 {
