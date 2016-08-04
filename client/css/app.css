@@ -140,7 +140,8 @@ a {
 }
 
 .welcome .button-clear {
-    color: #eeeeee;
+    color: red;
+    font-weight: bold;
 }
 
 .menu-left h1 {
