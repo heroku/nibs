@@ -70,7 +70,7 @@ app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
-app.post('/coupons', auth.validateToken, coupons.addItem)
+app.post('/coupons', auth.validateToken, coupons.addItem);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);

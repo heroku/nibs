@@ -10,4 +10,4 @@ angular.module('nibs.coupon', [])
                 return $http.post($rootScope.server.url + '/coupons/', coupon);
             }
         };
-    })
+    });
