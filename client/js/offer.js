@@ -1,4 +1,4 @@
-angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
+angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.coupon', 'nibs.wallet'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -8,7 +8,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             .state('app.offers', {
                 url: "/offers",
                 views: {
-                    'menuContent' :{
+                    'menuContent' : {
                         templateUrl: "templates/offer-list.html",
                         controller: "OfferListCtrl"
                     }
@@ -18,7 +18,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             .state('app.offer-detail', {
                 url: "/offers/:offerId",
                 views: {
-                    'menuContent' :{
+                    'menuContent' : {
                         templateUrl: "templates/offer-detail.html",
                         controller: "OfferDetailCtrl"
                     }
@@ -28,7 +28,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
             .state('app.offer-redeem', {
                 url: "/offers/:offerId/redeem",
                 views: {
-                    'menuContent' :{
+                    'menuContent' : {
                         templateUrl: "templates/redeem.html",
                         controller: "OfferDetailCtrl"
                     }
@@ -115,10 +115,17 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         };
 
         $scope.redeem = function () {
-            Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
-                .success(function(status) {
-                    Status.checkStatus(status);
-                });
+            Coupon.create({offerId: $scope.offer.sfid}).success(function(coupon) {
+                $scope.coupon = coupon;
+                if(coupon.date == null) {
+                    Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+                    .success(function(status) {
+                        Status.checkStatus(status);
+                    });        
+                }
+                
+            });
+            
             $state.go('app.offer-redeem', {offerId: $scope.offer.id});
         };
 
