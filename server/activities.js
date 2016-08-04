@@ -83,7 +83,7 @@ function deleteItems(userId) {
  * @returns {*}
  */
 function getPointBalance(userId) {
-    return db.query('select sum(points__c) as points from salesforce.eitech__interaction__c where eitech__contact__r__loyaltyid__c=$1', [userId], true);
+    return db.query('select sum(eitech__points__c) as points from salesforce.eitech__interaction__c where eitech__contact__r__loyaltyid__c=$1', [userId], true);
 }
 
 /**

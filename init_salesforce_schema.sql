@@ -64,6 +64,21 @@ CREATE TABLE IF NOT EXISTS salesforce.eitech__store__c (
     eitech__location___latitude__s   TEXT,
     eitech__location___longitude__s  TEXT
   );
+  
+  
+DROP TABLE IF EXISTS salesforce.eitech__coupon__c;  
+CREATE TABLE salesforce.eitech__coupon__c
+(
+  name character varying(80),
+  id serial NOT NULL PRIMARY KEY,
+  sfid character varying(18),
+  createddate timestamp without time zone,
+  eitech__commercantloyaltyid_del__c character varying(1300),
+  eitech__consommateur__c character varying(18),
+  eitech__commercant__c character varying(18),
+  eitech__consoloyaltyid_del__c character varying(1300)
+);
+  
 
 INSERT INTO salesforce.campaign (id, name, description, image__c, type, status) VALUES
     (1, '10% of EcoTruffles', 'Twice as much Eco!', 'http://s3-us-west-1.amazonaws.com/sfdc-demo/nibs/truffles.jpg', 'Offer', 'In Progress'),
