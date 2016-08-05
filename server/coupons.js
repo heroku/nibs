@@ -29,13 +29,13 @@ function addItem(req, res, next) {
         if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
             coupons[0].created = false;
-            res.send(coupons[0].id);
+            res.send(JSON.stringify({id: coupons[0].id}));
         } else {
             coupon.created = true;
             
             db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
-                res.send(insertedCoupon.id);
+                res.send(JSON.stringify({id: insertedCoupon.id}));
             });
             
 
