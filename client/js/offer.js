@@ -117,7 +117,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
         $scope.redeem = function () {
             Coupon.create({offerId: $scope.offer.sfid}).success(function(coupon) {
                 $scope.coupon = coupon;
-                console.log(JSON.stringify(coupon));
+                console.log("Coupon: " + JSON.stringify(coupon));
                 if(coupon.date == null) {
                     Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
                     .success(function(status) {
