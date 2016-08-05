@@ -63,23 +63,23 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
         };
     })
 
-    .controller('OfferDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, OpenFB, WalletItem, Activity, Status) {
+    .controller('OfferDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, OpenFB, WalletItem, Activity, Status, Coupon) {
 
         Offer.get($stateParams.offerId).success(function(offer) {
             $scope.offer = offer;
         });
 
         $scope.shareOnFacebook = function (offer) {
-//      Uncomment to enable actual "Share on Facebook" feature
-//            OpenFB.post('/me/feed', {name: offer.name, link: offer.campaignPage, picture: offer.image, caption: 'Offer ends soon!', description: offer.description})
-//                .success(function() {
-//                    Status.show('Shared on Facebook!');
-//                    var activity = new Activity({type: "Shared on Facebook", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image});
-//                    activity.$save(Status.checkStatus);
-//                })
-//                .error(function() {
-//                    $ionicPopup.alert({title: 'Facebook', content: 'Something went wrong while sharing this offer.'});
-//                });
+  //    Uncomment to enable actual "Share on Facebook" feature
+            OpenFB.post('/me/feed', {name: offer.name, link: offer.campaignPage, picture: offer.image, caption: 'Offer ends soon!', description: offer.description})
+                .success(function() {
+                    Status.show('Shared on Facebook!');
+                    var activity = new Activity({type: "Shared on Facebook", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image});
+                    activity.$save(Status.checkStatus);
+                })
+                .error(function() {
+                    $ionicPopup.alert({title: 'Facebook', content: 'Something went wrong while sharing this offer.'});
+                });
             Status.show('Shared on Facebook!');
             Activity.create({type: "Shared on Facebook", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
                 .success(function(status) {
