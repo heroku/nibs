@@ -28,8 +28,8 @@ function addItem(req, res, next) {
         } else {
             coupon.created = true;
             
-            db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) ', [coupon.offerId,  userId]).then(function () {
-                res.send(JSON.stringify(getCoupon(coupon)));
+            db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur', [coupon.offerId,  userId]).then(function (insertedCoupon) {
+                res.send(JSON.stringify(insertedCoupon));
             });
             
 
