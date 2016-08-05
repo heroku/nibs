@@ -1,6 +1,10 @@
 var db = require('./pghelper'),
     winston = require('winston');
 
+function getCoupon(coupon) {
+    "use strict";
+    return db.query('select eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.userId]);
+}
 
 /**
  * Add activity
@@ -9,6 +13,7 @@ var db = require('./pghelper'),
  * @param next
  */
 function addItem(req, res, next) {
+    "use strict";
     var userId = req.externalUserId,
         coupon = req.body;
     coupon.consommateur = userId;
@@ -21,11 +26,11 @@ function addItem(req, res, next) {
             res.send(JSON.stringify(coupons[0]));
         } else {
             coupon.created = true;
-            db.query('SELECT sfid FROM salesforce.contact where eitech__loyaltyid__c = $1', [userId]).then(function (sfid) {
-                db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__c, eitech__consoloyaltyid_del__c) VALUES ($1, $2, $3) ', [coupon.offerId, sfid, userId]).then(function () {
-                    res.send(JSON.stringify(coupon));
-                });
+            
+            db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) ', [coupon.offerId,  userId]).then(function () {
+                res.send(JSON.stringify(coupon));
             });
+            
 
         }
     }).catch(next);
@@ -33,8 +38,6 @@ function addItem(req, res, next) {
 }
 
 
-function getCoupon(coupon) {
-    return db.query('select eitech__campaign__c as campaign, eitech__consoloyaltyid_del__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c as campaign=$1 and eitech__consommateur__c as  eitech__consoloyaltyid_del__c =$2', [coupon.offerId, coupon.userId]);
-}
+
 
 exports.addItem = addItem;
