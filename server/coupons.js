@@ -42,7 +42,17 @@ function addItem(req, res, next) {
 }
 
 
+function getById(req, res, next) {
+	var id = req.params.id;
+	findById(id)
+		.then(function (coupon) {
+		console.log(JSON.stringify(coupon));
+		return res.send(JSON.stringify(coupon));
+	})
+		.catch(next);
+}
+
 
 
 exports.addItem = addItem;
-exports.findById = findById;
+exports.getById = getById;
