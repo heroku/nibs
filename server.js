@@ -71,6 +71,7 @@ app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
 app.post('/coupons', auth.validateToken, coupons.addItem);
+app.get('/coupons/:id', auth.validateToken, coupons.findById);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);

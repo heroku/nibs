@@ -26,8 +26,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 			})
 
 			.state('app.offer-redeem', {
-				url: "/offers/:offerId/redeem",
-				params: {coupon: null},
+				url: "/offers/redeem/:couponId",
 				views: {
 					'menuContent' : {
 						templateUrl: "templates/redeem.html",
@@ -130,7 +129,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 				}
 
 			}).then(function() {
-				$state.go('app.offer-redeem', {offerId: $scope.offer.sfid, coupon: $scope.coupon});
+				$state.go('app.offer-redeem', {couponId: $scope.coupon.id});
 			});
 
 			
@@ -138,14 +137,14 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 	})
 
-	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer) {
+	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Coupon) {
 		console.log("state params" + JSON.stringify($stateParams));
-		Offer.get($stateParams.offerId).success(function(offer) {
-			$scope.offer = offer;
+		Coupon.get($stateParams.couponId).success(function(coupon) {
+			$scope.coupon = coupon;
+			console.log("Redeeming " + JSON.stringify($scope.coupon));
 		});
 	
-		$scope.coupon = $stateParams.coupon;
-		console.log("Redeeming " + JSON.stringify($scope.coupon));
+		
 	})
 
 

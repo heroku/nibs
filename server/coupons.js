@@ -6,8 +6,12 @@ function getCoupon(coupon) {
     return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.consommateur]);
 }
 
+function findById(id) {
+	var userId = req.externalUserId;
+	return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where id = $1 and eitech__consommateur__r__eitech__loyaltyid__c = $2', [id, userId]);
+}
+
 /**
- * Add activity
  * @param req
  * @param res
  * @param next
@@ -23,14 +27,15 @@ function addItem(req, res, next) {
     getCoupon(coupon).then(function (coupons) {
         winston.info("Coupons: " + JSON.stringify(coupons));
         if (coupons.length > 0) {
+			var existingCoupon = coupons[0];
             coupons[0].created = false;
-            res.send(JSON.stringify(coupons[0]));
+            res.send(coupons[0].id);
         } else {
             coupon.created = true;
             
             db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
-                res.send(JSON.stringify(insertedCoupon));
+                res.send(insertedCoupon.id);
             });
             
 
@@ -43,3 +48,4 @@ function addItem(req, res, next) {
 
 
 exports.addItem = addItem;
+exports.findById = findById;

@@ -8,6 +8,9 @@ angular.module('nibs.coupon', [])
         return {
             create: function(coupon) {
                 return $http.post($rootScope.server.url + '/coupons/', coupon);
-            }
+            },
+			get: function(couponId) {
+				return $http.get($rootScope.server.url + '/coupons/' + couponId)
+			}
         };
     });
