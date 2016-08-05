@@ -119,10 +119,11 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 				$scope.coupon = coupon;
 				console.log("Coupon: " + JSON.stringify(coupon));
 				if(coupon.date == null) {
-					Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
-					.success(function(status) {
-						Status.checkStatus(status);
-					});
+//					Ajouts de points :
+//					Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+//					.success(function(status) {
+//						Status.checkStatus(status);
+//					});
 				} else{
 
 				}
@@ -136,6 +137,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, Coupon) {
 		$scope.coupon = $stateParams.coupon;
+		console.log("Redeeming " + JSON.stringify($scope.coupon));
 	})
 
 
