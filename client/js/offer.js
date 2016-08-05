@@ -128,9 +128,11 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 				}
 
+			}).then(function() {
+				$state.go('app.offer-redeem', {offerId: $scope.offer.sfid,coupon: $scope.coupon});
 			});
 
-			$state.go('app.offer-redeem', {offerId: $scope.offer.sfid,coupon: $scope.coupon});
+			
 		};
 
 	})
