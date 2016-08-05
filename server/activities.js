@@ -19,7 +19,7 @@ function addItem(req, res, next) {
         .then(function(result) {
             var balance = (result && result.points) ? result.points : 0;
 
-            db.query('INSERT INTO salesforce.eitech__interaction__c (eitech__contact__r__loyaltyid__c, eitech__campaign__c, eitech__product__c, eitech__type__c, eitech__points__c, eitech__name__c, eitech__picture__c) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            db.query('INSERT INTO salesforce.eitech__interaction__c (eitech__contact__r__eitech__loyaltyid__c, eitech__campaign__c, eitech__product__c, eitech__type__c, eitech__points__c, eitech__name__c, eitech__picture__c) VALUES ($1, $2, $3, $4, $5, $6, $7)',
                     [userId, activity.offerId, activity.productId, activity.type, activity.points, activity.name, activity.image], true)
                 .then(function() {
                     res.send({originalBalance: balance, points: activity.points, newBalance: balance + activity.points, originalStatus: getStatus(balance), newStatus: getStatus(balance + activity.points)});
@@ -41,7 +41,7 @@ function getItems(req, res, next) {
     var externalUserId = req.externalUserId;
     console.log('external user id:' + externalUserId);
 
-    db.query("SELECT eitech__contact__r__loyaltyid__c AS userId, eitech__campaign__c AS campaign, eitech__type__c AS type, eitech__name__c as name, eitech__picture__c as picture, eitech__points__c as points, createdDate FROM salesforce.eitech__interaction__c WHERE eitech__contact__r__loyaltyid__c=$1 ORDER BY id DESC LIMIT 20", [externalUserId])
+    db.query("SELECT eitech__contact__r__eitech__loyaltyid__c AS userId, eitech__campaign__c AS campaign, eitech__type__c AS type, eitech__name__c as name, eitech__picture__c as picture, eitech__points__c as points, createdDate FROM salesforce.eitech__interaction__c WHERE eitech__contact__r__eitech__loyaltyid__c=$1 ORDER BY id DESC LIMIT 20", [externalUserId])
         .then(function (activities) {
             console.log(JSON.stringify(activities));
             return res.send(JSON.stringify(activities));
@@ -74,7 +74,7 @@ function deleteAll(req, res, next) {
  */
 function deleteItems(userId) {
     console.log('deleting activity items for user ' + userId);
-    return db.query("DELETE FROM salesforce.eitech__interaction__c WHERE eitech__contact__r__loyaltyid__c=$1", [userId]);
+    return db.query("DELETE FROM salesforce.eitech__interaction__c WHERE eitech__contact__r__eitech__loyaltyid__c=$1", [userId]);
 }
 
 /**

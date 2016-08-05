@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS salesforce.contact (
 
 CREATE TABLE IF NOT EXISTS salesforce.eitech__interaction__c (
     id                      BIGSERIAL,
-    eitech__contact__r__loyaltyid__c   TEXT,
+    eitech__contact__r__eitech__loyaltyid__c   TEXT,
     eitech__campaign__c             TEXT,
     eitech__product__c              TEXT,
     eitech__type__c                 TEXT,
