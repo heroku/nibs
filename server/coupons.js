@@ -5,8 +5,7 @@ function getCoupon(coupon) {
     return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.consommateur]);
 }
 
-function findById(id) {
-	var userId = req.externalUserId;
+function findById(id, userId) {	
 	return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where id = $1 and eitech__consommateur__r__eitech__loyaltyid__c = $2', [id, userId]);
 }
 
@@ -44,7 +43,8 @@ function addItem(req, res, next) {
 
 function getById(req, res, next) {
 	var id = req.params.id;
-	findById(id)
+	var userId = req.externalUserId;
+	findById(id, userId)
 		.then(function (coupon) {
 		console.log(JSON.stringify(coupon));
 		return res.send(JSON.stringify(coupon));
