@@ -130,12 +130,16 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 			});
 
-			$state.go('app.offer-redeem', {coupon: $scope.coupon});
+			$state.go('app.offer-redeem', {offerId: $scope.offer.sfid,coupon: $scope.coupon});
 		};
 
 	})
 
-	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, Coupon) {
+	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer) {
+		Offer.get($stateParams.offerId).success(function(offer) {
+			$scope.offer = offer;
+		});
+	console.log("test");
 		$scope.coupon = $stateParams.coupon;
 		console.log("Redeeming " + JSON.stringify($scope.coupon));
 	})
