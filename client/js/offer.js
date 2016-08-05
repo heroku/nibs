@@ -27,6 +27,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 			.state('app.offer-redeem', {
 				url: "/offers/:offerId/redeem",
+				params: {coupon: null},
 				views: {
 					'menuContent' : {
 						templateUrl: "templates/redeem.html",
