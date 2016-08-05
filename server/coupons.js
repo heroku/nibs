@@ -2,7 +2,6 @@ var db = require('./pghelper'),
     winston = require('winston');
 
 function getCoupon(coupon) {
-    "use strict";
     return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.consommateur]);
 }
 
@@ -17,7 +16,6 @@ function findById(id) {
  * @param next
  */
 function addItem(req, res, next) {
-    "use strict";
     var userId = req.externalUserId,
         coupon = req.body;
     coupon.consommateur = userId;
@@ -28,10 +26,9 @@ function addItem(req, res, next) {
         winston.info("Coupons: " + JSON.stringify(coupons));
         if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
-            coupons[0].created = false;
+
             res.send(JSON.stringify({id: coupons[0].id}));
         } else {
-            coupon.created = true;
             
             db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
