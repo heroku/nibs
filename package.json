@@ -35,6 +35,7 @@
     "compression": "~1.0.11",
     "request": "~2.40.0",
     "ejs": "~1.0.0",
-    "cookie-session": "~1.0.2"
+    "cookie-session": "~1.0.2",
+    "qrcode-npm": "~0.0.3"
   }
 }
