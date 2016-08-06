@@ -1,5 +1,6 @@
 var db = require('./pghelper'),
-    winston = require('winston');
+    winston = require('winston'),
+    qrCode = require('qrcode-npm');
 
 function getCoupon(coupon) {
     return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.consommateur]);
@@ -47,6 +48,11 @@ function getById(req, res, next) {
 	findById(id, userId)
 		.then(function (coupon) {
 		console.log(JSON.stringify(coupon));
+        var qr = qrCode.qrcode(4, 'L');
+        qr.addData(JSON.stringify(coupon));
+        qr.make();
+
+        coupon.img = qr.createImgTag(4); 
 		return res.send(JSON.stringify(coupon));
 	})
 		.catch(next);
