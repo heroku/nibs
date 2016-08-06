@@ -47,12 +47,13 @@ function getById(req, res, next) {
 	var userId = req.externalUserId;
 	findById(id, userId)
 		.then(function (coupon) {
-		console.log(JSON.stringify(coupon));
-        var qr = qrCode.qrcode(4, 'L');
-        qr.addData(JSON.stringify(coupon));
+        var text = JSON.stringify(coupon);
+		console.log(text);
+        var qr = qrCode.qrcode(5, 'M');
+        qr.addData(text);
         qr.make();
 
-        coupon.img = qr.createImgTag(4); 
+        coupon.base64 = qr.createImgTag(4).match(/.*src="data:image\/gif;base64,([^"]*)".*/)[1]; 
 		return res.send(JSON.stringify(coupon));
 	})
 		.catch(next);
