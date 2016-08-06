@@ -49,7 +49,7 @@ function getById(req, res, next) {
 		.then(function (coupon) {
         var text = JSON.stringify(coupon);
 		console.log(text);
-        var qr = qrCode.qrcode(5, 'M');
+        var qr = qrCode.qrcode(10, 'M');
         qr.addData(text);
         qr.make();
 
