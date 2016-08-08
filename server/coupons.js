@@ -1,5 +1,6 @@
 var db = require('./pghelper'),
     winston = require('winston'),
+	Q = require('q'),
     qrCode = require('qrcode-npm');
 
 function getCoupon(coupon) {
@@ -12,7 +13,7 @@ function findById(id, userId) {
 
 
 function createCoupon(coupon) {
-	getCoupon(coupon).then(function (coupons) {
+	return getCoupon(coupon).then(function (coupons) {
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
@@ -45,9 +46,9 @@ function addItem(req, res, next) {
 
     winston.info('Adding coupon: ' + JSON.stringify(coupon));
 
-	createCoupon(coupon).then(function(id) {
+	Q.when(createCoupon(coupon), function(id) {
 		res.send(JSON.stringify({id: id}));
-	}).catch(next);
+	}, next);
 
 }
 
