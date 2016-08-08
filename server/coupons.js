@@ -27,12 +27,12 @@ function addItem(req, res, next) {
         if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
 
-            res.send(JSON.stringify({id: coupons[0].id, valid: coupons[0].date == null}));
+            res.send(JSON.stringify({id: coupons[0].id}));
         } else {
             
             db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
-                res.send(JSON.stringify({id: insertedCoupon.id, valid: true}));
+                res.send(JSON.stringify({id: insertedCoupon.id}));
             });
             
 
@@ -49,11 +49,14 @@ function getById(req, res, next) {
 		.then(function (coupon) {
         var text = JSON.stringify(coupon);
 		console.log(text);
-        var qr = qrCode.qrcode(10, 'M');
-        qr.addData(JSON.stringify({app: 'Heineken', id: coupon.id, secret: coupon.secret}));
-        qr.make();
+		if(coupon.date == null) {
+			var qr = qrCode.qrcode(10, 'M');
+			qr.addData(JSON.stringify({app: 'Heineken', id: coupon.id, secret: coupon.secret}));
+			qr.make();
 
-        coupon.base64 = qr.createImgTag(4).match(/.*src="data:image\/gif;base64,([^"]*)".*/)[1]; 
+			coupon.base64 = qr.createImgTag(4).match(/.*src="data:image\/gif;base64,([^"]*)".*/)[1]; 
+		}
+       
 		return res.send(JSON.stringify(coupon));
 	})
 		.catch(next);

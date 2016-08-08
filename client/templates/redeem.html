@@ -8,12 +8,12 @@
 			  <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
 		  </div>
 		  <div class="item item-body">
-			  <div ng-if="{{valid}}" >
+			  <div ng-if="{{coupon.date == null}}" >
 				  <p>Coupon:  {{coupon.id}}</p>
 				  <img src="data:image/gif;base64,{{coupon.base64}}" width="260" height="260" />
 				  <p>Present this code in one of our stores to redeem this offer. </p>
 				</div>
-			  <div ng-if="{{!valid}}" >
+			  <div ng-if="{{coupon.date != null}}" >
 				  Sorry, you've already taken advantage of this offer.
 			  </div>
 			  <p>Looking for a store? Click the button below to find one.</p>
