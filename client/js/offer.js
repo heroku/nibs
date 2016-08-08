@@ -137,7 +137,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 
 	})
 
-	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Coupon) {
+	.controller('OfferRedeemCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, Coupon) {
 		console.log("state params" + JSON.stringify($stateParams));
         $scope.valid = $stateParams.valid;
         if($scope.valid) {
