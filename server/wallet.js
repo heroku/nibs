@@ -1,6 +1,6 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-	coupons = require('coupons');
+	coupons = require('./coupons');
 
 /**
  * Add a new offer to the user's wallet
