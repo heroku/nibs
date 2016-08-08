@@ -32,7 +32,7 @@ function createCoupon(coupon) {
 			winston.info("retVal" + retVal);
 
 		}
-		return Q.when(retVal);
+		return retVal;
 	});
 	
 }
@@ -50,9 +50,12 @@ function addItem(req, res, next) {
 
     winston.info('Adding coupon: ' + JSON.stringify(coupon));
 	
-	var deferred = Q.defer();
 	
-	createCoupon(coupon).then(function(id) {
+	var cc = createCoupon(coupon);
+	
+	winston.info("CC: " + cc);
+	 
+	cc.then(function(id) {
 		winston.info("sending back id " + id);
 		res.send(JSON.stringify({id: id}))
 	}).catch(next);
