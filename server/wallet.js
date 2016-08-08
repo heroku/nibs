@@ -1,6 +1,7 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-	coupons = require('./coupons');
+	coupons = require('./coupons'),
+	offers = require('./offers');
 
 /**
  * Add a new offer to the user's wallet
@@ -22,7 +23,10 @@ function addItem(req, res, next) {
             }
             db.query('INSERT INTO wallet (userId, offerId) VALUES ($1, $2)', [userId, offerId], true)
 				.then(function() {
-					coupons.createCoupon({offerId: offerId, consommateur: externalId});
+					return offers.findById(offerId);
+				})
+				.then(function(offerDB) {
+					coupons.createCoupon({offerId: offerDB.sfid, consommateur: externalId});
 				})
                 .then(function () {
                     return res.send('ok');
