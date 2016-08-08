@@ -29,7 +29,7 @@ function createCoupon(coupon) {
 				return insertedCoupon.id;
 				
 			});
-
+			winston.info("retVal" + retVal);
 
 		}
 		return Q.when(retVal);
