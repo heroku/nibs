@@ -47,6 +47,7 @@ function addItem(req, res, next) {
     winston.info('Adding coupon: ' + JSON.stringify(coupon));
 
 	Q.when(createCoupon(coupon), function(id) {
+		winston.info("sending back id " + id);
 		res.send(JSON.stringify({id: id}));
 	}, next);
 
