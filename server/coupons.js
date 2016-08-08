@@ -56,8 +56,7 @@ function addItem(req, res, next) {
 
 			db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
-				winston.info("sending " + JSON.stringify({id: insertedCoupon.id}));
-				res.send(JSON.stringify({id: insertedCoupon.id}));
+				res.send(JSON.stringify({id: insertedCoupon[0].id}));
 			});
 
 
