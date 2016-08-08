@@ -12,24 +12,29 @@ function findById(id, userId) {
 
 
 function createCoupon(coupon) {
+	
 	return getCoupon(coupon).then(function (coupons) {
+		winston.info("3333333333333333333");
 		winston.info("Coupons: " + JSON.stringify(coupons));
+		var retVal;
 		if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
 			
-			return coupons[0].id;
+			retVal = coupons[0].id;
 		} else {
-
-			db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  coupon.consommateur]).then(function (insertedCoupon) {
+			winston.info("444444444444444444");
+			 retVal = db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  coupon.consommateur]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
 				
 				return insertedCoupon.id;
 				
 			});
-
+			winston.info("retVal" + retVal);
 
 		}
+		return retVal;
 	});
+	
 }
 
 
@@ -43,12 +48,20 @@ function addItem(req, res, next) {
         coupon = req.body;
     coupon.consommateur = userId;
 
-    winston.info('Adding coupon: ' + JSON.stringify(coupon));
+	getCoupon(coupon).then(function (coupons) {
+		winston.info("Coupons: " + JSON.stringify(coupons) + " " + coupons.length);
+		if (coupons.length > 0) {
+			res.send(JSON.stringify({id: coupons[0].id}));
+		} else {
 
-	createCoupon(coupon).then(function(id) {
-		res.send(JSON.stringify({id: id}));
+			db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  userId]).then(function (insertedCoupon) {
+				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
+				res.send(JSON.stringify({id: insertedCoupon[0].id}));
+			});
+
+
+		}
 	}).catch(next);
-
 }
 
 function getImage(coupon) {
