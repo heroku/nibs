@@ -13,24 +13,27 @@ function findById(id, userId) {
 
 
 function createCoupon(coupon) {
-	return getCoupon(coupon).then(function (coupons) {
+	var deferred = Q.defer();
+	getCoupon(coupon).then(function (coupons) {
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
 			
-			return coupons[0].id;
+			return deferred.resolve(coupons[0].id);
 		} else {
 
-			return db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  coupon.consommateur]).then(function (insertedCoupon) {
+			 db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  coupon.consommateur]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
 				
-				return insertedCoupon.id;
+				deferred.resolve(insertedCoupon.id);
 				
 			});
 
 
 		}
 	});
+	
+	return deferred.promise;
 }
 
 
@@ -45,11 +48,16 @@ function addItem(req, res, next) {
     coupon.consommateur = userId;
 
     winston.info('Adding coupon: ' + JSON.stringify(coupon));
-
-	Q.when(createCoupon(coupon), function(id) {
+	
+	var deferred = Q.defer();
+	
+	createCoupon(coupon).then(function(id) {
 		winston.info("sending back id " + id);
-		res.send(JSON.stringify({id: id}));
-	}, next);
+		res.send(JSON.stringify({id: id}))
+	}).catch(next);
+
+	
+	
 
 }
 
