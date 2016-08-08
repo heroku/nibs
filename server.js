@@ -20,6 +20,7 @@ var express = require('express'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
+    coupons = require('./server/coupons'),
     app = express();
 
 app.set('port', process.env.PORT || 5000);
@@ -48,6 +49,7 @@ app.put('/users/me', auth.validateToken, users.updateProfile);
 
 app.get('/offers', auth.validateToken, offers.getAll);
 app.get('/offers/:id', offers.getById);
+
 app.get('/products', auth.validateToken, products.getAll);
 app.get('/products/:id', auth.validateToken, products.getById);
 app.get('/stores', stores.findAll);
@@ -67,6 +69,9 @@ app.delete('/pictures', auth.validateToken, pictures.deleteItems);
 app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
+
+app.post('/coupons', auth.validateToken, coupons.addItem);
+app.get('/coupons/:id', auth.validateToken, coupons.getById);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
