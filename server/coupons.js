@@ -94,3 +94,4 @@ function getById(req, res, next) {
 
 exports.addItem = addItem;
 exports.getById = getById;
+exports.createCoupon = createCoupon;
