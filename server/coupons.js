@@ -1,6 +1,5 @@
 var db = require('./pghelper'),
     winston = require('winston'),
-	Q = require('q'),
     qrCode = require('qrcode-npm');
 
 function getCoupon(coupon) {
