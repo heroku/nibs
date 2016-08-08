@@ -76,7 +76,8 @@ CREATE TABLE salesforce.eitech__coupon__c
   eitech__commercantloyaltyid_del__c character varying(1300),
   eitech__consommateur__c character varying(18),
   eitech__commercant__c character varying(18),
-  eitech__consoloyaltyid_del__c character varying(1300)
+  eitech__consoloyaltyid_del__c character varying(1300),
+	eitech__secret__c double precision
 );
   
 
