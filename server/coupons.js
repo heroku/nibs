@@ -4,6 +4,7 @@ var db = require('./pghelper'),
     qrCode = require('qrcode-npm');
 
 function getCoupon(coupon) {
+	winston.info("222222222222222222");
     return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where  eitech__campaign__c=$1 and eitech__consommateur__r__eitech__loyaltyid__c=$2', [coupon.offerId, coupon.consommateur]);
 }
 
@@ -15,6 +16,7 @@ function findById(id, userId) {
 function createCoupon(coupon) {
 	
 	return getCoupon(coupon).then(function (coupons) {
+		winston.info("3333333333333333333");
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		var retVal;
 		if (coupons.length > 0) {
@@ -22,7 +24,8 @@ function createCoupon(coupon) {
 			
 			retVal = coupons[0].id;
 		} else {
-
+			winston.info("444444444444444444");
+			winston.info("WHYYYYYYYYYYYYYYY?");
 			 retVal = db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  coupon.consommateur]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
 				
@@ -49,16 +52,17 @@ function addItem(req, res, next) {
     coupon.consommateur = userId;
 
     winston.info('Adding coupon: ' + JSON.stringify(coupon));
-	
+	winston.info("11111111111111111");
 	
 	var cc = createCoupon(coupon);
 	
 	winston.info("CC: " + cc);
 	 
 	cc.then(function(id) {
+		winston.info("55555555555555555");
 		winston.info("sending back id " + id);
 		res.send(JSON.stringify({id: id}))
-	}).catch(next);
+	});
 
 	
 	
