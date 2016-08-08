@@ -12,7 +12,7 @@ function findById(id, userId) {
 
 
 function createCoupon(coupon) {
-	return getCoupon(coupon).then(function (coupons) {
+	getCoupon(coupon).then(function (coupons) {
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
