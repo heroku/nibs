@@ -51,8 +51,6 @@ function addItem(req, res, next) {
 	getCoupon(coupon).then(function (coupons) {
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		if (coupons.length > 0) {
-			var existingCoupon = coupons[0];
-
 			res.send(JSON.stringify({id: coupons[0].id}));
 		} else {
 
