@@ -7,7 +7,7 @@ function getCoupon(coupon) {
 }
 
 function findById(id, userId) {	
-	return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant from salesforce.eitech__coupon__c where id = $1 and eitech__consommateur__r__eitech__loyaltyid__c = $2', [id, userId], true);
+	return db.query('select id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant, eitech__Secret__c as secret from salesforce.eitech__coupon__c where id = $1 and eitech__consommateur__r__eitech__loyaltyid__c = $2', [id, userId], true);
 }
 
 /**
@@ -27,12 +27,12 @@ function addItem(req, res, next) {
         if (coupons.length > 0) {
 			var existingCoupon = coupons[0];
 
-            res.send(JSON.stringify({id: coupons[0].id}));
+            res.send(JSON.stringify({id: coupons[0].id, valid: coupons[0].date == null}));
         } else {
             
-            db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c) VALUES ($1, $2) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur', [coupon.offerId,  userId]).then(function (insertedCoupon) {
+            db.query('INSERT INTO salesforce.eitech__coupon__c(eitech__campaign__c, eitech__consommateur__r__eitech__loyaltyid__c, eitech__Secret__c) VALUES ($1, $2, floor(random() * 1E10)) RETURNING id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__Secret__c as secret', [coupon.offerId,  userId]).then(function (insertedCoupon) {
 				winston.info("Inserted coupon: " + JSON.stringify(insertedCoupon));
-                res.send(JSON.stringify({id: insertedCoupon.id}));
+                res.send(JSON.stringify({id: insertedCoupon.id, valid: true}));
             });
             
 
@@ -50,7 +50,7 @@ function getById(req, res, next) {
         var text = JSON.stringify(coupon);
 		console.log(text);
         var qr = qrCode.qrcode(10, 'M');
-        qr.addData(text);
+        qr.addData(JSON.stringify({app: 'Heineken', id: coupon.id, secret: coupon.secret}));
         qr.make();
 
         coupon.base64 = qr.createImgTag(4).match(/.*src="data:image\/gif;base64,([^"]*)".*/)[1]; 
