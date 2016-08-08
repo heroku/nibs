@@ -256,15 +256,15 @@ a {
 }
 
 .bar-status {
-    border-color: #73732E;
-    background-color: #73732E;
+	border-color: darkgreen;
+	background-color: darkgreen;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: darkgreen;
+    background-color: darkgreen;
     background-image: none;
     color: #fff;
 }
@@ -331,10 +331,12 @@ a {
     margin: 0;
 }
 
-.bar .title,
+.bar .title {
+	color: white;
+}
 .bar .button
 {
-    color: #ffffff;
+    color: red;
 }
 
 .status-bar {
@@ -392,7 +394,7 @@ a {
 }
 
 .status1-bg {
-    background: #73732E;
+    background: darkgreen;
 }
 
 .status2-bg {
