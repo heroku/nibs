@@ -70,7 +70,7 @@ function addItem(req, res, next) {
 		}
 	 
 	
-
+	});
 }
 
 function getImage(coupon) {
