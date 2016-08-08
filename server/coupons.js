@@ -14,7 +14,7 @@ function findById(id, userId) {
 
 function createCoupon(coupon) {
 	
-	getCoupon(coupon).then(function (coupons) {
+	return getCoupon(coupon).then(function (coupons) {
 		winston.info("Coupons: " + JSON.stringify(coupons));
 		var retVal;
 		if (coupons.length > 0) {
