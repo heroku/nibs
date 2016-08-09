@@ -78,6 +78,16 @@ app.get('/coupons/:id', auth.validateToken, coupons.getById);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
+app.options('*', function(req, res) {
+    res.set({
+        Access-Control-Allow-Origin: "*", 
+        Access-Control-Allow-Headers: "x-requested-with, Content-Type, origin, authorization, accept, client-security-token", 
+        Access-Control-Allow-Methods: "DELETE,GET,HEAD,PATCH,POST,PUT", 
+        Content-Type: "text/plain"
+    });
+    res.sendStatus(200);
+});
+
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });

@@ -165,7 +165,7 @@ function signup(req, res, next) {
                 }
                 createUser(user, hash)
                     .then(function () {
-                        winston.info('creation OK: ' + user);
+                        winston.info('creation OK: ' + JSON.stringify(user));
                         return res.send('OK');
                     })
                     .catch(next);
