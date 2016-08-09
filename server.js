@@ -85,7 +85,7 @@ app.options('*', function(req, res) {
         "Access-Control-Allow-Methods": "DELETE,GET,HEAD,PATCH,POST,PUT", 
         "Content-Type": "text/plain"
     });
-    res.sendStatus(200);
+    res.send(200);
 });
 
 app.listen(app.get('port'), function () {
