@@ -96,6 +96,7 @@ function login(req, res, next) {
                             return res.send(JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}));
                         })
                         .catch(function(err) {
+                            winston.info("token for " + user.email + " error:" + JSON.stringify(err));
                             return next(err);    
                         });
                 } else {

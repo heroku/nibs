@@ -83,7 +83,8 @@ app.options('*', function(req, res) {
         "Access-Control-Allow-Origin": "*", 
         "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token", 
         "Access-Control-Allow-Methods": "DELETE,GET,HEAD,PATCH,POST,PUT", 
-        "Content-Type": "text/plain"
+        "Content-Type": "text/plain",
+        "Access-Control-Max-Age": "3600" 
     });
     res.send(200);
 });
