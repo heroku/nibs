@@ -136,8 +136,6 @@ function logout(req, res, next) {
 function signup(req, res, next) {
     winston.info('signup');
 
-    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
-
     
     var user = req.body;
 
@@ -207,7 +205,7 @@ function createUser(user, password) {
  */
 function validateToken (req, res, next) {
     
-    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+
 
     // get the token
     var token = req.headers['authorization'];
