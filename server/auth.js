@@ -92,8 +92,8 @@ function login(req, res, next) {
                 if (match) {
                     createAccessToken(user)
                         .then(function(token) {
-                            winston.info("token for " + user.email + " created.");
-                            return res.send(JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}));
+                            winston.info("token for " + JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}) + " created.");
+                            return res.send(200, JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}));
                         })
                         .catch(function(err) {
                             winston.info("token for " + user.email + " error:" + JSON.stringify(err));
