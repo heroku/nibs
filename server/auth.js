@@ -70,7 +70,7 @@ function createAccessToken(user) {
  */
 function login(req, res, next) {
     winston.info('login');
-
+	res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
     var creds = req.body;
     console.log(creds);
 
