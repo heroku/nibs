@@ -70,7 +70,9 @@ function createAccessToken(user) {
  */
 function login(req, res, next) {
     winston.info('login');
-	res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+    
+    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+
     var creds = req.body;
     console.log(creds);
 
@@ -130,9 +132,11 @@ function logout(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function signup(req, res, next) {
-
     winston.info('signup');
 
+    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+
+    
     var user = req.body;
 
     if (!validator.isEmail(user.email)) {
@@ -151,12 +155,17 @@ function signup(req, res, next) {
     db.query('SELECT id FROM salesforce.contact WHERE email=$1', [user.email], true)
         .then(function (u) {
             if(u) {
+                winston.info("mail already used");
                 return next(new Error('Email address already registered'));
             }
             encryptPassword(user.password, function (err, hash) {
-                if (err) return next(err);
+                if (err) {
+                    winston.error("err: " + err);
+                    return next(err);
+                }
                 createUser(user, hash)
                     .then(function () {
+                        winston.info('creation OK: ' + user);
                         return res.send('OK');
                     })
                     .catch(next);
@@ -195,6 +204,9 @@ function createUser(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
+    
+    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+
     // get the token
     var token = req.headers['authorization'];
     if (!token) {
