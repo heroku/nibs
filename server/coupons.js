@@ -122,9 +122,12 @@ function consume(req, res, next) {
   var coupon = req.body,
     userId = req.externalUserId;
 
-  db.query('UPDATE salesforce.eitech__coupon__c SET eitech__commercant__r__eitech__loyaltyid__c = $3, eitech__date_de_consommation__c = Date.now() WHERE id = $1 AND eitech__Secret__c = $2 AND date IS NULL', [coupon.id, coupon.secret, userId]).then (function (result) {
+  db.query('UPDATE salesforce.eitech__coupon__c SET eitech__commercant__r__eitech__loyaltyid__c = $3, eitech__date_de_consommation__c = Date.now() WHERE id = $1 AND eitech__Secret__c = $2 AND eitech__date_de_consommation__c IS NULL', [coupon.id, coupon.secret, userId]).then (function (result) {
     winston.info(JSON.stringify(result));
-    res.send(200);
+    return res.send(200);
+  }, function(err) {
+    winston.error(JSON.stringify(err));
+    return res.send(400);
   });
 
 }
