@@ -28,7 +28,7 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
 
      //Controllers
     .controller('ScanCtrl', function ($scope, $rootScope, $ionicPopup, $cordovaBarcodeScanner, Coupon) {
-    
+
         $scope.takePicture = function () {
 
             if (!navigator.camera) {
@@ -36,21 +36,21 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
                 return;
             }
 
-            
+
 
             $cordovaBarcodeScanner.scan().then(function(imageData) {
-                
+
                 console.log("Barcode Format -> " + imageData.format);
                 console.log("Cancelled -> " + imageData.cancelled);
                 console.log(JSON.stringify(imageData));
-                
+
                 if(!imageData.cancelled && imageData.format == 'QR_CODE') {
                     var couponInfo = JSON.parse(imageData.text);
-                    Coupon.checkCoupon(couponInfo).then(function(result) {
-                        
+                    Coupon.check(couponInfo).then(function(result) {
+                      console.log(JSON.stringify(result));
                     });
                 }
-                
+
             }, function(error) {
                 console.log("An error happened -> " + error);
             });

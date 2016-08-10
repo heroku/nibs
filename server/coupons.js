@@ -85,7 +85,7 @@ function check(req, res, next) {
       res.send(JSON.stringify(res));
       return;
     }
-    db.query('select coupon.id, coupon.eitech__campaign__c as campaign, coupon.eitech__consommateur__r__eitech__loyaltyid__c as consommateur, coupon.eitech__date_de_consommation__c as date, coupon.eitech__commercant__r__eitech__loyaltyid__c as commercant, coupon.eitech__Secret__c as secret, campaignT.name as name, campaignT.description as description, campaignT.startdate, campaignT.enddate from salesforce.eitech__coupon__c coupon, salesforce.campaign  where id = $1 and secret = $2 and coupon.eitech__campaign__c = campaign.sfid', [couponInfo.id, couponInfo.secret]).then(function(results) {
+    db.query('select coupon.id, coupon.eitech__campaign__c as campaign, coupon.eitech__consommateur__r__eitech__loyaltyid__c as consommateur, coupon.eitech__date_de_consommation__c as date, coupon.eitech__commercant__r__eitech__loyaltyid__c as commercant, coupon.eitech__Secret__c as secret, campaignT.name as name, campaignT.description as description, campaignT.startdate, campaignT.enddate from salesforce.eitech__coupon__c coupon, salesforce.campaign campaignT where coupon.id = $1 and coupon.eitech__Secret__c = $2 and coupon.eitech__campaign__c = campaignT.sfid', [couponInfo.id, couponInfo.secret]).then(function(results) {
 
       if(results.length == 0) {
         res = {valid: false, cause: 'Coupon not found'};
