@@ -27,7 +27,7 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
     })
 
      //Controllers
-    .controller('ScanCtrl', function ($scope, $rootScope, $ionicPopup, $cordovaBarcodeScanner, Coupon) {
+    .controller('ScanCtrl', function ($scope, $rootScope, $ionicPopup, $cordovaBarcodeScanner, Coupon, $cordovaToast) {
 
         $scope.takePicture = function () {
 
@@ -52,21 +52,27 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
                       if(data.valid) {
                         var confirmPopup = $ionicPopup.confirm({
                          title: 'Valid coupon',
-                         template: data.name + ": " + data.description
+                         subTitle: data.name,
+                         template: data.description
                        });
                        confirmPopup.then(function(choice) {
                          if(choice) {
-                           console.log("yes");
+                           Coupon.consume(couponInfo).then(function(result) {
+                             $cordovaToast.showLongCenter('Coupon consumed');
+                           });
                          } else {
-                           console.log("no");
+                            $cordovaToast.showLongCenter('Coupon use cancelled');
                          }
                        });
                      } else {
-                       var alertPopup = $ionicPopup.confirm({
+                       $scope.err = data;
+                       var alertPopup = $ionicPopup.alert({
                         title: 'Invalid coupon',
-                        template: data.cause
+                        subTitle: data.name,
+                        templateUrl: 'templates/invalid-coupon.html',
+                        scope: $scope
                       });
-                      
+
                      }
                     });
                 }

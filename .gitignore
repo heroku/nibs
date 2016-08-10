@@ -5,3 +5,4 @@ node_modules
 *.project
 nibs-shell/
 bower_components/
+.tern-project
