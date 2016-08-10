@@ -95,10 +95,11 @@ function check(req, res, next) {
 
 
       var coupon = results[0];
-      winston.info("startDate: " + coupon.startDate + " type: " + (typeof coupon.startDate));
-      winston.info(Date.now() > coupon.startDate);
+      winston.info("startDate: " + coupon.startdate + " type: " + (typeof coupon.startdate));
+      winston.info(Date.now() > coupon.startdate);
       res = {valid: true, name: coupon.name, description: coupon.description};
       res.send(JSON.stringify(res));
+      winston.info("sent: " + JSON.stringify(res));
       return;
     });
 }

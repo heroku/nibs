@@ -47,7 +47,7 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
                 if(!imageData.cancelled && imageData.format == 'QR_CODE') {
                     var couponInfo = JSON.parse(imageData.text);
                     Coupon.check(couponInfo).then(function(result) {
-                      console.log(JSON.stringify(result));
+                      console.log("result: " + JSON.stringify(result));
                     });
                 }
 
