@@ -4,3 +4,5 @@ node_modules
 *.log
 *.project
 nibs-shell/
+bower_components/
+.tern-project

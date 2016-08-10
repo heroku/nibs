@@ -75,7 +75,7 @@ angular.module('nibs.store-locator', [])
 
         function onLocationFound(e) {
             var pos = e.latlng;
-            console.log(pos);
+            console.log(JSON.stringify(pos));
             if (!currentPosMarker) {
                 currentPosMarker = L.marker(pos).addTo(map);
             } else {

@@ -72,6 +72,8 @@ app.delete('/activities', addCorsHeaders, auth.validateToken, activities.deleteA
 
 app.post('/coupons', addCorsHeaders, auth.validateToken, coupons.addItem);
 app.get('/coupons/:id', addCorsHeaders, auth.validateToken, coupons.getById);
+app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
+app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
@@ -84,11 +86,11 @@ app.options('*', addCorsHeaders, function(req, res) {
 
 function addCorsHeaders(req, res, next) {
     res.set({
-        "Access-Control-Allow-Origin": "*", 
-        "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token", 
-        "Access-Control-Allow-Methods": "DELETE,GET,HEAD,PATCH,POST,PUT", 
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+        "Access-Control-Allow-Methods": "DELETE,GET,HEAD,PATCH,POST,PUT",
         "Content-Type": "text/plain",
-        "Access-Control-Max-Age": "3600" 
+        "Access-Control-Max-Age": "3600"
     });
     return next();
 }
