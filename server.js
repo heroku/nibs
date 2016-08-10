@@ -72,6 +72,7 @@ app.delete('/activities', addCorsHeaders, auth.validateToken, activities.deleteA
 
 app.post('/coupons', addCorsHeaders, auth.validateToken, coupons.addItem);
 app.get('/coupons/:id', addCorsHeaders, auth.validateToken, coupons.getById);
+app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
