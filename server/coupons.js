@@ -82,15 +82,14 @@ function check(req, res, next) {
     var res;
     if(couponInfo.app != APP_NAME) {
       res = {valid: false, cause: 'Not a Heineken coupon'};
-      res.send(JSON.stringify(res));
-      return;
+      return res.send(JSON.stringify(res));
     }
+
     db.query('select coupon.id, coupon.eitech__campaign__c as campaign, coupon.eitech__consommateur__r__eitech__loyaltyid__c as consommateur, coupon.eitech__date_de_consommation__c as date, coupon.eitech__commercant__r__eitech__loyaltyid__c as commercant, coupon.eitech__Secret__c as secret, campaignT.name as name, campaignT.description as description, campaignT.startdate, campaignT.enddate from salesforce.eitech__coupon__c coupon, salesforce.campaign campaignT where coupon.id = $1 and coupon.eitech__Secret__c = $2 and coupon.eitech__campaign__c = campaignT.sfid', [couponInfo.id, couponInfo.secret]).then(function(results) {
 
       if(results.length == 0) {
         res = {valid: false, cause: 'Coupon not found'};
-        res.send(JSON.stringify(res));
-        return;
+        return res.send(JSON.stringify(res));
       }
 
 
@@ -98,10 +97,9 @@ function check(req, res, next) {
       winston.info("startDate: " + coupon.startdate + " type: " + (typeof coupon.startdate));
       winston.info(Date.now() > coupon.startdate);
       res = {valid: true, name: coupon.name, description: coupon.description};
-      res.send(JSON.stringify(res));
-      winston.info("sent: " + JSON.stringify(res));
-      return;
-    });
+      winston.info("sending: " + JSON.stringify(res));
+      return res.send(JSON.stringify(res));
+    }).catch(next);
 }
 
 
