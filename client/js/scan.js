@@ -48,6 +48,26 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
                     var couponInfo = JSON.parse(imageData.text);
                     Coupon.check(couponInfo).then(function(result) {
                       console.log("result: " + JSON.stringify(result));
+                      var data = result.data;
+                      if(data.valid) {
+                        var confirmPopup = $ionicPopup.confirm({
+                         title: 'Valid coupon',
+                         template: data.name + ": " + data.description
+                       });
+                       confirmPopup.then(function(choice) {
+                         if(choice) {
+                           console.log("yes");
+                         } else {
+                           console.log("no");
+                         }
+                       });
+                     } else {
+                       var alertPopup = $ionicPopup.confirm({
+                        title: 'Invalid coupon',
+                        template: data.cause
+                      });
+                      
+                     }
                     });
                 }
 

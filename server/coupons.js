@@ -92,10 +92,21 @@ function check(req, res, next) {
         return res.send(JSON.stringify(result));
       }
 
-
       var coupon = coupons[0];
-      winston.info("startDate: " + coupon.startdate + " type: " + (typeof coupon.startdate));
-      winston.info(Date.now() > coupon.startdate);
+
+      if(coupon.startdate != null && Date.now() < coupon.startdate) {
+        result = {valid: false, cause: 'Campaign not started yet', name: coupon.name, startdate: coupon.startdate};
+        return res.send(JSON.stringify(result));
+      }
+      if(coupon.enddate != null) {
+        var expiredDate = new Date(coupon.enddate);
+        expiredDate.setDate(expiredDate.getDate() + 1);
+        if(Date.now() > expiredDate) {
+          result = {valid: false, cause: 'Campaign ended', name: coupon.name, enddate: coupon.enddate};
+          return res.send(JSON.stringify(result));
+        }
+      }
+
       result = {valid: true, name: coupon.name, description: coupon.description};
       winston.info("sending: " + JSON.stringify(result));
       return res.send(JSON.stringify(result));
