@@ -11,7 +11,7 @@
                 <p>Expires on: {{offer.enddate}}</p>
             </div>
             <div class="item item-body">
-                <img class="full-image" ng-src="img/qrcode.svg">
+                <img class="full-image" ng-src="data:image/gif;base64,{{offer.coupon.base64}}">
             </div>
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" ng-click="deleteItem(offer)">
