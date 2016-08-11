@@ -143,6 +143,7 @@ function getReport(req, res, next) {
     for (offer in offers) {
       total += offer.count;
     }
+    winston.info("report: " + JSON.stringify({total: total, offers: offers}));
     return res.send(JSON.stringify({total: total, offers: offers}));
   });
 }
