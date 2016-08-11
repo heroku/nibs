@@ -531,3 +531,7 @@ a {
 .profile td {
   padding-left: 3em;
 }
+
+.report img {
+  width: 75px;
+}
