@@ -74,7 +74,7 @@ app.post('/coupons', addCorsHeaders, auth.validateToken, coupons.addItem);
 app.get('/coupons/:id', addCorsHeaders, auth.validateToken, coupons.getById);
 app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
 app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume);
-app.get('/coupons/report', addCorsHeaders, auth.validateToken, coupons.getReport);
+app.get('/report', addCorsHeaders, auth.validateToken, coupons.getReport);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
