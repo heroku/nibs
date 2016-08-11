@@ -526,3 +526,8 @@ a {
     margin-left:-75px;
     width:140px
 }
+
+
+.profile td {
+  margin-left: 3em;
+}
