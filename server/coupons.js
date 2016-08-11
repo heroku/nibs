@@ -9,6 +9,7 @@ function getCoupon(coupon) {
 }
 
 function findById(id, userId) {
+  winston.info("findById");
   return db.query('SELECT id, eitech__campaign__c as campaign, eitech__consommateur__r__eitech__loyaltyid__c as consommateur, eitech__date_de_consommation__c as date, eitech__commercant__r__eitech__loyaltyid__c as commercant, eitech__Secret__c as secret FROM salesforce.eitech__coupon__c WHERE id = $1 AND eitech__consommateur__r__eitech__loyaltyid__c = $2', [id, userId], true);
 }
 
@@ -133,9 +134,28 @@ function consume(req, res, next) {
 }
 
 
+function getReport(req, res, next) {
+  winston.info("getReport");
+  var userId = req.externalUserId;
+
+  db.query('SELECT ca.id, ca.name as name, ca.eitech__image__c as image, count(*) as count FROM salesforce.eitech__coupon__c co, salesforce.campaign ca WHERE  co.eitech__campaign__c = ca.sfid AND co.eitech__commercant__r__eitech__loyaltyid__c = $1 GROUP BY ca.id, ca.name, ca.eitech__image__c, ca.enddate ORDER BY ca.enddate DESC NULLS FIRST', [userId]).then(function(offers) {
+    var total = 0;
+    winston.info("offers: " + JSON.stringify(offers));
+    offers.forEach(function (offer ) {
+      winston.info(offer.count);
+      total += parseInt(offer.count);
+    });
+    winston.info("count: " + total);
+    winston.info("report: " + JSON.stringify({total: total, offers: offers}));
+    return res.send(JSON.stringify({total: total, offers: offers}));
+  });
+}
+
+
 exports.addItem = addItem;
 exports.getById = getById;
 exports.createCoupon = createCoupon;
 exports.getImage = getImage;
 exports.check = check;
 exports.consume = consume;
+exports.getReport = getReport;

@@ -17,6 +17,9 @@ angular.module('nibs.coupon', [])
     },
     consume: function(couponInfo) {
       return $http.post($rootScope.server.url + '/coupons/consume/', couponInfo);
+    },
+    getReport: function () {
+      return $http.get($rootScope.server.url + '/report');
     }
   };
 });

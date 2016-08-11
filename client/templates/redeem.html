@@ -10,7 +10,7 @@
 		  <div class="item item-body">
 			  <div ng-if="coupon.date == null" >
 				  <p>Coupon:  {{coupon.id}}</p>
-				  <img src="data:image/gif;base64,{{coupon.base64}}" width="260" height="260" />
+				  <img ng-src="data:image/gif;base64,{{coupon.base64}}" width="260" height="260" />
 				  <p>Present this code in one of our stores to redeem this offer. </p>
 				</div>
 			  <div ng-if="coupon.date != null" >

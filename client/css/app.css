@@ -526,3 +526,12 @@ a {
     margin-left:-75px;
     width:140px
 }
+
+
+.profile td {
+  padding-left: 3em;
+}
+
+.report img {
+  width: 75px;
+}
