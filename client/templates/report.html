@@ -13,19 +13,21 @@
 
 
         <div>
-          Total Number of Scanned Coupons: {{report.total}}
+          Total Number of Scanned Coupons: {{total}}
         </div>
 
 
         <div>
-          <table>
+          <table class="report">
             <tr>
               <th colspan="2">Offer</th>
               <th>Nb of coupons</th>
             </tr>
-            <tr ng-repeat="offer in report.offers">
+            <tr ng-repeat="offer in offers">
               <td>
-                <img ng-if="offer.image" ng-src="{{offer.image}}">
+                <div class="item">
+                  <img ng-if="offer.image" ng-src="{{offer.image}}">
+                </div>
               </td>
               <td>
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
@@ -35,7 +37,9 @@
                 </a>
               </td>
               <td>
-                {{offer.count}}
+                <div class="item">
+                  {{offer.count}}
+                </div>
               </td>
           </tr>
         </table>
