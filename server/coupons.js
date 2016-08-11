@@ -142,6 +142,8 @@ function getReport(req, res, next) {
     var total = 0;
     winston.info("offers: " + JSON.stringify(offers));
     for (offer in offers) {
+      winston.info("offer: " + JSON.stringify(offer));
+      winston.info(offer.count);
       total += parseInt(offer.count);
     }
     winston.info("count: " + total);
