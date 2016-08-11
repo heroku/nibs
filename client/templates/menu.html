@@ -11,7 +11,7 @@
 
         <ion-content>
 
-            <h1>Chug chug, {{user.firstname}}!</h1>
+            <h1>Cheers, {{user.firstname}}!</h1>
 
             <ion-list class="top-list">
 
@@ -21,12 +21,12 @@
                     <span class="badge">2</span>
                 </ion-item>
 
-                <ion-item nav-clear menu-close ui-sref="app.products" class="item-icon-left">
+                <ion-item nav-clear menu-close ui-sref="app.products" class="item-icon-left" >
                     <i class="icon icon-chocolate-square"></i>
                     Selections
                 </ion-item>
 
-                <ion-item nav-clear menu-close ui-sref="app.wallet" class="item-icon-left">
+                <ion-item nav-clear menu-close ui-sref="app.wallet" class="item-icon-left" ng-if="user.typecompte == 'Client'">
                     <i class="icon ion-ios7-bookmarks"></i>
                     My Wallet
                 </ion-item>
@@ -45,8 +45,8 @@
                     <i class="icon ion-camera"></i>
                     Gallery
                 </ion-item>
-                
-                <ion-item nav-clear menu-close ui-sref="app.scan" class="item-icon-left">
+
+                <ion-item nav-clear menu-close ui-sref="app.scan" class="item-icon-left" ng-if="user.typecompte != 'Client'" >
                     <i class="icon ion-qr-scanner"></i>
                     Scan
                 </ion-item>
