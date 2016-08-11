@@ -26,7 +26,7 @@ angular.module('nibs.status', [])
         //             }]
         //         });
         //     }
-        // }
+        }
 
         return {
             show: show,
