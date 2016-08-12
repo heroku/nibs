@@ -37,12 +37,13 @@
     "request": "~2.40.0",
     "ejs": "~1.0.0",
     "cookie-session": "~1.0.2",
-    "qrcode-npm": "~0.0.3"
-  },
-  "devDependencies": {
+    "qrcode-npm": "~0.0.3",
     "fs": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-replace-task": "^0.11.0",
     "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+
   }
 }
