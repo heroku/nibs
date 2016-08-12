@@ -20,20 +20,19 @@
         <div>
           <div class="report">
             <div class="row header">
-              <div class="col-15"></div>
-              <div class="col-70">Offer</div>
-              <div class="col-15">Nb of coupons</div>
+              <div class="col col-80">Offer</div>
+              <div class="col col-20">Nb of coupons</div>
             </div>
             <div ng-repeat="offer in offers" class="row" >
-              <div class="col-15">
+              <div class="col col-20">
                 <img ng-if="offer.image" ng-src="{{offer.image}}">
               </div>
-              <div class="col-70">
+              <div class="col col-60">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                   {{offer.name}}
                 </a>
               </div>
-              <div class="col-15">
+              <div class="col col-20">
                 {{offer.count}}
               </div>
           </div>

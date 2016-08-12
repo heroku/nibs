@@ -541,8 +541,10 @@ a {
   border-color: #ddd;
   border-width: 1px;
   border-style: solid;
+  padding: 10px;
 }
 
 .report .header {
   font-weight: bold;
+  text-align: center;
 }
