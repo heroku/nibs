@@ -1,8 +1,8 @@
 angular.module('nibs.config', [])
 
-    .constant('SERVER_URL', 'https://nibs81-demo.herokuapp.com')
+    .constant('SERVER_URL', '@@serverUrl')
 
-    .constant('FB_APP_ID','1182336641808737')
+    .constant('FB_APP_ID','@@fbAppId')
 
     .constant('STATUS_LABELS', [
 
