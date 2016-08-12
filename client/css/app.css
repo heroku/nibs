@@ -535,3 +535,14 @@ a {
 .report img {
   width: 75px;
 }
+
+.report .col {
+  background-color: white;
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.report .header {
+  font-weight: bold;
+}
