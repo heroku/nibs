@@ -18,31 +18,25 @@
 
 
         <div>
-          <table class="report">
-            <tr>
-              <th colspan="2">Offer</th>
-              <th>Nb of coupons</th>
-            </tr>
-            <tr ng-repeat="offer in offers">
-              <td>
-                <div class="item">
-                  <img ng-if="offer.image" ng-src="{{offer.image}}">
-                </div>
-              </td>
-              <td>
+          <div class="report">
+            <div class="row header">
+              <div class="col col-80">Offer</div>
+              <div class="col col-20">Nb of coupons</div>
+            </div>
+            <div ng-repeat="offer in offers" class="row" >
+              <div class="col col-20">
+                <img ng-if="offer.image" ng-src="{{offer.image}}">
+              </div>
+              <div class="col col-60">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
-                  <div class="item">
-                      <h2>{{offer.name}}</h2>
-                  </div>
+                  {{offer.name}}
                 </a>
-              </td>
-              <td>
-                <div class="item">
-                  {{offer.count}}
-                </div>
-              </td>
-          </tr>
-        </table>
+              </div>
+              <div class="col col-20">
+                {{offer.count}}
+              </div>
+          </div>
+        </div>
       </div>
 
     </ion-content>

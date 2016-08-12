@@ -34,6 +34,8 @@ app.use(methodOverride());
 
 app.use(express.static(path.join(__dirname, './client')));
 
+app.use('/public/img', express.static(path.join(__dirname, './img')));
+
 app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.send(500, err.message);
