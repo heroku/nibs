@@ -5,7 +5,7 @@ var fs      = require('fs');
 
 gulp.task('replace', function () {
   // Get the environment from the command line
-  var env = args.env || 'dev';
+  var env = process.env.ENV || args.env || 'dev';
 
   // Read the settings from the right file
   var filename = env + '.json';
