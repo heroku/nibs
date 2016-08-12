@@ -11,7 +11,6 @@ var express = require('express'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
-//    cases = require('./server/cases'),
     wallet = require('./server/wallet'),
     wishlist = require('./server/wishlist'),
     stores = require('./server/stores'),
@@ -78,8 +77,6 @@ app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
 app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume);
 app.get('/report', addCorsHeaders, auth.validateToken, coupons.getReport);
 
-//app.post('/cases', auth.validateToken, cases.createCase);
-//app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/s3signing', addCorsHeaders, auth.validateToken, s3signing.sign);
 
