@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "logfmt": "~0.21.0",
-    "bcrypt": "~0.7.7",
+    "bcrypt": "~0.8.7",
     "pg": "~2.11.1",
     "node-uuid": "~1.4.1",
     "validator": "~3.5.0",
@@ -44,6 +44,18 @@
     "yargs": "^4.8.1"
   },
   "devDependencies": {
-
+    "browserify": "^13.1.0",
+    "chai": "^3.5.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.2.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sinon": "^1.0.5",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5",
+    "watchify": "^3.7.0"
   }
 }
