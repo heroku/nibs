@@ -22,9 +22,9 @@ angular.module('nibs.report', ['nibs.coupon'])
      //Controllers
     .controller('ReportCtrl', function ($scope, $rootScope, Coupon) {
       function refresh() {
-        return Coupon.getReport().then(function(report) {
-          $scope.total = report.data.total;
-          $scope.offers = report.data.offers;
+        return Coupon.getReport().success(function(report) {
+          $scope.total = report.total;
+          $scope.offers = report.offers;
         });
       }
 

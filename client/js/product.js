@@ -39,8 +39,8 @@ angular.module('nibs.product', ['nibs.status', 'nibs.activity', 'nibs.wishlist']
     })
 
     .controller('ProductListCtrl', function ($scope, Product) {
-      
-        Product.all().then(function(products) {
+
+        Product.all().success(function(products) {
             $scope.products = products;
         });
 

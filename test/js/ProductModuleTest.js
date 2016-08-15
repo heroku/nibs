@@ -1,7 +1,7 @@
-function fakePromise(value) {
+function fakeHttpPromise(value) {
   return {
-    success: function(callback) {return callback(value);},
-    then: function(callback) {return callback(value);}
+    then: function(callback) {return callback({data: value});},
+    success: function(callback) {return callback(value);}
   }
 }
 
@@ -26,8 +26,8 @@ describe('ProductListCtrl', function(){
 
 
       var stub = sinon.stub(Product, "all");
-      stub.onFirstCall().returns(fakePromise(products));
-      stub.onSecondCall().returns(fakePromise(products2));
+      stub.onFirstCall().returns(fakeHttpPromise(products));
+      stub.onSecondCall().returns(fakeHttpPromise(products2));
 
 
       var myController = $controller('ProductListCtrl', {
