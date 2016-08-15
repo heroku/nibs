@@ -1,0 +1,22 @@
+{
+  "name": "loyalty",
+  "description": "Loyalty Mobile App",
+  "main": "server.js",
+  "authors": [
+    "Christophe Coenraets"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ei-technologies/nibs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-mocks": "^1.5.8"
+  }
+}
