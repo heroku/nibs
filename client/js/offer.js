@@ -63,7 +63,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 		};
 	})
 
-	.controller('OfferDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, OpenFB, WalletItem, Activity, Status, Coupon) {
+	.controller('OfferDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, $q, Offer, OpenFB, WalletItem, Activity, Status, Coupon) {
 
 		Offer.get($stateParams.offerId).success(function(offer) {
 			$scope.offer = offer;
@@ -115,16 +115,18 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 		};
 
 		$scope.redeem = function () {
-			Coupon.create({offerId: $scope.offer.sfid}).then(function(coupon) {
-				$scope.coupon = coupon.data;
+			Coupon.create({offerId: $scope.offer.sfid}).success(function(coupon) {
+				$scope.coupon = coupon;
 				console.log("Coupon: " + JSON.stringify($scope.coupon));
-				if(coupon.date != null ) {
+				function createActivity() {
 					// Ajouts de points :
 					return Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
 					.success(function(status) {
 						Status.checkStatus(status);
 					});
 				}
+
+				return $q.when(	(coupon.date == null ) ?createActivity()				: undefined );
 
 			}).then(function() {
 				$state.go('app.offer-redeem', {offerId: $scope.offer.sfid, couponId: $scope.coupon.id});

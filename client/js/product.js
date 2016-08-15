@@ -1,4 +1,4 @@
-angular.module('nibs.product', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wishlist'])
+angular.module('nibs.product', ['nibs.status', 'nibs.activity', 'nibs.wishlist'])
 
     .config(function ($stateProvider) {
 
@@ -38,7 +38,7 @@ angular.module('nibs.product', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.
         };
     })
 
-    .controller('ProductListCtrl', function ($scope, Product, OpenFB) {
+    .controller('ProductListCtrl', function ($scope, Product) {
 
         Product.all().success(function(products) {
             $scope.products = products;
@@ -53,7 +53,7 @@ angular.module('nibs.product', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.
 
     })
 
-    .controller('ProductDetailCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, Product, OpenFB, WishListItem, Activity, Status) {
+    .controller('ProductDetailCtrl', function ($scope, $rootScope, $stateParams, $ionicPopup, Product, WishListItem, Activity, Status) {
 
         Product.get($stateParams.productId).success(function(product) {
             $scope.product = product;
