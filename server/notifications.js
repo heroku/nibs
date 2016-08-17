@@ -1,26 +1,27 @@
 var request = require('request'),
   winston = require('winston'),
+  db = require('./pghelper'),
   config = require('./config');
 
 var tokens = [];
 
-function sendNotifications() {
-  winston.info("sending to", tokens.toString());
+function searchOffers() {
+  return db.query("SELECT name FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' AND 	eitech__notifiable__c  ");
+}
 
+function sendNotification(offerName) {
   var options = {
     uri: 'https://api.ionic.io/push/notifications',
     method: 'POST',
-    headers: {'Authorization': 'Bearer ' + config.ionicApiToken }
-    ,
+    headers: {'Authorization': 'Bearer ' + config.ionicApiToken },
     json: {
       tokens: tokens,
       profile: "test",
       notification: {
-        message: "This is my demo push!"
+        message: "New offer: " + offerName.name
       }
     }
   }
-  winston.info("using headers", JSON.stringify(options.headers));
 
   function callback(error, response, body) {
     if (!error ) {
@@ -30,6 +31,19 @@ function sendNotifications() {
   }
 
   request(options, callback);
+}
+
+function sendNotifications() {
+  if(tokens.length == 0) {
+    winston.info("nobody to send to");
+    return;
+  }
+
+  winston.info("sending to", tokens.toString());
+  searchOffers().then(function(names) {
+    names.forEach(sendNotification);
+  });
+
 }
 
 function register(req, res, next) {
