@@ -40,10 +40,10 @@ function sendNotification(offerName) {
 }
 
 function sendNotifications() {
-  if(tokens.length == 0) {
-    winston.info("nobody to send to");
-    return;
-  }
+  // if(tokens.length == 0) {
+  //   winston.info("nobody to send to");
+  //   return;
+  // }
 
   winston.info("sending to", tokens.toString());
   searchOffers().then(function(names) {
