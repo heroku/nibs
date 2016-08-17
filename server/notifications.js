@@ -10,8 +10,7 @@ function sendNotifications() {
   var options = {
     uri: 'https://api.ionic.io/push/notifications',
     method: 'POST',
-    headers: {Authorization: 'Bearer ' + config.ionicApiToken,
-      Content-Type: 'application/json'}
+    headers: {'Authorization': 'Bearer ' + config.ionicApiToken }
     ,
     json: {
       tokens: tokens,
