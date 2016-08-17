@@ -18,7 +18,7 @@ function sendNotification(offerName) {
       tokens: tokens,
       profile: "test",
       notification: {
-        title: "New offer"
+        title: "New offer",
         message: offerName.name,
         android: {
           message: "Android " + offerName.name,
