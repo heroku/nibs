@@ -15,18 +15,29 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
-            $ionicPush.init({
-              "debug": true,
-              "onNotification": function(notification) {
-                // var payload = notification.payload;
-                console.log("notification: " + JSON.stringify(notification));
-              }
-            });
+            if($ionicPlatform.isAndroid()) {
+              $ionicPush.init({
+                "debug": true,
+                "onNotification": function(notification) {
+                  var payload = notification.payload;
+                  console.log("notification: " + JSON.stringify(notification));
+                  if(typeof(Storage) !== "undefined") {
+                    var localStorage = $window.localStorage;
+                    if(localStorage.getItem('seqNumber') == null || payload.seqNumber > parseInt(localStorage.getItem('seqNumber'))) {
+                      localStorage.setItem('seqNumber', payload.seqNumber);
+                      console.log("Notif: " + notification.text);
+                    }
+                  }
 
-            $ionicPush.register(function(token) {
-              console.log("Device token:", token.token);
-              $http.get(  $rootScope.server.url + '/notifications/register/' + token.token);
-            });
+                }
+              });
+
+              $ionicPush.register(function(token) {
+                console.log("Device token:", token.token);
+                $http.get(  $rootScope.server.url + '/notifications/register/' + token.token);
+              });
+            }
+
         });
 
         // Re-route to welcome street if we don't have an authenticated token

@@ -15,13 +15,14 @@ function sendNotification(offerName) {
     method: 'POST',
     headers: {'Authorization': 'Bearer ' + config.ionicApiToken },
     json: {
-      tokens: tokens,
+      tokens: [],
+      send_to_all: true,
       profile: "test",
       notification: {
         title: "New offer",
         message: offerName.name,
         android: {
-          message: "Android " + offerName.name,
+          message: offerName.name,
           payload: {seqNumber: offerName.seqnumber }
         }
       }
