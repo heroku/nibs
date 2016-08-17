@@ -1,6 +1,6 @@
-var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.coupon', 'nibs.product', 'nibs.offer', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.scan', 'nibs.report'])
+var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.push', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.coupon', 'nibs.product', 'nibs.offer', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.scan', 'nibs.report'])
 
-    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
+    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $ionicPush, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 
         var user = JSON.parse($window.localStorage.getItem('user'));
 
@@ -15,7 +15,19 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
+            $ionicPush.init({
+              "debug": true
+              // ,
+              // "onNotification": function(notification) {
+              //   // var payload = notification.payload;
+              //   console.log("notification: " + JSON.stringify(notification));
+              // }
+            });
 
+            $ionicPush.register(function(token) {
+              console.log("Device token:", token.token);
+              $http.get(  $rootScope.server.url + '/notifications/register/' + token.token);
+            });
         });
 
         // Re-route to welcome street if we don't have an authenticated token

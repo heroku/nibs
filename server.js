@@ -5,6 +5,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     winston = require('winston'),
+    cron = require('node-cron'),
     sqlinit = require('./server/sqlinit'),
 
     // App modules
@@ -20,6 +21,7 @@ var express = require('express'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
     coupons = require('./server/coupons'),
+    notifications = require('./server/notifications'),
     app = express();
 
 app.set('port', process.env.PORT || 5000);
@@ -77,6 +79,8 @@ app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
 app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume);
 app.get('/report', addCorsHeaders, auth.validateToken, coupons.getReport);
 
+app.get('/notifications/register/:token', addCorsHeaders, notifications.register);
+
 
 app.post('/s3signing', addCorsHeaders, auth.validateToken, s3signing.sign);
 
@@ -94,6 +98,10 @@ function addCorsHeaders(req, res, next) {
     });
     return next();
 }
+
+cron.schedule('*/2 * * * *', function(){
+  notifications.sendNotifications();
+});
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
