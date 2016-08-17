@@ -16,7 +16,7 @@ function sendNotification(offerName) {
     }
   }
   var filteredTokens = tokens.filter(filterFunction(offerName.seqnumber));
-  var tokenValues = tokens.map(function(tokenObject) {return tokenObject.token});
+  var tokenValues = filteredTokens.map(function(tokenObject) {return tokenObject.token});
   filteredTokens.forEach(function(tokenObject){
     tokenObject.seqNumber = offerName.seqnumber;
   });
