@@ -16,12 +16,11 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
                 StatusBar.styleDefault();
             }
             $ionicPush.init({
-              "debug": true
-              // ,
-              // "onNotification": function(notification) {
-              //   // var payload = notification.payload;
-              //   console.log("notification: " + JSON.stringify(notification));
-              // }
+              "debug": true,
+              "onNotification": function(notification) {
+                // var payload = notification.payload;
+                console.log("notification: " + JSON.stringify(notification));
+              }
             });
 
             $ionicPush.register(function(token) {
