@@ -15,7 +15,7 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
-            if($ionicPlatform.isAndroid()) {
+            if(ionic.Platform.isAndroid()) {
               $ionicPush.init({
                 "debug": true,
                 "onNotification": function(notification) {
@@ -34,7 +34,11 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
 
               $ionicPush.register(function(token) {
                 console.log("Device token:", token.token);
-                $http.get(  $rootScope.server.url + '/notifications/register/' + token.token);
+                var seqnumber = 0;
+                if($window.localStorage !== undefined && $window.localStorage.getItem('seqNumber') != null) {
+                  seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
+                }
+                $http.get(  $rootScope.server.url + '/notifications/register/' + token.token + '/' + seqnumber);
               });
             }
 

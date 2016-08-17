@@ -6,46 +6,65 @@ var request = require('request'),
 var tokens = [];
 
 function searchOffers() {
-  return db.query("SELECT name, eitech__sequential_number__c as seqnumber FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' AND 	eitech__notifiable__c  ");
+  return db.query("SELECT name, eitech__sequential_number__c as seqnumber FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' AND 	eitech__notifiable__c ORDER BY eitech__sequential_number__c ");
 }
 
 function sendNotification(offerName) {
-  var options = {
-    uri: 'https://api.ionic.io/push/notifications',
-    method: 'POST',
-    headers: {'Authorization': 'Bearer ' + config.ionicApiToken },
-    json: {
-      tokens: [],
-      send_to_all: true,
-      profile: "test",
-      notification: {
-        title: "New offer",
-        message: offerName.name,
-        android: {
+  function filterFunction(i) {
+    return function (tokenObject) {
+      return tokenObject.seqNumber <i;
+    }
+  }
+  var filteredTokens = tokens.filter(filterFunction(offerName.seqnumber));
+  var tokenValues = tokens.map(function(tokenObject) {return tokenObject.token});
+  filteredTokens.forEach(function(tokenObject){
+    tokenObject.seqNumber = offerName.seqnumber;
+  });
+
+  winston.info("Updated tokens:", JSON.stringify(tokens));
+
+  if(tokenValues.length > 0) {
+    var options = {
+      uri: 'https://api.ionic.io/push/notifications',
+      method: 'POST',
+      headers: {'Authorization': 'Bearer ' + config.ionicApiToken },
+      json: {
+        tokens: tokenValues,
+        profile: "test",
+        notification: {
+          title: "New offer",
           message: offerName.name,
-          payload: {seqNumber: offerName.seqnumber }
+          android: {
+            message: offerName.name,
+            payload: {seqNumber: offerName.seqnumber }
+          }
         }
       }
     }
-  }
 
-  function callback(error, response, body) {
-    if (!error ) {
-      winston.info("Response status:", response.statusCode);
-      winston.info("body: " + JSON.stringify(body));
+    function callback(error, response, body) {
+      if (!error ) {
+        winston.info("Response status:", response.statusCode);
+        winston.info("body: " + JSON.stringify(body));
+      } else {
+        winston.error("Error sending push: " + JSON.stringify(error));
+      }
     }
+
+    request(options, callback);
+  } else {
+    winston.info("No one to send " + offerName.seqnumber);
   }
 
-  request(options, callback);
 }
 
 function sendNotifications() {
-  // if(tokens.length == 0) {
-  //   winston.info("nobody to send to");
-  //   return;
-  // }
+  if(tokens.length == 0) {
+    winston.info("nobody to send to");
+    return;
+  }
 
-  winston.info("sending to", tokens.toString());
+
   searchOffers().then(function(names) {
     names.forEach(sendNotification);
   });
@@ -54,7 +73,11 @@ function sendNotifications() {
 
 function register(req, res, next) {
   var token = req.params.token;
-  tokens.push(token);
+  var seqNumber = req.params.seqnumber;
+  tokens.push({token: token, seqNumber: seqNumber });
+  if(tokens.length > 20) {
+    tokens.shift();
+  }
   winston.info("registered " + token);
   res.send(201);
 }

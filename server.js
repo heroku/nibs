@@ -79,7 +79,7 @@ app.post('/coupons/check', addCorsHeaders, auth.validateToken, coupons.check);
 app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume);
 app.get('/report', addCorsHeaders, auth.validateToken, coupons.getReport);
 
-app.get('/notifications/register/:token', addCorsHeaders, notifications.register);
+app.get('/notifications/register/:token/:seqnumber', addCorsHeaders, notifications.register);
 
 
 app.post('/s3signing', addCorsHeaders, auth.validateToken, s3signing.sign);
