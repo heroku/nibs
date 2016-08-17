@@ -19,7 +19,7 @@ function sendNotification(offerName) {
       profile: "test",
       notification: {
         title: "New offer"
-        message: offerName.name
+        message: offerName.name,
         android: {
           message: "Android " + offerName.name,
           payload: {seqNumber: offerName.seqnumber }
