@@ -5,13 +5,14 @@ var request = require('request'),
 var tokens = [];
 
 function sendNotifications() {
-  winston.info("sending to " + tokens.toString());
-  winston.info("using api token ", config.ionicApiToken);
+  winston.info("sending to", tokens.toString());
+
   var options = {
     uri: 'https://api.ionic.io/push/notifications',
     method: 'POST',
     headers: [
-      {name: 'Authorization', value: 'Bearer ' + config.ionicApiToken }
+      {name: 'Authorization', value: 'Bearer ' + config.ionicApiToken },
+      {name: 'Content-Type', value: 'application/json'}
     ],
     json: {
       tokens: tokens,
@@ -21,6 +22,7 @@ function sendNotifications() {
       }
     }
   }
+  winston.info("using headers", JSON.stringify(options.headers));
 
   function callback(error, response, body) {
     if (!error ) {
