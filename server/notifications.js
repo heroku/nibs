@@ -79,13 +79,16 @@ function register(req, res, next) {
     tokens.shift();
   }
   winston.info("registered " + token);
-  res.send(201);
+  return res.send(201);
 }
 
 function reset(req, res, next) {
   var token = req.params.token;
-  tokens.find(function(elt) {return elt.token == token}).seqNumber = 0;
-  res.send(204);
+  var filteredTokens = tokens.filter(function(elt) {return elt.token == token});
+  if(filteredTokens.length > 0) {
+    filteredTokens[0].seqNumber = 0;
+  }
+  return res.send(204);
 }
 
 exports.sendNotifications = sendNotifications;

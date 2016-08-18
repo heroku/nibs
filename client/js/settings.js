@@ -52,8 +52,10 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity', 'ionic'])
         };
 
         $scope.resetNofications = function() {
-          $http.get($rootScope.server.url + '/reset/' + $window.localStorage.getItem('notifToken')).success(function() {
+          $http.get($rootScope.server.url + '/notifications/reset/' + $window.localStorage.getItem('notifToken')).success(function() {
             $window.localStorage.setItem('seqNumber', '0');
+          }).then(function() {
+            $ionicPopup.alert({title: 'Nibs', content: 'Notifications reset'});
           });
 
         }
