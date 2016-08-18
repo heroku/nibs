@@ -35,10 +35,14 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
               $ionicPush.register(function(token) {
                 console.log("Device token:", token.token);
                 var seqnumber = 0;
-                if($window.localStorage !== undefined && $window.localStorage.getItem('seqNumber') != null) {
-                  seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
+                if($window.localStorage !== undefined ) {
+                  $window.localStorage.setItem('notifToken', token.token);
+                  if($window.localStorage.getItem('seqNumber') != null) {
+                    seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
+                  }
                 }
                 $http.get(  $rootScope.server.url + '/notifications/register/' + token.token + '/' + seqnumber);
+
               });
             }
 

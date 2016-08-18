@@ -82,5 +82,12 @@ function register(req, res, next) {
   res.send(201);
 }
 
+function reset(req, res, next) {
+  var token = req.params.token;
+  tokens.find(function(elt) {return elt.token == token}).seqNumber = 0;
+  res.send(204);
+}
+
 exports.sendNotifications = sendNotifications;
 exports.register = register;
+exports.reset = reset;

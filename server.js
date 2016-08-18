@@ -80,6 +80,7 @@ app.post('/coupons/consume', addCorsHeaders, auth.validateToken, coupons.consume
 app.get('/report', addCorsHeaders, auth.validateToken, coupons.getReport);
 
 app.get('/notifications/register/:token/:seqnumber', addCorsHeaders, notifications.register);
+app.get('/notifications/reset/:token', addCorsHeaders, auth.validateToken, notifications.reset);
 
 
 app.post('/s3signing', addCorsHeaders, auth.validateToken, s3signing.sign);

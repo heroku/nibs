@@ -1,4 +1,4 @@
-angular.module('nibs.settings', ['openfb', 'nibs.activity'])
+angular.module('nibs.settings', ['openfb', 'nibs.activity', 'ionic'])
 
     // Routes
     .config(function ($stateProvider) {
@@ -17,8 +17,8 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
 
     })
 
-    .controller('SettingsCtrl', function ($scope, $rootScope, $window, $ionicPopup, $document, $state, OpenFB, Activity, Picture) {
-
+    .controller('SettingsCtrl', function ($scope, $rootScope, $window, $ionicPopup, $document, $state, $http, OpenFB, Activity, Picture) {
+        $scope.isAndroid = ionic.Platform.isAndroid();
         $scope.deleteActivities = function() {
             Activity.deleteAll().success(function() {
                 $rootScope.user.status = 1;
@@ -50,5 +50,12 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
                 $ionicPopup.alert({title: 'Error', content: 'You need to be logged in with a Facebook user to use this option.'});
             }
         };
+
+        $scope.resetNofications = function() {
+          $http.get($rootScope.server.url + '/reset/' + $window.localStorage.getItem('notifToken')).success(function() {
+            $window.localStorage.setItem('seqNumber', '0');
+          });
+
+        }
 
     });
