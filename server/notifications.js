@@ -36,9 +36,7 @@ function sendNotification(offerName) {
           message: offerName.name,
           android: {
             message: offerName.name,
-            payload: {seqNumber: offerName.seqnumber },
-            tag: offerName.seqnumber.toString(),
-            collapse_key: offerName.seqnumber.toString()
+            payload: {seqNumber: offerName.seqnumber }
           }
         }
       }
