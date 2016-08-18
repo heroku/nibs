@@ -1,6 +1,6 @@
-var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.coupon', 'nibs.product', 'nibs.offer', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.scan', 'nibs.report'])
+var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.push', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.coupon', 'nibs.product', 'nibs.offer', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.scan', 'nibs.report'])
 
-    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
+    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $ionicPush, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 
         var user = JSON.parse($window.localStorage.getItem('user'));
 
@@ -14,6 +14,36 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
         $ionicPlatform.ready(function() {
             if(window.StatusBar) {
                 StatusBar.styleDefault();
+            }
+            if(ionic.Platform.isAndroid()) {
+              $ionicPush.init({
+                "debug": true,
+                "onNotification": function(notification) {
+                  var payload = notification.payload;
+                  console.log("notification: " + JSON.stringify(notification));
+                  if(typeof(Storage) !== "undefined") {
+                    var localStorage = $window.localStorage;
+                    if(localStorage.getItem('seqNumber') == null || payload.seqNumber > parseInt(localStorage.getItem('seqNumber'))) {
+                      localStorage.setItem('seqNumber', payload.seqNumber);
+                      console.log("Notif: " + notification.text);
+                    }
+                  }
+
+                }
+              });
+
+              $ionicPush.register(function(token) {
+                console.log("Device token:", token.token);
+                var seqnumber = 0;
+                if($window.localStorage !== undefined ) {
+                  $window.localStorage.setItem('notifToken', token.token);
+                  if($window.localStorage.getItem('seqNumber') != null) {
+                    seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
+                  }
+                }
+                $http.get(  $rootScope.server.url + '/notifications/register/' + token.token + '/' + seqnumber);
+
+              });
             }
 
         });

@@ -7,7 +7,7 @@ module.exports = {
 
     productFamily: process.env.PRODUCT_FAMILY || "Nibs",
 
-
+    ionicApiToken: process.env.IONIC_API_TOKEN,
 
     // Used for picture upload (user profile and gallery)
     s3: {
