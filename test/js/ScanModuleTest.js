@@ -1,13 +1,14 @@
-function fakePromise(value) {
-  return {
-    then: function(callback) {return callback(value);},
-  }
-}
 
-var cancelledImage = {cancelled: true, format: 'QR_CODE'};
-var okImage = {cancelled: false, format: 'QR_CODE', text: '{"id": 1}'};
+
+
 
 describe('ScanCtrl', function() {
+  var cancelledImage = {cancelled: true, format: 'QR_CODE'};
+  var couponInfo = {id: 1};
+  var okImage = {cancelled: false, format: 'QR_CODE', text: JSON.stringify(couponInfo)};
+
+
+
   beforeEach(module('ui.router'));
   beforeEach(module('nibs.scan'));
   beforeEach(function(){ navigator.camera = true });
@@ -118,14 +119,14 @@ describe('ScanCtrl', function() {
 
       scope.takePicture();
       couponStub.calledOnce.should.be.true;
-      couponStub.firstCall.args[0].should.eql({id: 1});
+      couponStub.firstCall.args[0].should.eql(couponInfo);
       spy2.called.should.be.false;
       couponStub.calledBefore(confirmStub).should.be.true;
       confirmStub.calledOnce.should.be.true;
       confirmStub.firstCall.args[0].should.eql({subTitle: "name", template: "desc", title: "Valid coupon"});
       confirmStub.calledBefore(couponStub2).should.be.true;
       couponStub2.calledOnce.should.be.true;
-      couponStub2.firstCall.args[0].should.eql({id: 1});
+      couponStub2.firstCall.args[0].should.eql(couponInfo);
       couponStub2.calledBefore(toastStub).should.be.true;
       toastStub.calledOnce.should.be.true;
       toastStub.firstCall.args[0].should.eql('Coupon consumed');
