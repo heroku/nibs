@@ -9,7 +9,7 @@ var express = require('express'),
     sqlinit = require('./server/sqlinit'),
 
     // App modules
-    config = require('./config'),
+    config = require('./server/config'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
