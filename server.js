@@ -9,6 +9,7 @@ var express = require('express'),
     sqlinit = require('./server/sqlinit'),
 
     // App modules
+    config = require('./config'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
@@ -33,6 +34,15 @@ app.use(bodyParser({
 }));
 app.use(methodOverride());
 
+app.get('*', function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect(config.serverUrl + req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+})
+
+
+
 app.use(express.static(path.join(__dirname, './client')));
 
 app.use('/public/img', express.static(path.join(__dirname, './img')));
@@ -41,6 +51,8 @@ app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.send(500, err.message);
 });
+
+
 
 app.post('/login', addCorsHeaders, auth.login);
 app.post('/logout', addCorsHeaders, auth.validateToken, auth.logout);
