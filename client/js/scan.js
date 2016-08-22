@@ -17,21 +17,15 @@ angular.module('nibs.scan', ['ionic', 'ngCordova', 'nibs.coupon'])
 
     })
 
-    // Services
-    .factory('Scan', function ($http, $rootScope) {
-        return {
-            scan: function(pictureId) {
-                return $http.post($rootScope.server.url + '/scan');
-            }
-        };
-    })
+
 
      //Controllers
-    .controller('ScanCtrl', function ($scope, $rootScope, $ionicPopup, $cordovaBarcodeScanner, Coupon, $cordovaToast) {
+    .controller('ScanCtrl', function ($scope, $ionicPopup, $cordovaBarcodeScanner, Coupon, $cordovaToast) {
 
         $scope.takePicture = function () {
 
             if (!navigator.camera) {
+              console.log("pas de camera");
                 $ionicPopup.alert({title: 'Sorry', content: "This device does not support Camera"});
                 return;
             }

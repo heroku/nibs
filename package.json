@@ -4,7 +4,7 @@
   "description": "Loyalty Mobile App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start test\\karma.conf.js",
     "start": "node server.js",
     "init_salesforce_schema": "node server/init_salesforce_schema.js",
     "prestart": "gulp replace "
@@ -47,11 +47,9 @@
   "devDependencies": {
     "browserify": "^13.1.0",
     "chai": "^3.5.0",
-    "jasmine-core": "^2.4.1",
     "karma": "^1.2.0",
     "karma-browserify": "^5.1.0",
     "karma-chai": "^0.1.0",
-    "karma-jasmine": "^1.0.2",
     "karma-mocha": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-sinon": "^1.0.5",

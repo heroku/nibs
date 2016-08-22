@@ -9,6 +9,8 @@ module.exports = {
 
     ionicApiToken: process.env.IONIC_API_TOKEN,
 
+    serverUrl: process.env.OAUTH_REDIRECT_URL,
+
     // Used for picture upload (user profile and gallery)
     s3: {
         bucket: process.env.S3_BUCKET_NAME,

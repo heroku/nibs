@@ -50,13 +50,14 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.co
 	})
 
 	//Controllers
-	.controller('OfferListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User) {
+	.controller('OfferListCtrl', function ($scope, Offer) {
 		Offer.all().success(function(offers) {
 			$scope.offers = offers;
 		});
 
 		$scope.doRefresh = function() {
-			$scope.offers = Offer.all().success(function(offers) {
+			Offer.all().success(function(offers) {
+				console.log("refresh") 
 				$scope.offers = offers;
 				$scope.$broadcast('scroll.refreshComplete');
 			});
