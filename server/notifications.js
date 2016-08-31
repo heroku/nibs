@@ -6,7 +6,7 @@ var request = require('request'),
 var tokens = [];
 
 function searchOffers() {
-  return db.query("SELECT name, eitech__sequential_number__c as seqnumber FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' AND 	eitech__notifiable__c ORDER BY eitech__sequential_number__c ");
+  return db.query("SELECT name, eitech__sequential_number__c as seqnumber, id FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' AND 	eitech__notifiable__c ORDER BY eitech__sequential_number__c ");
 }
 
 function sendNotification(offerName) {
@@ -36,7 +36,7 @@ function sendNotification(offerName) {
           message: offerName.name,
           android: {
             message: offerName.name,
-            payload: {seqNumber: offerName.seqnumber }
+            payload: {seqNumber: offerName.seqnumber, offerId: offerName.id }
           }
         }
       }
