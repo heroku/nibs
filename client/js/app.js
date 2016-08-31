@@ -41,8 +41,8 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
 
                   if($window.localStorage.getItem('seqNumber') != null) {
                     seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
-                    if(isNaN(seqNumber)) {
-                      seqNumber = 0;
+                    if(isNaN(seqnumber)) {
+                      seqnumber = 0;
                     }
                   }
                 }

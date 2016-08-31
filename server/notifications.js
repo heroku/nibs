@@ -51,6 +51,8 @@ function sendNotification(offerName) {
       }
     }
 
+    winston.info("sending notifications " + JSON.stringify(options.json));
+
     request(options, callback);
   } else {
     winston.info("No one to send " + offerName.seqnumber);
