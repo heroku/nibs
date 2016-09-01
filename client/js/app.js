@@ -18,6 +18,7 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
             if(ionic.Platform.isAndroid()) {
               $ionicPush.init({
                 "debug": true,
+                "android.forceShow": true,
                 "onNotification": function(notification) {
                   var payload = notification.payload;
                   console.log("notification: " + JSON.stringify(notification));
@@ -28,7 +29,7 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
                       console.log("Notif: " + notification.text);
                     }
                   }
-
+                  $state.go('app.offer-detail', {offerId: payload.offerId});
                 }
               });
 
@@ -37,8 +38,12 @@ var app = angular.module('nibs', ['ionic','ionic.service.core', 'ionic.service.p
                 var seqnumber = 0;
                 if($window.localStorage !== undefined ) {
                   $window.localStorage.setItem('notifToken', token.token);
+
                   if($window.localStorage.getItem('seqNumber') != null) {
                     seqnumber = parseInt($window.localStorage.getItem('seqNumber'));
+                    if(isNaN(seqnumber)) {
+                      seqnumber = 0;
+                    }
                   }
                 }
                 $http.get(  $rootScope.server.url + '/notifications/register/' + token.token + '/' + seqnumber);
