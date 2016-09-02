@@ -3,11 +3,11 @@ var db = require('./pghelper'),
     winston = require('winston');
 
 function findAll(limit) {
-    return db.query('SELECT id, name, description, image__c AS image, productPage__c AS productPage, publishDate__c AS publishDate FROM salesforce.product2 WHERE Family=$1 ORDER BY publishDate DESC LIMIT $2', [config.productFamily, limit]);
+    return db.query('SELECT id, name, description, eitech__image__c AS image, eitech__productPage__c AS productPage, eitech__publishDate__c AS publishDate FROM salesforce.product2 WHERE Family=$1 ORDER BY publishDate DESC LIMIT $2', [config.productFamily, limit]);
 };
 
 function findById(id) {
-    return db.query('SELECT id, name, description, image__c AS image, productPage__c AS productPage, publishDate__c AS publishDate FROM salesforce.product2 WHERE id=$1', [id], true);
+    return db.query('SELECT id, name, description, eitech__image__c AS image, eitech__productPage__c AS productPage, eitech__publishDate__c AS eitech__publishDate FROM salesforce.product2 WHERE id=$1', [id], true);
 };
 
 function getAll(req, res, next) {

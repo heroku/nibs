@@ -70,6 +70,8 @@ function createAccessToken(user) {
  */
 function login(req, res, next) {
     winston.info('login');
+    
+    res.set("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
 
     var creds = req.body;
     console.log(creds);
@@ -80,7 +82,7 @@ function login(req, res, next) {
         return res.send(401, invalidCredentials);
     }
 
-    db.query('SELECT id, firstName, lastName, email, loyaltyid__c as externalUserId, password__c AS password FROM salesforce.contact WHERE email=$1', [creds.email], true)
+    db.query('SELECT id, firstName, lastName, email, eitech__loyaltyid__c as externalUserId, eitech__password__c AS password FROM salesforce.contact WHERE email=$1', [creds.email], true)
         .then(function (user) {
             if (!user) {
                 return res.send(401, invalidCredentials);
@@ -90,9 +92,11 @@ function login(req, res, next) {
                 if (match) {
                     createAccessToken(user)
                         .then(function(token) {
-                            return res.send({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token});
+                            winston.info("token for " + JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}) + " created.");
+                            return res.send(200, JSON.stringify({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token}));
                         })
                         .catch(function(err) {
+                            winston.info("token for " + user.email + " error:" + JSON.stringify(err));
                             return next(err);    
                         });
                 } else {
@@ -130,9 +134,9 @@ function logout(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function signup(req, res, next) {
-
     winston.info('signup');
 
+    
     var user = req.body;
 
     if (!validator.isEmail(user.email)) {
@@ -151,12 +155,17 @@ function signup(req, res, next) {
     db.query('SELECT id FROM salesforce.contact WHERE email=$1', [user.email], true)
         .then(function (u) {
             if(u) {
+                winston.info("mail already used");
                 return next(new Error('Email address already registered'));
             }
             encryptPassword(user.password, function (err, hash) {
-                if (err) return next(err);
+                if (err) {
+                    winston.error("err: " + err);
+                    return next(err);
+                }
                 createUser(user, hash)
                     .then(function () {
+                        winston.info('creation OK: ' + JSON.stringify(user));
                         return res.send('OK');
                     })
                     .catch(next);
@@ -176,8 +185,8 @@ function createUser(user, password) {
     var deferred = Q.defer(),
         externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
 
-    db.query('INSERT INTO salesforce.contact (email, password__c, firstname, lastname, leadsource, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, firstName, lastName, email, loyaltyid__c as externalUserId',
-        [user.email, password, user.firstName, user.lastName, 'Loyalty App', externalUserId, config.contactsAccountId], true)
+    db.query('INSERT INTO salesforce.contact (email, eitech__password__c, firstname, lastname, eitech__TypeCompte__c, leadsource, eitech__loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, firstName, lastName, email, eitech__loyaltyid__c as externalUserId',
+        [user.email, password, user.firstName, user.lastName, user.typeCompte, 'Loyalty App', externalUserId, config.contactsAccountId], true)
         .then(function (insertedUser) {
             deferred.resolve(insertedUser);
         })
@@ -195,6 +204,10 @@ function createUser(user, password) {
  * @returns {*|ServerResponse}
  */
 function validateToken (req, res, next) {
+    
+
+
+    // get the token
     var token = req.headers['authorization'];
     if (!token) {
         token = req.session['token']; // Allow token to be passed in session cookie

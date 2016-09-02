@@ -22,6 +22,10 @@
     height: 96px;
 }
 
+ion-nav-view {
+    background-color: darkgreen;
+}
+
 .gallery img {
     width: 160px;
     height: 160px;
@@ -71,7 +75,7 @@ a {
 }
 
 .welcome {
-    background: url('img/background2.jpg') no-repeat center center fixed;
+    background: url('img/background-beer.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -80,9 +84,9 @@ a {
 }
 
 .welcome h2 {
-    font-family: "Source Sans Light";
+    font-family: "Source Sans Light bold";
     font-size: 2.4rem;
-    color: #ffffff;
+    color: red;
     line-height: 1.8rem;
 }
 
@@ -136,7 +140,8 @@ a {
 }
 
 .welcome .button-clear {
-    color: #eeeeee;
+    color: red;
+    font-weight: bold;
 }
 
 .menu-left h1 {
@@ -251,15 +256,15 @@ a {
 }
 
 .bar-status {
-    border-color: #73732E;
-    background-color: #73732E;
+	border-color: darkgreen;
+	background-color: darkgreen;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: darkgreen;
+    background-color: darkgreen;
     background-image: none;
     color: #fff;
 }
@@ -326,10 +331,12 @@ a {
     margin: 0;
 }
 
-.bar .title,
+.bar .title {
+	color: white;
+}
 .bar .button
 {
-    color: #ffffff;
+    color: red;
 }
 
 .status-bar {
@@ -387,7 +394,7 @@ a {
 }
 
 .status1-bg {
-    background: #73732E;
+    background: darkgreen;
 }
 
 .status2-bg {
@@ -518,4 +525,26 @@ a {
     left:50%;
     margin-left:-75px;
     width:140px
+}
+
+
+.profile td {
+  padding-left: 3em;
+}
+
+.report img {
+  width: 75px;
+}
+
+.report .col {
+  background-color: white;
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;
+}
+
+.report .header {
+  font-weight: bold;
+  text-align: center;
 }

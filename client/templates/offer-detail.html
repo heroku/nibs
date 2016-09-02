@@ -12,10 +12,10 @@
               <p>{{offer.description}}</p>
 
               <div class="button-bar">
-                  <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()">
+                  <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()" ng-if="user.typecompte == 'Client'">
                       Redeem
                   </a>
-                  <a class="button button-block button-light"  style="font-size: .9rem;" ng-click="saveToWallet()">
+                  <a class="button button-block button-light"  style="font-size: .9rem;" ng-click="saveToWallet()" ng-if="user.typecompte == 'Client'" >
                       Save to Wallet
                   </a>
               </div>

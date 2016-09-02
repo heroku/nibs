@@ -22,14 +22,14 @@
                 </button>
             </div>
             <div class="item item-body">
-                <p>For demo purpose: resets user to lowest status.</p>
-                <button class="button button-block button-light" ng-click="deleteActivities()">
-                    Delete Activities
-                </button>
-            </div>
-            <div class="item item-body">
                 <button class="button button-block button-light" ng-click="deletePictures()">
                     Delete Gallery Pictures
+                </button>
+            </div>
+            <div class="item item-body" ng-if="isAndroid">
+                <p>For demo purpose: resets user notifications.</p>
+                <button class="button button-block button-light" ng-click="resetNofications()">
+                    Reset notifications
                 </button>
             </div>
 
