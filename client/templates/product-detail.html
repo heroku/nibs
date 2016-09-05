@@ -10,7 +10,7 @@
             <div class="item item-body">
                 <img ng-if="product.image"  ng-src="{{product.image}}">
                 <p>{{product.description}}</p>
-                <button class="button button-block button-light" ng-click="saveToWishList()">
+                <button class="button button-block button-light" ng-click="saveToWishList()" ng-if="user.typecompte == 'Client'">
                     Add to WishList
                 </button>
             </div>

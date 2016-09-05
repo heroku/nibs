@@ -1,0 +1,44 @@
+<ion-view title="Coupon report" hide-back-button="true" class="card-bg">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true">
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+
+
+        <div>
+          Total Number of Scanned Coupons: {{total}}
+        </div>
+
+
+        <div>
+          <div class="report">
+            <div class="row header">
+              <div class="col col-80">Offer</div>
+              <div class="col col-20">Nb of coupons</div>
+            </div>
+            <div ng-repeat="offer in offers" class="row" >
+              <div class="col col-20">
+                <img ng-if="offer.image" ng-src="{{offer.image}}">
+              </div>
+              <div class="col col-60">
+                <a ui-sref="app.offer-detail({offerId: offer.id})">
+                  {{offer.name}}
+                </a>
+              </div>
+              <div class="col col-20">
+                {{offer.count}}
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </ion-content>
+
+</ion-view>

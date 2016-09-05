@@ -7,18 +7,9 @@ module.exports = {
 
     productFamily: process.env.PRODUCT_FAMILY || "Nibs",
 
-    // Used by nforce to create Cases in real time
-    api: {
-        // Connected app
-        clientId: process.env.OAUTH_CLIENT_ID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        redirectUri: process.env.OAUTH_REDIRECT_URL,
-        apiVersion: 'v29.0',
+    ionicApiToken: process.env.IONIC_API_TOKEN,
 
-        // SFDC user used to make API calls from Node server
-        userName: process.env.INTEGRATION_USER_NAME,
-        password: process.env.INTEGRATION_USER_PASSWORD
-    },
+    serverUrl: process.env.OAUTH_REDIRECT_URL,
 
     // Used for picture upload (user profile and gallery)
     s3: {

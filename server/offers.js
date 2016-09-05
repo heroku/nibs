@@ -2,13 +2,13 @@ var db = require('./pghelper'),
     winston = require('winston');
 
 function findAll(limit) {
-    return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
-};
+    return db.query("SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, eitech__campaignPage__c AS campaignPage, eitech__publishDate__c AS publishDate FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
+}
 
 function findById(id) {
     // Retrieve offer either by Salesforce id or Postgress id
-    return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
-};
+    return db.query('SELECT id, sfId, name, startDate, endDate, description, eitech__image__c AS image, eitech__campaignPage__c AS campaignPage, eitech__publishDate__c AS publishDate FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+}
 
 function getAll(req, res, next) {
     findAll(20)
@@ -17,7 +17,7 @@ function getAll(req, res, next) {
             return res.send(JSON.stringify(offers));
         })
         .catch(next);
-};
+}
 
 function getById(req, res, next) {
     var id = req.params.id;
@@ -27,7 +27,7 @@ function getById(req, res, next) {
             return res.send(JSON.stringify(offer));
         })
         .catch(next);
-};
+}
 
 exports.findAll = findAll;
 exports.findById = findById;

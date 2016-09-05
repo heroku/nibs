@@ -1,2 +1,8 @@
 .idea
 node_modules
+.project
+*.log
+*.project
+nibs-shell/
+bower_components/
+.tern-project

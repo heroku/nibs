@@ -4,9 +4,10 @@
   "description": "Loyalty Mobile App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start test\\karma.conf.js --single-run",
     "start": "node server.js",
-    "init_salesforce_schema": "node server/init_salesforce_schema.js"
+    "init_salesforce_schema": "node server/init_salesforce_schema.js",
+    "prestart": "gulp replace "
   },
   "repository": {
     "type": "git",
@@ -21,20 +22,39 @@
     "node": "0.10.35"
   },
   "dependencies": {
+    "bcrypt": "~0.8.7",
+    "body-parser": "~1.3.0",
+    "compression": "~1.0.11",
+    "cookie-session": "~1.0.2",
+    "ejs": "~1.0.0",
+    "express": "~4.4.1",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
+    "gulp-replace-task": "^0.11.0",
     "logfmt": "~0.21.0",
-    "bcrypt": "~0.7.7",
-    "pg": "~2.11.1",
+    "method-override": "~2.0.1",
+    "nforce": "~0.8.0-beta.1",
+    "node-cron": "^1.1.1",
     "node-uuid": "~1.4.1",
+    "pg": "~2.11.1",
+    "q": "~1.0.1",
+    "qrcode-npm": "~0.0.3",
+    "request": "^2.40.0",
     "validator": "~3.5.0",
     "winston": "~0.7.3",
-    "q": "~1.0.1",
-    "nforce": "~0.8.0-beta.1",
-    "express": "~4.4.1",
-    "body-parser": "~1.3.0",
-    "method-override": "~2.0.1",
-    "compression": "~1.0.11",
-    "request": "~2.40.0",
-    "ejs": "~1.0.0",
-    "cookie-session": "~1.0.2"
+    "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "chai": "^3.5.0",
+    "karma": "^1.2.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sinon": "^1.0.5",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5",
+    "watchify": "^3.7.0"
   }
 }
