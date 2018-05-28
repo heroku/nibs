@@ -5,9 +5,9 @@ angular.module('nibs.config', [])
     .constant('FB_APP_ID','1618878675020266')
 
     .constant('STATUS_LABELS', [
-        'Forastero',
-        'Trinitario',
-        'Criollo'
+        'Filo',
+        'Matassa',
+        'Gomitolo'
     ])
 
     .constant('STATUS_DESCRIPTIONS', [
