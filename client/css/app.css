@@ -418,14 +418,14 @@ a {
 }
 
 .icon-status2 {
-    background: url('img/icon-status2.svg');
+    background: url('img/status2.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     margin:0 0 0 12px;
 }
 
 .icon-status3 {
-    background: url('img/icon-status3.svg');
+    background: url('img/status3.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     margin:0 0 0 12px;
