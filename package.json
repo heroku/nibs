@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccoenraets/loyalty"
+    "url": "https://github.com/tommasofe85/nibs/"
   },
   "author": "Christophe Coenraets",
   "bugs": {
-    "url": "https://github.com/ccoenraets/loyalty/issues"
+    "url": "https://github.com/tommasofe85/nibs/issues"
   },
-  "homepage": "https://github.com/ccoenraets/loyalty",
+  "homepage": "https://github.com/tommasofe85/nibs/",
   "engines": {
     "node": "0.10.35"
   },
