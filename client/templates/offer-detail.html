@@ -1,11 +1,10 @@
-<ion-view title="Offer Details" class="card-bg">
+<ion-view title="+{{offer.name}}+" class="card-bg">
 
   <ion-content has-header="true" padding="true">
 
       <div class="list card">
           <div class="item">
               <h2>{{offer.name}}</h2>
-              <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
           </div>
           <div class="item item-body">
               <img class="full-image" ng-if="offer.image"  ng-src="{{offer.image}}">
