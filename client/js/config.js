@@ -1,8 +1,10 @@
 angular.module('nibs.config', [])
 
-    .constant('SERVER_URL', null)
+    .constant('SERVER_URL', 'https: //demo-loyalty-generic.herokuapp.com/')
 
-    .constant('FB_APP_ID','1618878675020266')
+    .constant('HOST', 'https: //demo-loyalty-generic.herokuapp.com/')
+
+    .constant('FB_APP_ID', '180938355946407')
 
     .constant('STATUS_LABELS', [
         'Bronzo',
