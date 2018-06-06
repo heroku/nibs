@@ -1,3 +1,17 @@
+require 'pusher'
+
+pusher_client = Pusher::Client.new(
+  app_id: '535790',
+  key: '410fb2f48222e7db77dd',
+  secret: '8f5d616392a272711939',
+  cluster: 'eu',
+  encrypted: true
+)
+
+pusher_client.trigger('my-channel', 'my-event', {
+  message: 'hello world'
+})
+
 angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status'])
 
     // Routes
