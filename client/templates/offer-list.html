@@ -27,8 +27,6 @@
             <a ui-sref="app.offer-detail({offerId: offer.id})">
                 <div class="item">
                     <h2>{{offer.name}}</h2>
-
-                    <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
                 </div>
                 <div class="item item-body">
                     <img ng-if="offer.image" ng-src="{{offer.image}}">
