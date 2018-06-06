@@ -33,7 +33,7 @@ var pusher = new Pusher({
 });
 
 pusher.trigger('my-channel', 'my-event', {
-  "message": "hello world"
+  "message": "Abbiamo un posto disponibile per un massaggio tonificante, non perdere l'occasione"
 });
 
 app.set('port', process.env.PORT || 5000);
