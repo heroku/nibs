@@ -11,7 +11,7 @@ var express = require('express'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
-    //cases = require('./server/cases'),
+    cases = require('./server/cases'),
     wallet = require('./server/wallet'),
     wishlist = require('./server/wishlist'),
     stores = require('./server/stores'),
@@ -22,9 +22,9 @@ var express = require('express'),
     activities = require('./server/activities'),
     app = express();
 
-var Pusher = require('pusher');
+//var Pusher = require('pusher');
 
-var pusher = new Pusher({
+/* var pusher = new Pusher({
   appId: '535790',
   key: '410fb2f48222e7db77dd',
   secret: '8f5d616392a272711939',
@@ -34,7 +34,7 @@ var pusher = new Pusher({
 
 pusher.trigger('my-channel', 'my-event', {
   "message": "Abbiamo un posto disponibile per un massaggio tonificante, non perdere l'occasione"
-});
+}); */
 
 app.set('port', process.env.PORT || 5000);
 
