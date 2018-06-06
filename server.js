@@ -68,7 +68,7 @@ app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
-//app.post('/cases', auth.validateToken, cases.createCase);
+app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
