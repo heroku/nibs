@@ -13,7 +13,7 @@ module.exports = {
         clientId: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET,
         redirectUri: process.env.OAUTH_REDIRECT_URL,
-        apiVersion: 'v42.0',
+        apiVersion: 'v29.0',
 
         // SFDC user used to make API calls from Node server
         userName: process.env.INTEGRATION_USER_NAME,
