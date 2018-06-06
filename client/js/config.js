@@ -5,13 +5,13 @@ angular.module('nibs.config', [])
     .constant('FB_APP_ID','1618878675020266')
 
     .constant('STATUS_LABELS', [
-        'Filo',
-        'Matassa',
-        'Gomitolo'
+        'Bronzo',
+        'Argento',
+        'Oro'
     ])
 
     .constant('STATUS_DESCRIPTIONS', [
-        'Filo (Beginner) sei una shopper saltuaria, coraggio che puoi avere super possibilità! ',
-        'Matassa (Intermediate) sei ad un ottimo livello di shopper, una esperta nell acquisto, ti mancano solo i superpoteri ',
-        'Gomitolo (Super Power) semplicemente perfetto! '
+        'Bronzo (Beginner) Sei per la prima volta nella struttura? o probabilmente sei un nostro cliente lontano, non ti preoccupare il nostro personale ti farà rilassare e vivere un esperienza meravigliosa  ',
+        'Argento (Intermediate) Sei un tipo che gli piace rilassarsi, guarda i percorsi ti suggeriamo, ti vogliamo stupire con nuove emozioni ',
+        'Oro (Super Power) semplicemente perfetto! Sei uno dei nostri top clienti, per te fantastiche offerte e prodotti dedicate al nostro cliente più affezionato '
     ]);
