@@ -8,12 +8,12 @@ var pusher = new Pusher({
   encrypted: true
 });
 
-<ion-view title="Ciao"+{{user.firstname}}+ " " +{{user.lastname}} hide-back-button="true" class="profile">
-  
-  pusher.trigger('my-channel', 'my-event', {
-  "message": "hello world"
+var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data.message);
 });
 
+<ion-view title="Ciao"+{{user.firstname}}+ " " +{{user.lastname}} hide-back-button="true" class="profile">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
