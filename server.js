@@ -22,24 +22,6 @@ var express = require('express'),
     activities = require('./server/activities'),
     app = express();
 
-<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-  <script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('410fb2f48222e7db77dd', {
-      cluster: 'eu',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(data.message);
-    });
-</script> 
-
-
 app.set('port', process.env.PORT || 5000);
 
 app.use(compression());
