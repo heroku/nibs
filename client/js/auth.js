@@ -140,7 +140,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $scope.facebookLogin = function () {
 
-            OpenFB.login('email, publish_actions').then(
+           // OpenFB.login('email, publish_actions').then(
+            OpenFB.login('email').then(
                 function () {
                     OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
                         .success(function (fbUser) {
