@@ -7,10 +7,10 @@
               <h2>{{offer.name}}</h2>
           </div>
           <div class="item item-body">
-              <img class="full-image" src="img/qrcode.svg">
-              <p>Presenta il QRcode agli assistenti per accedere al trattamento</p>
+              <img class="full-image" ng-if="offer.image"  ng-src="{{offer.image}}">
+              <p>{{offer.description}}</p>
               <button class="button button-block button-light" ui-sref="app.store-locator">
-                  Cerca la prossima sala
+                  Vedi il tuo percorso sulla mappa
               </button>
 
           </div>
