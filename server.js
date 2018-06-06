@@ -22,19 +22,23 @@ var express = require('express'),
     activities = require('./server/activities'),
     app = express();
 
-//var Pusher = require('pusher');
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <script>
 
-/* var pusher = new Pusher({
-  appId: '535790',
-  key: '410fb2f48222e7db77dd',
-  secret: '8f5d616392a272711939',
-  cluster: 'eu',
-  encrypted: true
-});
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
-pusher.trigger('my-channel', 'my-event', {
-  "message": "Abbiamo un posto disponibile per un massaggio tonificante, non perdere l'occasione"
-}); */
+    var pusher = new Pusher('410fb2f48222e7db77dd', {
+      cluster: 'eu',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data.message);
+    });
+</script> 
+
 
 app.set('port', process.env.PORT || 5000);
 
