@@ -11,7 +11,7 @@
             </div>
             <div class="item item-body">
                <!-- <img class="full-image" ng-src="img/qrcode.svg"> -->
-               <img class="full-image"  ng-src="{{product.image}}">
+               <img ng-if="product.image"  ng-src="{{product.image}}">
             </div>
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" ng-click="deleteItem(offer)">
