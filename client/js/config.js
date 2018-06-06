@@ -1,6 +1,6 @@
 angular.module('nibs.config', [])
 
-    .constant('SERVER_URL', 'https: //demo-loyalty-generic.herokuapp.com/')
+    .constant('SERVER_URL', null)
 
     .constant('HOST', 'https: //demo-loyalty-generic.herokuapp.com/')
 
