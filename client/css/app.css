@@ -355,19 +355,19 @@ a {
 }
 
 .status-bar>div:nth-of-type(1) {
-    border-top: solid 2px #73732E;
-    color: #73732E !important;
+    border-top: solid 2px #6495ed;
+    color: #6495ed !important;
 }
 
 .status-bar>div:nth-of-type(2) {
-    border-top: solid 2px #A87E21;
-    color: #A87E21 !important;
+    border-top: solid 2px #20b2aa;
+    color: #20b2aa !important;
     text-align: center;
 }
 
 .status-bar>div:nth-of-type(3) {
-    border-top: solid 2px #802E13;
-    color: #802E13 !important;
+    border-top: solid 2px #000080;
+    color: #000080 !important;
     text-align: right;
 }
 
