@@ -265,15 +265,15 @@ a {
 }
 
 .bar-status2 {
-    border-color: #20b2aa ;
-    background-color: #20b2aa;
+    border-color: #6495ed ;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status3 {
-    border-color: #000080;
-    background-color: #000080;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
@@ -290,15 +290,15 @@ a {
 .button-status1,
 .button-status1:hover,
 .button-status1:active {
-    background-color: #6495ed;
+    background-color: #daa520;
     color: #fff;
 }
 
 .button-status2,
 .button-status2:hover,
 .button-status2:active {
-    border-color: #20b2aa;
-    background-color: #20b2aa;
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
     background-image: none;
     color: #fff;
 }
@@ -306,8 +306,8 @@ a {
 .button-status3,
 .button-status3:hover,
 .button-status3:active {
-    border-color: #000080;
-    background-color: #000080;
+    border-color: #ffd700;
+    background-color: #ffd700;
     background-image: none;
     color: #fff;
 }
@@ -391,23 +391,23 @@ a {
 }
 
 .status2-bg {
-    background: #20b2aa;
+    background: #6495ed;
 }
 
 .status3-bg {
-    background: #000080;
+    background: #6495ed;
 }
 
 .status1 {
-    color: #6495ed;
+    color: #daa520;
 }
 
 .status2 {
-    color: #20b2aa;
+    color: #c0c0c0;
 }
 
 .status3 {
-    color: #000080;
+    color: #ffd700;
 }
 
 .icon-status1 {
