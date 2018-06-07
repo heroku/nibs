@@ -251,29 +251,29 @@ a {
 }
 
 .bar-status {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status2 {
-    border-color: #A87E21;
-    background-color: #A87E21;
+    border-color: #20b2aa ;
+    background-color: #20b2aa;
     background-image: none;
     color: #fff;
 }
 
 .bar-status3 {
-    border-color: #802E13;
-    background-color: #802E13;
+    border-color: #000080;
+    background-color: #000080;
     background-image: none;
     color: #fff;
 }
@@ -281,8 +281,8 @@ a {
 
 .button-status,
 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
@@ -290,15 +290,15 @@ a {
 .button-status1,
 .button-status1:hover,
 .button-status1:active {
-    background-color: #73732E;
+    background-color: #6495ed;
     color: #fff;
 }
 
 .button-status2,
 .button-status2:hover,
 .button-status2:active {
-    border-color: #A87E21;
-    background-color: #A87E21;
+    border-color: #20b2aa;
+    background-color: #20b2aa;
     background-image: none;
     color: #fff;
 }
@@ -306,8 +306,8 @@ a {
 .button-status3,
 .button-status3:hover,
 .button-status3:active {
-    border-color: #802E13;
-    background-color: #802E13;
+    border-color: #000080;
+    background-color: #000080;
     background-image: none;
     color: #fff;
 }
