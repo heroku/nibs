@@ -355,19 +355,19 @@ a {
 }
 
 .status-bar>div:nth-of-type(1) {
-    border-top: solid 2px #6495ed;
-    color: #6495ed !important;
+    border-top: solid 2px #daa520;
+    color: #daa520 !important;
 }
 
 .status-bar>div:nth-of-type(2) {
-    border-top: solid 2px #20b2aa;
-    color: #20b2aa !important;
+    border-top: solid 2px #c0c0c0;
+    color: #c0c0c0 !important;
     text-align: center;
 }
 
 .status-bar>div:nth-of-type(3) {
-    border-top: solid 2px #000080;
-    color: #000080 !important;
+    border-top: solid 2px #ffd700;
+    color: #ffd700 !important;
     text-align: right;
 }
 
@@ -387,27 +387,27 @@ a {
 }
 
 .status1-bg {
-    background: #73732E;
+    background: #6495ed;
 }
 
 .status2-bg {
-    background: #A87E21;
+    background: #20b2aa;
 }
 
 .status3-bg {
-    background: #802E13;
+    background: #000080;
 }
 
 .status1 {
-    color: #73732E;
+    color: #6495ed;
 }
 
 .status2 {
-    color: #A87E21;
+    color: #20b2aa;
 }
 
 .status3 {
-    color: #802E13;
+    color: #000080;
 }
 
 .icon-status1 {
