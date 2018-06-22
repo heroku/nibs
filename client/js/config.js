@@ -2,16 +2,18 @@ angular.module('nibs.config', [])
 
     .constant('SERVER_URL', null)
 
-    .constant('FB_APP_ID','1618878675020266')
+    .constant('HOST', 'https: //demo-loyalty-generic.herokuapp.com/')
+
+    .constant('FB_APP_ID', '180938355946407')
 
     .constant('STATUS_LABELS', [
-        'Forastero',
-        'Trinitario',
-        'Criollo'
+        'Bronzo',
+        'Argento',
+        'Oro'
     ])
 
     .constant('STATUS_DESCRIPTIONS', [
-        'Forastero (For-ah-stare-oh)  is a common base to all but the finest of chocolates.  Our newest Nibs members move as fast as Forastero pods grow.',
-        'Trinitario (Trin-it-air-ee-yo)  is a hybrid combining the superior taste of the criollo bean with the resilience of the forastero bean. It’s not quite as rare as Criollo, but it’s close!',
-        'Criollo (Kree-oh-yo) is the most valued and rare type of cacao. Our highest level of Nibs members share the taste and sophistication of  select Crillolo pods.'
+        'Bronzo (Beginner) Sei per la prima volta nella struttura? o probabilmente sei un nostro cliente lontano, non ti preoccupare il nostro personale ti farà rilassare e vivere un esperienza meravigliosa  ',
+        'Argento (Intermediate) Sei un tipo che gli piace rilassarsi, guarda i percorsi ti suggeriamo, ti vogliamo stupire con nuove emozioni ',
+        'Oro (Super Power) semplicemente perfetto! Sei uno dei nostri top clienti, per te fantastiche offerte e prodotti dedicate al nostro cliente più affezionato '
     ]);

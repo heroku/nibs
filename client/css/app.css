@@ -71,7 +71,7 @@ a {
 }
 
 .welcome {
-    background: url('img/background2.jpg') no-repeat center center fixed;
+    background: url('img/background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -251,29 +251,29 @@ a {
 }
 
 .bar-status {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status1 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status2 {
-    border-color: #A87E21;
-    background-color: #A87E21;
+    border-color: #6495ed ;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
 
 .bar-status3 {
-    border-color: #802E13;
-    background-color: #802E13;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
@@ -281,8 +281,8 @@ a {
 
 .button-status,
 {
-    border-color: #73732E;
-    background-color: #73732E;
+    border-color: #6495ed;
+    background-color: #6495ed;
     background-image: none;
     color: #fff;
 }
@@ -290,15 +290,15 @@ a {
 .button-status1,
 .button-status1:hover,
 .button-status1:active {
-    background-color: #73732E;
+    background-color: #daa520;
     color: #fff;
 }
 
 .button-status2,
 .button-status2:hover,
 .button-status2:active {
-    border-color: #A87E21;
-    background-color: #A87E21;
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
     background-image: none;
     color: #fff;
 }
@@ -306,8 +306,8 @@ a {
 .button-status3,
 .button-status3:hover,
 .button-status3:active {
-    border-color: #802E13;
-    background-color: #802E13;
+    border-color: #ffd700;
+    background-color: #ffd700;
     background-image: none;
     color: #fff;
 }
@@ -355,19 +355,19 @@ a {
 }
 
 .status-bar>div:nth-of-type(1) {
-    border-top: solid 2px #73732E;
-    color: #73732E !important;
+    border-top: solid 2px #daa520;
+    color: #daa520 !important;
 }
 
 .status-bar>div:nth-of-type(2) {
-    border-top: solid 2px #A87E21;
-    color: #A87E21 !important;
+    border-top: solid 2px #c0c0c0;
+    color: #c0c0c0 !important;
     text-align: center;
 }
 
 .status-bar>div:nth-of-type(3) {
-    border-top: solid 2px #802E13;
-    color: #802E13 !important;
+    border-top: solid 2px #ffd700;
+    color: #ffd700 !important;
     text-align: right;
 }
 
@@ -387,45 +387,45 @@ a {
 }
 
 .status1-bg {
-    background: #73732E;
+    background: #6495ed;
 }
 
 .status2-bg {
-    background: #A87E21;
+    background: #6495ed;
 }
 
 .status3-bg {
-    background: #802E13;
+    background: #6495ed;
 }
 
 .status1 {
-    color: #73732E;
+    color: #daa520;
 }
 
 .status2 {
-    color: #A87E21;
+    color: #c0c0c0;
 }
 
 .status3 {
-    color: #802E13;
+    color: #ffd700;
 }
 
 .icon-status1 {
-    background: url('img/icon-status1.svg');
+    background: url('img/status1.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     margin:0 0 0 12px;
 }
 
 .icon-status2 {
-    background: url('img/icon-status2.svg');
+    background: url('img/status2.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     margin:0 0 0 12px;
 }
 
 .icon-status3 {
-    background: url('img/icon-status3.svg');
+    background: url('img/status3.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     margin:0 0 0 12px;

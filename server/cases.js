@@ -27,10 +27,11 @@ function createCase(req, res, next) {
 
     db.query('SELECT sfid FROM salesforce.contact WHERE id=$1',[req.userId], true)
         .then(function (user) {
-            console.log("sfid: " + user.sfid);
+            console.log("sfid: " + user.sfid + ' Subject: ' + req.body.subject);
             // case is a reserved word. using _case instead.
             var _case = nforce.createSObject('Case');
             _case.set('contactId', user.sfid);
+           // _case.set('subject', req.body.subject);
             _case.set('subject', req.body.subject);
             _case.set('description', req.body.description);
             _case.set('origin', 'Web');

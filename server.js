@@ -11,7 +11,7 @@ var express = require('express'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
-//    cases = require('./server/cases'),
+    cases = require('./server/cases'),
     wallet = require('./server/wallet'),
     wishlist = require('./server/wishlist'),
     stores = require('./server/stores'),
@@ -68,7 +68,7 @@ app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
-//app.post('/cases', auth.validateToken, cases.createCase);
+app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);

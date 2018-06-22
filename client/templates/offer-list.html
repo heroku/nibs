@@ -1,4 +1,4 @@
-<ion-view title="Special Offers" hide-back-button="true" class="card-bg">
+<ion-view title="Percorsi Benessere" hide-back-button="true" class="card-bg">
 
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -27,8 +27,6 @@
             <a ui-sref="app.offer-detail({offerId: offer.id})">
                 <div class="item">
                     <h2>{{offer.name}}</h2>
-
-                    <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
                 </div>
                 <div class="item item-body">
                     <img ng-if="offer.image" ng-src="{{offer.image}}">
