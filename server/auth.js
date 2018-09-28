@@ -1,7 +1,7 @@
 var bcrypt = require('bcrypt'),
     db = require('./pghelper'),
     config = require('./config'),
-    uuid = require('node-uuid'),
+    uuidv4 = require('uuid/v4'),
     Q = require('q'),
     validator = require('validator'),
     winston = require('winston'),
@@ -48,7 +48,7 @@ function comparePassword(password, hash, callback) {
  */
 function createAccessToken(user) {
     winston.info('createAccessToken');
-    var token = uuid.v4(),
+    var token = uuidv4(),
         deferred = Q.defer();
     
     db.query('INSERT INTO tokens (userId, externalUserId, token) VALUES ($1, $2, $3)', [user.id, user.externaluserid, token])
