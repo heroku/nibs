@@ -23,9 +23,10 @@ var express = require('express'),
     app = express();
 
 app.set('port', process.env.PORT || 5000);
-
 app.use(compression());
-app.use(bodyParser({
+
+//  body-parser deprecated bodyParser() constructor: use individual json/urlencoded middleware
+app.use(bodyParser.json({
     uploadDir: __dirname + '/uploads',
     keepExtensions: true
 }));
